@@ -1,13 +1,14 @@
-from flask import Flask, render_template
-
-app = Flask(__name__)
-app.secret_key = "dev-secret-key"
-
-
-@app.route("/")
-def home():
-    return render_template("index.html")
-
+import subprocess
+import sys
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    subprocess.run([
+        sys.executable, "-m", "streamlit", "run",
+        "streamlit_app.py",
+        "--server.port=5000",
+        "--server.address=0.0.0.0",
+        "--server.headless=true",
+        "--browser.gatherUsageStats=false",
+        "--server.enableCORS=false",
+        "--server.enableXsrfProtection=false",
+    ])

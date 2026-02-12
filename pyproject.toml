@@ -5,4 +5,9 @@ description = "Add your description here"
 requires-python = ">=3.11"
 dependencies = [
     "flask>=3.1.2",
+    "google-api-python-client>=2.190.0",
+    "openai>=2.20.0",
+    "pandas>=2.3.3",
+    "streamlit>=1.54.0",
+    "yt-dlp>=2026.2.4",
 ]

@@ -1,0 +1,107 @@
+{
+  "version": "5.2",
+  "theological_categories": {
+    "grace": {
+      "keywords": ["grace", "mercy", "forgiveness", "unmerited", "gift", "pardon", "compassion", "redemption", "justified", "freely"],
+      "weight": 1.0
+    },
+    "effort": {
+      "keywords": ["obedience", "discipline", "work", "strive", "commitment", "sacrifice", "duty", "persevere", "effort", "obey"],
+      "weight": 1.0
+    },
+    "hope": {
+      "keywords": ["hope", "promise", "future", "restoration", "heaven", "eternal", "glory", "coming", "resurrection", "victory"],
+      "weight": 1.0
+    },
+    "fear": {
+      "keywords": ["fear", "judgment", "wrath", "hell", "punishment", "warning", "consequence", "destruction", "condemnation", "perish"],
+      "weight": 1.0
+    },
+    "doctrine": {
+      "keywords": ["doctrine", "theology", "scripture", "biblical", "hermeneutics", "exegesis", "systematic", "orthodox", "creed", "canon", "sovereignty", "atonement", "propitiation", "justification", "sanctification", "eschatology", "pneumatology", "christology", "ecclesiology", "soteriology"],
+      "weight": 1.0
+    },
+    "experience": {
+      "keywords": ["experience", "feel", "encounter", "presence", "move", "touch", "spirit", "breakthrough", "atmosphere", "manifest", "tangible", "anointing", "power", "fire"],
+      "weight": 1.0
+    },
+    "scripture_reference": {
+      "keywords": ["bible", "scripture", "verse", "chapter", "testament", "gospel", "epistle", "psalm", "proverb", "revelation", "genesis", "exodus", "deuteronomy", "isaiah", "jeremiah", "matthew", "mark", "luke", "john", "acts", "romans", "corinthians", "galatians", "ephesians", "philippians", "colossians", "thessalonians", "timothy", "hebrews", "james", "peter"],
+      "weight": 1.0
+    },
+    "story": {
+      "keywords": ["story", "testimony", "personal", "journey", "life", "happened", "remember", "told me", "my friend", "illustration", "example", "imagine", "picture this", "let me tell you"],
+      "weight": 1.0
+    }
+  },
+  "drift_axes": {
+    "grace_vs_effort": {
+      "positive": "grace",
+      "negative": "effort",
+      "description": "Grace-centered vs Works/Effort-centered messaging"
+    },
+    "hope_vs_fear": {
+      "positive": "hope",
+      "negative": "fear",
+      "description": "Hope-driven vs Fear-driven messaging"
+    },
+    "doctrine_vs_experience": {
+      "positive": "doctrine",
+      "negative": "experience",
+      "description": "Doctrinal teaching vs Experiential emphasis"
+    },
+    "scripture_vs_story": {
+      "positive": "scripture_reference",
+      "negative": "story",
+      "description": "Scripture-heavy vs Story/Illustration-heavy"
+    }
+  },
+  "avatars": {
+    "sully": {
+      "name": "Sully",
+      "tradition": "Reformed",
+      "affinity_categories": ["doctrine", "scripture_reference", "grace"],
+      "voice": "Measured, scholarly, anchored in systematic theology. Quotes confessions and commentaries.",
+      "fallback_intro": "Brothers and sisters, let us turn our attention to what the text actually says..."
+    },
+    "elena": {
+      "name": "Elena",
+      "tradition": "Charismatic",
+      "affinity_categories": ["experience", "hope", "grace"],
+      "voice": "Passionate, warm, Spirit-led. Speaks of encounters and atmosphere shifts.",
+      "fallback_intro": "I feel the Spirit saying something to us today..."
+    },
+    "tio": {
+      "name": "Tio",
+      "tradition": "Global",
+      "affinity_categories": ["hope", "story", "experience"],
+      "voice": "Global perspective, liberation theology undertones. Story-driven, communal.",
+      "fallback_intro": "In the churches across the global south, we are seeing something remarkable..."
+    },
+    "noni": {
+      "name": "Noni",
+      "tradition": "Bridge",
+      "affinity_categories": ["grace", "hope", "story"],
+      "voice": "Gentle mediator. Finds common ground between traditions. Pastoral and inclusive.",
+      "fallback_intro": "What's beautiful is that whether you come from a Reformed or Charismatic perspective..."
+    },
+    "dr_thorne": {
+      "name": "Dr. Thorne",
+      "tradition": "Institution",
+      "affinity_categories": ["doctrine", "effort", "fear"],
+      "voice": "Academic, institutional. Concerned with orthodoxy and proper order.",
+      "fallback_intro": "The data this week raises important questions about doctrinal integrity..."
+    },
+    "elias": {
+      "name": "Elias",
+      "tradition": "The Signal",
+      "affinity_categories": ["scripture_reference", "doctrine", "hope"],
+      "voice": "Prophetic, poetic, signal-reader. Sees patterns others miss.",
+      "fallback_intro": "If you listen closely to what's being preached this week, there's a signal emerging..."
+    }
+  },
+  "density_normalization": {
+    "method": "per_1000_words",
+    "min_word_count": 100
+  }
+}

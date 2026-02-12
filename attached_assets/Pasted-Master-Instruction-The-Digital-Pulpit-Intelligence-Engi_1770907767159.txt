@@ -1,0 +1,138 @@
+Master Instruction: The Digital Pulpit Intelligence Engine (v5.2)
+
+1. Mission
+Build a production-grade Python engine that converts global sermon data into theological intelligence.
+The system operates in three phases:
+- The Vacuum (Ingest + Transcribe)
+- The Brain (Analysis + Drift)
+- The Assembly (Creative Output)
+
+Primary goal:
+Run reliably on Replit (paid) while remaining fully portable to DigitalOcean without rewrites.
+
+2. The Vacuum (Ingest + Transcribe)
+
+2.1 Input
+- Read channels.csv
+- Resolve missing channel_id deterministically using YouTube Data API
+
+Resolution Logic:
+a) Extract channel_id from /channel/UC... URLs
+b) Resolve @handles via channels.list(forHandle=...)
+c) Resolve /user/... via channels.list(forUsername=...)
+d) Fallback: single HTML fetch → extract channelId → cache to DB
+
+2.2 Discovery (7-day window)
+- Fetch 10 most recent uploads per channel
+- Include only eventType='completed'
+- Exclude Shorts: duration_seconds < 62
+- Select 3 most recent qualifying videos from last 7 days
+
+Database:
+- Persist videos with status='discovered'
+- Deduplicate via video_id primary key
+
+2.3 Audio Download
+- Use yt-dlp to download bestaudio
+- Require ffmpeg binary in environment
+- Store temporarily in ./tmp_audio/
+- Update status='audio_downloaded'
+
+2.4 Transcription (OpenAI API)
+- DO NOT use local openai-whisper on Replit
+- Use OpenAI Transcription API
+
+Generate:
+- full_text
+- timestamped segments_json [{start, end, text}]
+
+Store in transcripts table:
+- full_text
+- segments_json
+- language
+- word_count
+- transcript_provider='openai_api'
+- transcript_model=<selected model>
+- transcript_version='v5.2'
+- transcribed_at timestamp
+
+Update videos.status:
+- 'transcribed'
+- or 'failed' with error_message
+
+2.5 Housekeeping
+- Delete audio immediately after successful transcription
+- Optional: KEEP_AUDIO_ON_FAIL=true for debugging
+
+2.6 Cost Safety Rails (Required)
+Prevent runaway API usage:
+
+- MAX_MINUTES_PER_RUN (default: 180)
+- MAX_VIDEOS_PER_RUN (default: 120)
+
+Behavior:
+- Stop ingestion if limits reached
+- Log clear message in runs.notes
+
+3. Database & State Management (SQLite)
+- Use schema.sql
+- Apply schema once at startup
+- Maintain video state machine:
+
+Statuses:
+discovered → audio_downloaded → transcribed → queued_for_brain → failed
+
+4. The Brain (Theological Analysis)
+- Load digital_pulpit_config.json
+- Apply regex word boundaries (\b)
+- Normalize text before matching
+
+Calculate:
+- Normalized Theological Density (Dθ)
+- Drift Metrics (Z-score):
+
+Grace vs Effort
+Hope vs Fear
+Doctrine vs Experience
+Scripture vs Story
+
+Persist weekly results:
+weekly_drift_reports table
+
+5. The Assembly (Creative Output)
+- Generate cinematic scripts for avatars:
+
+Sully (Reformed)
+Elena (Charismatic)
+Tio (Global)
+Noni (Bridge)
+Dr. Thorne (Institution)
+Elias (The Signal)
+
+Prism Logic:
+- Assign quotes via affinity scoring (not random)
+- Always produce script (fallback logic)
+
+6. Dashboard (Streamlit)
+- Password Protected
+- Show status + recent videos/transcripts
+- Controls:
+
+Run Vacuum Now
+Generate Weekly Script Now
+
+7. Environment Variables (Required)
+YOUTUBE_API_KEY
+OPENAI_API_KEY
+DASHBOARD_PASSWORD
+
+Optional:
+DATABASE_PATH
+MAX_MINUTES_PER_RUN
+MAX_VIDEOS_PER_RUN
+KEEP_AUDIO_ON_FAIL
+
+8. Technical Environment
+Python 3.10+
+Replit Paid for build/iteration
+DigitalOcean for scaled workloads
