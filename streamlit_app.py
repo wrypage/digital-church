@@ -1,15 +1,13 @@
 import streamlit as st
 import os
-import sys
 import logging
-import threading
 import pandas as pd
-from datetime import datetime
-
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(name)s] %(levelname)s: %(message)s")
 
 from engine import db
 from engine.config import DASHBOARD_PASSWORD
+from engine.pipeline import run_vacuum, run_brain, run_assembly, run_all
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(name)s] %(levelname)s: %(message)s")
 
 db.init_db()
 
@@ -19,10 +17,13 @@ st.set_page_config(page_title="Digital Pulpit", page_icon="📡", layout="wide")
 def check_password():
     if not DASHBOARD_PASSWORD:
         return True
+
     if "authenticated" not in st.session_state:
         st.session_state.authenticated = False
+
     if st.session_state.authenticated:
         return True
+
     with st.container():
         st.title("Digital Pulpit Intelligence Engine")
         st.markdown("---")
@@ -34,33 +35,6 @@ def check_password():
             else:
                 st.error("Incorrect password")
     return False
-
-
-def run_vacuum_background():
-    from engine.vacuum import run_vacuum
-    st.session_state.vacuum_running = True
-    try:
-        run_vacuum()
-    except Exception as e:
-        logging.getLogger("digital_pulpit").error(f"Vacuum error: {e}")
-    finally:
-        st.session_state.vacuum_running = False
-
-
-def run_brain_background():
-    from engine.brain import run_brain
-    try:
-        run_brain()
-    except Exception as e:
-        logging.getLogger("digital_pulpit").error(f"Brain error: {e}")
-
-
-def run_assembly_background():
-    from engine.assembly import run_assembly
-    try:
-        run_assembly()
-    except Exception as e:
-        logging.getLogger("digital_pulpit").error(f"Assembly error: {e}")
 
 
 if not check_password():
@@ -95,39 +69,55 @@ with tab_status:
     runs = db.get_recent_runs(10)
     if runs:
         runs_df = pd.DataFrame(runs)
-        display_cols = [c for c in ["run_id", "run_type", "status", "videos_processed", "minutes_processed", "started_at", "notes"] if c in runs_df.columns]
+        display_cols = [
+            c for c in
+            ["run_id", "run_type", "status", "videos_processed", "minutes_processed", "started_at", "notes"]
+            if c in runs_df.columns
+        ]
         st.dataframe(runs_df[display_cols], use_container_width=True)
     else:
         st.info("No runs recorded yet.")
+
 
 with tab_videos:
     st.header("Recent Videos")
     videos = db.get_recent_videos(50)
     if videos:
         vdf = pd.DataFrame(videos)
-        display_cols = [c for c in ["video_id", "channel_name", "title", "status", "duration_seconds", "published_at"] if c in vdf.columns]
+        display_cols = [
+            c for c in ["video_id", "channel_name", "title", "status", "duration_seconds", "published_at"]
+            if c in vdf.columns
+        ]
         st.dataframe(vdf[display_cols], use_container_width=True)
     else:
         st.info("No videos discovered yet. Run the Vacuum to start ingesting.")
 
+
 with tab_transcripts:
     st.header("Recent Transcripts")
     transcripts = db.get_recent_transcripts(20)
+
     if transcripts:
         tdf = pd.DataFrame(transcripts)
-        display_cols = [c for c in ["video_id", "channel_name", "title", "word_count", "language", "transcript_model", "transcribed_at"] if c in tdf.columns]
+        display_cols = [
+            c for c in
+            ["video_id", "channel_name", "title", "word_count", "language", "transcript_model", "transcribed_at"]
+            if c in tdf.columns
+        ]
         st.dataframe(tdf[display_cols], use_container_width=True)
 
         st.subheader("Transcript Preview")
-        selected = st.selectbox("Select transcript:", [f"{t['title']} ({t['video_id']})" for t in transcripts])
+        options = [f"{t['title']} ({t['video_id']})" for t in transcripts]
+        selected = st.selectbox("Select transcript:", options)
+
         if selected:
             vid = selected.split("(")[-1].rstrip(")")
-            for t in transcripts:
-                if t["video_id"] == vid:
-                    st.text_area("Full Text", t.get("full_text", "")[:3000], height=300)
-                    break
+            chosen = next((t for t in transcripts if t["video_id"] == vid), None)
+            if chosen:
+                st.text_area("Full Text (first 3000 chars)", (chosen.get("full_text") or "")[:3000], height=300)
     else:
         st.info("No transcripts yet. Run the Vacuum to transcribe sermons.")
+
 
 with tab_brain:
     st.header("Brain Analysis & Drift")
@@ -135,14 +125,23 @@ with tab_brain:
     results = db.get_all_brain_results()
     if results:
         rdf = pd.DataFrame(results)
+
         st.subheader("Theological Density")
-        display_cols = [c for c in ["video_id", "channel_name", "title", "theological_density", "grace_vs_effort", "hope_vs_fear", "doctrine_vs_experience", "scripture_vs_story"] if c in rdf.columns]
+        display_cols = [
+            c for c in
+            ["video_id", "channel_name", "title", "theological_density",
+             "grace_vs_effort", "hope_vs_fear", "doctrine_vs_experience", "scripture_vs_story"]
+            if c in rdf.columns
+        ]
         st.dataframe(rdf[display_cols], use_container_width=True)
 
         st.subheader("Drift Axes (Latest Results)")
         if len(rdf) > 0:
-            chart_data = rdf[["grace_vs_effort", "hope_vs_fear", "doctrine_vs_experience", "scripture_vs_story"]].tail(20)
-            st.line_chart(chart_data)
+            chart_cols = ["grace_vs_effort", "hope_vs_fear", "doctrine_vs_experience", "scripture_vs_story"]
+            chart_cols = [c for c in chart_cols if c in rdf.columns]
+            if chart_cols:
+                chart_data = rdf[chart_cols].tail(20)
+                st.line_chart(chart_data)
     else:
         st.info("No analysis results. Run the Brain after transcribing sermons.")
 
@@ -150,8 +149,14 @@ with tab_brain:
     drift = db.get_weekly_drift_reports(10)
     if drift:
         ddf = pd.DataFrame(drift)
-        display_cols = [c for c in ["week_start", "week_end", "channel_id", "avg_theological_density", "grace_vs_effort_zscore", "hope_vs_fear_zscore", "sample_size"] if c in ddf.columns]
+        display_cols = [
+            c for c in
+            ["week_start", "week_end", "channel_id", "avg_theological_density",
+             "grace_vs_effort_zscore", "hope_vs_fear_zscore", "sample_size"]
+            if c in ddf.columns
+        ]
         st.dataframe(ddf[display_cols], use_container_width=True)
+
 
 with tab_scripts:
     st.header("Assembly Scripts")
@@ -163,6 +168,7 @@ with tab_scripts:
     else:
         st.info("No scripts generated yet. Run the Assembly to create avatar scripts.")
 
+
 with tab_controls:
     st.header("Pipeline Controls")
     st.markdown("---")
@@ -172,12 +178,13 @@ with tab_controls:
     with col1:
         st.subheader("1. The Vacuum")
         st.caption("Ingest channels, discover videos, download audio, transcribe")
-        vacuum_running = st.session_state.get("vacuum_running", False)
-        if st.button("Run Vacuum Now", disabled=vacuum_running, use_container_width=True):
+        if st.button("Run Vacuum Now", use_container_width=True):
             with st.spinner("Running Vacuum pipeline... This may take several minutes."):
-                from engine.vacuum import run_vacuum
-                run_id = run_vacuum()
-                st.success(f"Vacuum complete! Run ID: {run_id}")
+                result = run_vacuum()
+                if result.get("ok"):
+                    st.success(f"Vacuum complete! Run ID: {result.get('run_id')}")
+                else:
+                    st.error(f"Vacuum failed: {result}")
                 st.rerun()
 
     with col2:
@@ -185,9 +192,11 @@ with tab_controls:
         st.caption("Analyze transcripts, compute density & drift")
         if st.button("Run Brain Now", use_container_width=True):
             with st.spinner("Running Brain analysis..."):
-                from engine.brain import run_brain
-                run_id = run_brain()
-                st.success(f"Brain complete! Run ID: {run_id}")
+                result = run_brain()
+                if result.get("ok"):
+                    st.success(f"Brain complete! Run ID: {result.get('run_id')}")
+                else:
+                    st.error(f"Brain failed: {result}")
                 st.rerun()
 
     with col3:
@@ -195,22 +204,27 @@ with tab_controls:
         st.caption("Generate weekly avatar scripts")
         if st.button("Generate Weekly Script Now", use_container_width=True):
             with st.spinner("Generating script..."):
-                from engine.assembly import run_assembly
-                run_id = run_assembly()
-                st.success(f"Assembly complete! Run ID: {run_id}")
+                result = run_assembly()
+                if result.get("ok"):
+                    st.success(f"Assembly complete! Run ID: {result.get('run_id')}")
+                else:
+                    st.error(f"Assembly failed: {result}")
                 st.rerun()
 
     st.markdown("---")
     st.subheader("Full Pipeline")
     if st.button("Run Full Pipeline (Vacuum + Brain + Assembly)", use_container_width=True):
         with st.spinner("Running full pipeline..."):
-            from engine.vacuum import run_vacuum
-            from engine.brain import run_brain
-            from engine.assembly import run_assembly
-            v_id = run_vacuum()
-            b_id = run_brain()
-            a_id = run_assembly()
-            st.success(f"Full pipeline complete! Vacuum: {v_id}, Brain: {b_id}, Assembly: {a_id}")
+            result = run_all()
+            if result.get("ok"):
+                st.success(
+                    f"Full pipeline complete! "
+                    f"Vacuum: {result.get('vacuum', {}).get('run_id')}, "
+                    f"Brain: {result.get('brain', {}).get('run_id')}, "
+                    f"Assembly: {result.get('assembly', {}).get('run_id')}"
+                )
+            else:
+                st.error(f"Full pipeline encountered an error: {result}")
             st.rerun()
 
     st.markdown("---")
