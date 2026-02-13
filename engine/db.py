@@ -1,243 +1,254 @@
 import sqlite3
-import os
 import logging
+from typing import Dict, List, Optional, Tuple
+
 from engine.config import DATABASE_PATH
 
 logger = logging.getLogger("digital_pulpit")
 
+# Cache table columns to avoid repeated PRAGMA calls
+_TABLE_COL_CACHE: Dict[str, List[str]] = {}
 
-def get_connection():
-    os.makedirs(os.path.dirname(DATABASE_PATH), exist_ok=True)
+
+def get_conn():
     conn = sqlite3.connect(DATABASE_PATH)
-    conn.row_factory = sqlite3.Row
-    conn.execute("PRAGMA journal_mode=WAL")
-    conn.execute("PRAGMA foreign_keys=ON")
     return conn
 
 
-def init_db():
-    conn = get_connection()
-    schema_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "schema.sql")
-    with open(schema_path, "r") as f:
-        conn.executescript(f.read())
-    conn.commit()
-    conn.close()
-    logger.info("Database initialized")
+def _table_columns(conn: sqlite3.Connection, table: str) -> List[str]:
+    if table in _TABLE_COL_CACHE:
+        return _TABLE_COL_CACHE[table]
+    cols = [
+        row[1]
+        for row in conn.execute(f"PRAGMA table_info({table})").fetchall()
+    ]
+    _TABLE_COL_CACHE[table] = cols
+    return cols
 
 
-def upsert_channel(channel_id, channel_name, source_url, resolved_via):
-    conn = get_connection()
-    conn.execute(
-        """INSERT INTO channels (channel_id, channel_name, source_url, resolved_via)
-           VALUES (?, ?, ?, ?)
-           ON CONFLICT(channel_id) DO UPDATE SET
-             channel_name=excluded.channel_name,
-             source_url=excluded.source_url""",
-        (channel_id, channel_name, source_url, resolved_via),
+def _pick_col(cols: List[str], candidates: List[str]) -> Optional[str]:
+    for c in candidates:
+        if c in cols:
+            return c
+    return None
+
+
+# ---------------- RUNS ----------------
+
+
+def create_run(run_type: str) -> int:
+    conn = get_conn()
+    cur = conn.cursor()
+    cur.execute(
+        """
+        INSERT INTO runs (run_type, status)
+        VALUES (?, 'running')
+        """,
+        (run_type, ),
     )
-    conn.commit()
-    conn.close()
-
-
-def upsert_video(video_id, channel_id, title, published_at, duration_seconds, status="discovered"):
-    conn = get_connection()
-    conn.execute(
-        """INSERT INTO videos (video_id, channel_id, title, published_at, duration_seconds, status)
-           VALUES (?, ?, ?, ?, ?, ?)
-           ON CONFLICT(video_id) DO NOTHING""",
-        (video_id, channel_id, title, published_at, duration_seconds, status),
-    )
-    conn.commit()
-    conn.close()
-
-
-def update_video_status(video_id, status, error_message=None):
-    conn = get_connection()
-    conn.execute(
-        """UPDATE videos SET status=?, error_message=?, updated_at=CURRENT_TIMESTAMP
-           WHERE video_id=?""",
-        (status, error_message, video_id),
-    )
-    conn.commit()
-    conn.close()
-
-
-def get_videos_by_status(status, limit=None):
-    conn = get_connection()
-    query = "SELECT * FROM videos WHERE status=? ORDER BY published_at DESC"
-    if limit:
-        query += f" LIMIT {limit}"
-    rows = conn.execute(query, (status,)).fetchall()
-    conn.close()
-    return [dict(r) for r in rows]
-
-
-def insert_transcript(video_id, full_text, segments_json, language, word_count, model):
-    conn = get_connection()
-    conn.execute(
-        """INSERT INTO transcripts (video_id, full_text, segments_json, language, word_count, transcript_model)
-           VALUES (?, ?, ?, ?, ?, ?)
-           ON CONFLICT(video_id) DO UPDATE SET
-             full_text=excluded.full_text,
-             segments_json=excluded.segments_json,
-             language=excluded.language,
-             word_count=excluded.word_count,
-             transcript_model=excluded.transcript_model,
-             transcribed_at=CURRENT_TIMESTAMP""",
-        (video_id, full_text, segments_json, language, word_count, model),
-    )
-    conn.commit()
-    conn.close()
-
-
-def get_transcript(video_id):
-    conn = get_connection()
-    row = conn.execute("SELECT * FROM transcripts WHERE video_id=?", (video_id,)).fetchone()
-    conn.close()
-    return dict(row) if row else None
-
-
-def insert_brain_result(video_id, density, grace_effort, hope_fear, doctrine_exp, scripture_story, top_cats, raw_json):
-    conn = get_connection()
-    conn.execute(
-        """INSERT INTO brain_results (video_id, theological_density, grace_vs_effort,
-           hope_vs_fear, doctrine_vs_experience, scripture_vs_story, top_categories, raw_scores_json)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
-        (video_id, density, grace_effort, hope_fear, doctrine_exp, scripture_story, top_cats, raw_json),
-    )
-    conn.commit()
-    conn.close()
-
-
-def insert_weekly_drift(week_start, week_end, channel_id, avg_density,
-                        grace_z, hope_z, doctrine_z, scripture_z, sample_size, report_json):
-    conn = get_connection()
-    conn.execute(
-        """INSERT INTO weekly_drift_reports (week_start, week_end, channel_id, avg_theological_density,
-           grace_vs_effort_zscore, hope_vs_fear_zscore, doctrine_vs_experience_zscore,
-           scripture_vs_story_zscore, sample_size, report_json)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
-        (week_start, week_end, channel_id, avg_density, grace_z, hope_z, doctrine_z, scripture_z, sample_size, report_json),
-    )
-    conn.commit()
-    conn.close()
-
-
-def insert_assembly_script(week_start, week_end, script_text, avatar_json, source_ids):
-    conn = get_connection()
-    conn.execute(
-        """INSERT INTO assembly_scripts (week_start, week_end, script_text, avatar_assignments_json, source_video_ids)
-           VALUES (?, ?, ?, ?, ?)""",
-        (week_start, week_end, script_text, avatar_json, source_ids),
-    )
-    conn.commit()
-    conn.close()
-
-
-def create_run(run_type):
-    conn = get_connection()
-    cursor = conn.execute("INSERT INTO runs (run_type) VALUES (?)", (run_type,))
-    run_id = cursor.lastrowid
+    run_id = cur.lastrowid
     conn.commit()
     conn.close()
     return run_id
 
 
-def finish_run(run_id, status, videos_processed, minutes_processed, notes=""):
-    conn = get_connection()
-    conn.execute(
-        """UPDATE runs SET finished_at=CURRENT_TIMESTAMP, status=?, videos_processed=?,
-           minutes_processed=?, notes=? WHERE run_id=?""",
+def finish_run(run_id: int, status: str, videos_processed: int,
+               minutes_processed: float, notes: str):
+    conn = get_conn()
+    cur = conn.cursor()
+    cur.execute(
+        """
+        UPDATE runs
+        SET
+            status = ?,
+            finished_at = CURRENT_TIMESTAMP,
+            videos_processed = ?,
+            minutes_processed = ?,
+            notes = ?
+        WHERE run_id = ?
+        """,
         (status, videos_processed, minutes_processed, notes, run_id),
     )
     conn.commit()
     conn.close()
 
 
-def get_recent_runs(limit=20):
-    conn = get_connection()
-    rows = conn.execute("SELECT * FROM runs ORDER BY started_at DESC LIMIT ?", (limit,)).fetchall()
+# ---------------- CHANNELS ----------------
+
+
+def upsert_channel(channel_id: str, name: str, url: str, method: str):
+    """
+    Schema-adaptive channel upsert.
+
+    Supports common column variants:
+      - name OR channel_name
+      - url OR channel_url
+      - resolution_method OR resolved_method OR resolution_source (if present)
+    """
+    conn = get_conn()
+    cols = _table_columns(conn, "channels")
+
+    col_name = _pick_col(cols, ["name", "channel_name"])
+    col_url = _pick_col(cols, ["url", "channel_url"])
+    col_method = _pick_col(cols, [
+        "resolution_method", "resolved_method", "resolution_source", "method"
+    ])
+
+    insert_cols = ["channel_id"]
+    insert_vals = [channel_id]
+    update_sets = []
+
+    if col_name:
+        insert_cols.append(col_name)
+        insert_vals.append(name)
+        update_sets.append(f"{col_name}=excluded.{col_name}")
+
+    if col_url:
+        insert_cols.append(col_url)
+        insert_vals.append(url)
+        update_sets.append(f"{col_url}=excluded.{col_url}")
+
+    if col_method:
+        insert_cols.append(col_method)
+        insert_vals.append(method)
+        update_sets.append(f"{col_method}=excluded.{col_method}")
+
+    if not update_sets:
+        # Nothing to update besides channel_id; do a simple insert-or-ignore
+        sql = f"INSERT OR IGNORE INTO channels ({', '.join(insert_cols)}) VALUES ({', '.join(['?']*len(insert_cols))})"
+        conn.execute(sql, insert_vals)
+        conn.commit()
+        conn.close()
+        return
+
+    sql = f"""
+    INSERT INTO channels ({', '.join(insert_cols)})
+    VALUES ({', '.join(['?']*len(insert_cols))})
+    ON CONFLICT(channel_id) DO UPDATE SET
+        {', '.join(update_sets)}
+    """
+    conn.execute(sql, insert_vals)
+    conn.commit()
     conn.close()
-    return [dict(r) for r in rows]
 
 
-def get_recent_videos(limit=50):
-    conn = get_connection()
-    rows = conn.execute(
-        """SELECT v.*, c.channel_name FROM videos v
-           LEFT JOIN channels c ON v.channel_id = c.channel_id
-           ORDER BY v.discovered_at DESC LIMIT ?""",
-        (limit,),
-    ).fetchall()
+# ---------------- VIDEOS ----------------
+
+
+def insert_or_ignore_video(
+    video_id: str,
+    channel_id: str,
+    title: str,
+    published_at: str,
+    duration_seconds: int,
+    status: str = "discovered",
+    error_message: Optional[str] = None,
+):
+    """
+    Schema-adaptive insert for videos. Inserts only columns that exist.
+    Uses INSERT OR IGNORE (dedupe by primary key video_id).
+    """
+    conn = get_conn()
+    cols = _table_columns(conn, "videos")
+
+    insert_cols = ["video_id"]
+    insert_vals = [video_id]
+
+    # Only include columns that exist
+    for col, val in [
+        ("channel_id", channel_id),
+        ("title", title),
+        ("published_at", published_at),
+        ("duration_seconds", duration_seconds),
+        ("status", status),
+        ("error_message", error_message),
+    ]:
+        if col in cols:
+            insert_cols.append(col)
+            insert_vals.append(val)
+
+    # discovered_at / updated_at if present
+    if "discovered_at" in cols:
+        insert_cols.append("discovered_at")
+        # Use SQL function, not a bound param
+        sql_values = ", ".join(["?"] * (len(insert_cols) - 1) +
+                               ["CURRENT_TIMESTAMP"])
+        sql = f"INSERT OR IGNORE INTO videos ({', '.join(insert_cols)}) VALUES ({sql_values})"
+        conn.execute(sql, insert_vals)
+    else:
+        sql = f"INSERT OR IGNORE INTO videos ({', '.join(insert_cols)}) VALUES ({', '.join(['?']*len(insert_cols))})"
+        conn.execute(sql, insert_vals)
+
+    conn.commit()
     conn.close()
-    return [dict(r) for r in rows]
 
 
-def get_recent_transcripts(limit=20):
-    conn = get_connection()
-    rows = conn.execute(
-        """SELECT t.*, v.title, c.channel_name FROM transcripts t
-           JOIN videos v ON t.video_id = v.video_id
-           LEFT JOIN channels c ON v.channel_id = c.channel_id
-           ORDER BY t.transcribed_at DESC LIMIT ?""",
-        (limit,),
-    ).fetchall()
+def update_video_status(video_id: str, status: str,
+                        error_message: Optional[str]):
+    """
+    Schema-adaptive status update (updates updated_at if present).
+    """
+    conn = get_conn()
+    cols = _table_columns(conn, "videos")
+
+    if "updated_at" in cols:
+        conn.execute(
+            """
+            UPDATE videos
+            SET status = ?, error_message = ?, updated_at = CURRENT_TIMESTAMP
+            WHERE video_id = ?
+            """,
+            (status, error_message, video_id),
+        )
+    else:
+        conn.execute(
+            """
+            UPDATE videos
+            SET status = ?, error_message = ?
+            WHERE video_id = ?
+            """,
+            (status, error_message, video_id),
+        )
+
+    conn.commit()
     conn.close()
-    return [dict(r) for r in rows]
 
 
-def get_db_stats():
-    conn = get_connection()
-    stats = {}
-    for table in ["channels", "videos", "transcripts", "brain_results", "weekly_drift_reports", "assembly_scripts", "runs"]:
-        row = conn.execute(f"SELECT COUNT(*) as cnt FROM {table}").fetchone()
-        stats[table] = row["cnt"]
-    video_statuses = conn.execute(
-        "SELECT status, COUNT(*) as cnt FROM videos GROUP BY status"
-    ).fetchall()
-    stats["video_statuses"] = {r["status"]: r["cnt"] for r in video_statuses}
+# ---------------- TRANSCRIPTS ----------------
+
+
+def insert_transcript(
+    video_id: str,
+    transcript_text: str,
+    segments_json: str,
+    language: str,
+    word_count: int,
+    model: str,
+):
+    """
+    Schema-adaptive transcript insert. Inserts only columns that exist.
+    """
+    conn = get_conn()
+    cols = _table_columns(conn, "transcripts")
+
+    insert_cols = ["video_id"]
+    insert_vals = [video_id]
+
+    mapping = [
+        ("transcript_text", transcript_text),
+        ("segments_json", segments_json),
+        ("language", language),
+        ("word_count", word_count),
+        ("model", model),
+    ]
+
+    for col, val in mapping:
+        if col in cols:
+            insert_cols.append(col)
+            insert_vals.append(val)
+
+    sql = f"INSERT INTO transcripts ({', '.join(insert_cols)}) VALUES ({', '.join(['?']*len(insert_cols))})"
+    conn.execute(sql, insert_vals)
+
+    conn.commit()
     conn.close()
-    return stats
-
-
-def get_weekly_drift_reports(limit=10):
-    conn = get_connection()
-    rows = conn.execute(
-        "SELECT * FROM weekly_drift_reports ORDER BY created_at DESC LIMIT ?", (limit,)
-    ).fetchall()
-    conn.close()
-    return [dict(r) for r in rows]
-
-
-def get_assembly_scripts(limit=10):
-    conn = get_connection()
-    rows = conn.execute(
-        "SELECT * FROM assembly_scripts ORDER BY created_at DESC LIMIT ?", (limit,)
-    ).fetchall()
-    conn.close()
-    return [dict(r) for r in rows]
-
-
-def get_all_brain_results():
-    conn = get_connection()
-    rows = conn.execute(
-        """SELECT br.*, v.title, v.channel_id, c.channel_name
-           FROM brain_results br
-           JOIN videos v ON br.video_id = v.video_id
-           LEFT JOIN channels c ON v.channel_id = c.channel_id
-           ORDER BY br.analyzed_at DESC"""
-    ).fetchall()
-    conn.close()
-    return [dict(r) for r in rows]
-
-
-def get_transcribed_videos_without_analysis():
-    conn = get_connection()
-    rows = conn.execute(
-        """SELECT v.* FROM videos v
-           WHERE v.status IN ('transcribed', 'queued_for_brain')
-           AND v.video_id NOT IN (SELECT video_id FROM brain_results)
-           ORDER BY v.published_at DESC"""
-    ).fetchall()
-    conn.close()
-    return [dict(r) for r in rows]
