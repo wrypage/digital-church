@@ -1,6 +1,7 @@
 import re
 import logging
 import requests
+import subprocess
 from datetime import datetime, timedelta, timezone
 from googleapiclient.discovery import build
 from engine.config import YOUTUBE_API_KEY
@@ -24,6 +25,30 @@ def _clean_handle(handle: str) -> str:
     if h.startswith("@"):
         h = h[1:]
     return h
+
+
+def _resolve_with_ytdlp(url: str):
+    """
+    Most reliable resolver in hosted environments:
+    yt-dlp can resolve @handles and return channel_id (UC...)
+    """
+    if not url:
+        return None
+    try:
+        cmd = [
+            "yt-dlp", "--print", "channel_id", "--no-warnings",
+            "--no-playlist", url
+        ]
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+        if r.returncode != 0:
+            return None
+        cid = (r.stdout or "").strip().splitlines()
+        cid = cid[0].strip() if cid else ""
+        if cid.startswith("UC"):
+            return cid
+        return None
+    except Exception:
+        return None
 
 
 def _search_channel_id(query: str):
@@ -62,19 +87,27 @@ def resolve_channel_id(channel_info):
     if not url and handle_field:
         url = f"https://www.youtube.com/@{handle_field}"
 
+    # 1) direct /channel/UC...
     channel_id_match = re.search(r"/channel/(UC[\w-]+)", url)
     if channel_id_match:
         cid = channel_id_match.group(1)
         logger.info(f"Extracted channel ID from URL for {name}: {cid}")
         return cid, "url_extract"
 
-    yt = get_youtube_service()
+    # 2) yt-dlp resolver (very reliable for @handles)
+    if url:
+        cid = _resolve_with_ytdlp(url)
+        if cid:
+            logger.info(f"yt-dlp resolved {name} to {cid}")
+            return cid, "ytdlp"
 
+    # 3) Try YouTube API forHandle (sometimes works)
+    yt = get_youtube_service()
     handle = handle_field
     if not handle:
-        handle_match = re.search(r"/@([\w.-]+)", url)
-        if handle_match:
-            handle = _clean_handle(handle_match.group(1))
+        m = re.search(r"/@([\w.-]+)", url)
+        if m:
+            handle = _clean_handle(m.group(1))
 
     if handle:
         try:
@@ -87,22 +120,9 @@ def resolve_channel_id(channel_info):
         except Exception as e:
             logger.warning(f"Handle resolution failed for @{handle}: {e}")
 
-    user_match = re.search(r"/user/([\w.-]+)", url)
-    if user_match:
-        username = user_match.group(1)
-        try:
-            resp = yt.channels().list(part="id,snippet",
-                                      forUsername=username).execute()
-            if resp.get("items"):
-                cid = resp["items"][0]["id"]
-                logger.info(f"Resolved /user/{username} to {cid}")
-                return cid, "username"
-        except Exception as e:
-            logger.warning(f"Username resolution failed for {username}: {e}")
-
+    # 4) HTML fallback
     if url:
         try:
-            logger.info(f"HTML fallback fetch for {url}")
             resp = requests.get(url,
                                 timeout=15,
                                 headers={"User-Agent": "Mozilla/5.0"})
@@ -114,6 +134,7 @@ def resolve_channel_id(channel_info):
         except Exception as e:
             logger.warning(f"HTML fallback failed for {name}: {e}")
 
+    # 5) Search fallback
     if handle_field:
         cid = _search_channel_id(f"@{handle_field}")
         if cid:
@@ -141,13 +162,9 @@ def parse_duration(duration_str):
 
 
 def discover_videos(channel_id, max_results=25):
-    """
-    Return a larger candidate set so Vacuum can skip long services
-    and still find something to transcribe.
-    """
     yt = get_youtube_service()
-    seven_days_ago = (datetime.now(timezone.utc) -
-                      timedelta(days=14)).isoformat()
+    fourteen_days_ago = (datetime.now(timezone.utc) -
+                         timedelta(days=14)).isoformat()
 
     try:
         search_resp = yt.search().list(
@@ -155,7 +172,7 @@ def discover_videos(channel_id, max_results=25):
             channelId=channel_id,
             type="video",
             order="date",
-            publishedAfter=seven_days_ago,
+            publishedAfter=fourteen_days_ago,
             maxResults=max_results,
         ).execute()
     except Exception as e:
