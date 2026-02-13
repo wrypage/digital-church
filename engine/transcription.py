@@ -50,14 +50,12 @@ def download_audio(video_id):
             logger.info(f"Downloaded audio: {output_path}")
             return output_path
 
-        # Replit/yt-dlp sometimes adds weird double extensions
         alt_path = output_path.replace(".mp3", ".mp3.mp3")
         if os.path.exists(alt_path):
             os.rename(alt_path, output_path)
             logger.info(f"Downloaded audio (renamed): {output_path}")
             return output_path
 
-        # Last resort: find any file that starts with video_id
         for f in os.listdir(TMP_AUDIO_DIR):
             if f.startswith(video_id):
                 found = os.path.join(TMP_AUDIO_DIR, f)
@@ -73,15 +71,11 @@ def download_audio(video_id):
         return None
     except Exception as e:
         logger.error(f"Download error for {video_id}: {e}")
-        logger.debug(traceback.format_exc())
+        logger.error(traceback.format_exc())
         return None
 
 
 def _reencode_mp3(input_path, output_path):
-    """
-    Re-encode to a 'boring' mp3 that Whisper tends to accept:
-    - 16kHz mono
-    """
     cmd = [
         "ffmpeg",
         "-y",
@@ -106,14 +100,17 @@ def _reencode_mp3(input_path, output_path):
 
 
 def transcribe_audio(video_id, audio_path):
+    """
+    Returns: (success: bool, error_message: str|None)
+    """
     if not OPENAI_API_KEY:
-        raise ValueError("OPENAI_API_KEY not set")
+        return False, "OPENAI_API_KEY not set"
 
     client = OpenAI(api_key=OPENAI_API_KEY)
 
-    def _attempt(path_to_use, attempt_label):
+    def _attempt(path_to_use, label):
         with open(path_to_use, "rb") as audio_file:
-            logger.info(f"Transcribing {video_id} ({attempt_label})...")
+            logger.info(f"Transcribing {video_id} ({label})...")
             return client.audio.transcriptions.create(
                 model=TRANSCRIPTION_MODEL,
                 file=audio_file,
@@ -121,35 +118,33 @@ def transcribe_audio(video_id, audio_path):
                 timestamp_granularities=["segment"],
             )
 
+    fixed_path = audio_path.replace(".mp3", "_fixed.mp3")
+
     try:
-        # Attempt 1: raw mp3
+        # attempt 1
         response = _attempt(audio_path, "original mp3")
 
     except Exception as e1:
-        # Attempt 2: re-encode with ffmpeg and try again
-        logger.error(
-            f"Transcription attempt failed for {video_id} (original mp3): {e1}"
-        )
+        err1 = f"{type(e1).__name__}: {str(e1)}"
+        logger.error(f"Transcription failed for {video_id} (original): {err1}")
         logger.error(traceback.format_exc())
 
-        fixed_path = audio_path.replace(".mp3", "_fixed.mp3")
+        # attempt 2 (re-encode)
         try:
             ok = _reencode_mp3(audio_path, fixed_path)
             if not ok:
-                raise RuntimeError(
-                    "Re-encode failed; cannot retry transcription")
+                return False, f"ffmpeg re-encode failed; original error: {err1}"
 
             response = _attempt(fixed_path, "re-encoded mp3")
 
         except Exception as e2:
+            err2 = f"{type(e2).__name__}: {str(e2)}"
             logger.error(
-                f"Transcription failed for {video_id} (after re-encode): {e2}")
+                f"Transcription failed for {video_id} (re-encoded): {err2}")
             logger.error(traceback.format_exc())
-            db.update_video_status(video_id, "failed",
-                                   f"transcription_error: {str(e2)}")
-            return False
+            return False, err2
+
         finally:
-            # Clean up re-encoded file if we created it
             if os.path.exists(fixed_path):
                 try:
                     os.remove(fixed_path)
@@ -161,13 +156,10 @@ def transcribe_audio(video_id, audio_path):
         segments = []
         if hasattr(response, "segments") and response.segments:
             for seg in response.segments:
-                seg_start = getattr(seg, "start", 0)
-                seg_end = getattr(seg, "end", 0)
-                seg_text = getattr(seg, "text", "")
                 segments.append({
-                    "start": seg_start,
-                    "end": seg_end,
-                    "text": seg_text
+                    "start": getattr(seg, "start", 0),
+                    "end": getattr(seg, "end", 0),
+                    "text": getattr(seg, "text", ""),
                 })
 
         language = getattr(response, "language", "en")
@@ -175,18 +167,17 @@ def transcribe_audio(video_id, audio_path):
 
         db.insert_transcript(video_id, full_text, json.dumps(segments),
                              language, word_count, TRANSCRIPTION_MODEL)
-        db.update_video_status(video_id, "transcribed")
+        db.update_video_status(video_id, "transcribed", None)
 
         logger.info(
             f"Transcribed {video_id}: {word_count} words, language={language}")
-        return True
+        return True, None
 
     except Exception as e3:
-        logger.error(f"Post-processing failed for {video_id}: {e3}")
+        err3 = f"{type(e3).__name__}: {str(e3)}"
+        logger.error(f"Post-processing failed for {video_id}: {err3}")
         logger.error(traceback.format_exc())
-        db.update_video_status(video_id, "failed",
-                               f"postprocess_error: {str(e3)}")
-        return False
+        return False, err3
 
 
 def cleanup_audio(video_id, success):
