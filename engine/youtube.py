@@ -15,43 +15,59 @@ def get_youtube_service():
     return build("youtube", "v3", developerKey=YOUTUBE_API_KEY)
 
 
+def _clean(s):
+    return (s or "").strip()
+
+
 def _clean_handle(handle: str) -> str:
-    if not handle:
-        return ""
-    h = handle.strip()
+    h = _clean(handle)
     if h.startswith("@"):
         h = h[1:]
     return h
 
 
-def resolve_channel_id(channel_info):
+def _search_channel_id(query: str):
     """
-    Resolve a channel id using (in this order):
-    1) provided channel_id
-    2) /channel/UC... in URL
-    3) handle from explicit field (handle / youtube_handle) OR from URL /@handle
-    4) /user/username in URL
-    5) HTML fallback on URL
+    Fallback: search for channel by name/handle-like query.
+    Returns channelId or None.
     """
-    url = (channel_info.get("url") or "").strip()
-    provided_id = (channel_info.get("channel_id") or "").strip()
-    name = (channel_info.get("name") or "").strip()
+    q = _clean(query)
+    if not q:
+        return None
+    yt = get_youtube_service()
+    try:
+        resp = yt.search().list(
+            part="id,snippet",
+            q=q,
+            type="channel",
+            maxResults=1,
+        ).execute()
+        items = resp.get("items") or []
+        if not items:
+            return None
+        return items[0]["id"].get("channelId")
+    except Exception as e:
+        logger.warning(f"Channel search fallback failed for '{q}': {e}")
+        return None
 
-    # Accept explicit handle fields if present (depending on loader schema)
-    handle_field = (channel_info.get("handle")
-                    or channel_info.get("youtube_handle")
-                    or channel_info.get("YouTube Handle") or "")
-    handle_field = _clean_handle(handle_field)
+
+def resolve_channel_id(channel_info):
+    url = _clean(channel_info.get("url"))
+    provided_id = _clean(channel_info.get("channel_id"))
+    name = _clean(channel_info.get("name"))
+    handle_field = _clean_handle(
+        channel_info.get("handle") or channel_info.get("youtube_handle")
+        or channel_info.get("YouTube Handle") or "")
 
     if provided_id:
         logger.info(f"Channel ID provided for {name}: {provided_id}")
         return provided_id, "provided"
 
-    # URL may be missing; if so, create one from handle
+    # If URL missing but handle present, construct URL
     if not url and handle_field:
         url = f"https://www.youtube.com/@{handle_field}"
 
-    # Extract /channel/UC... from URL
+    # Direct /channel/UC... extraction
     channel_id_match = re.search(r"/channel/(UC[\w-]+)", url)
     if channel_id_match:
         cid = channel_id_match.group(1)
@@ -60,7 +76,7 @@ def resolve_channel_id(channel_info):
 
     yt = get_youtube_service()
 
-    # Resolve handle (prefer explicit field, else parse from URL)
+    # Resolve by handle (prefer explicit handle, else parse from URL)
     handle = handle_field
     if not handle:
         handle_match = re.search(r"/@([\w.-]+)", url)
@@ -78,7 +94,7 @@ def resolve_channel_id(channel_info):
         except Exception as e:
             logger.warning(f"Handle resolution failed for @{handle}: {e}")
 
-    # Resolve legacy /user/username
+    # Legacy /user/username
     user_match = re.search(r"/user/([\w.-]+)", url)
     if user_match:
         username = user_match.group(1)
@@ -92,10 +108,10 @@ def resolve_channel_id(channel_info):
         except Exception as e:
             logger.warning(f"Username resolution failed for {username}: {e}")
 
-    # HTML fallback only if we have a URL
+    # HTML fallback (sometimes works even when forHandle fails)
     if url:
         try:
-            logger.info(f"Fallback HTML fetch for {url}")
+            logger.info(f"HTML fallback fetch for {url}")
             resp = requests.get(url,
                                 timeout=15,
                                 headers={"User-Agent": "Mozilla/5.0"})
@@ -106,6 +122,19 @@ def resolve_channel_id(channel_info):
                 return cid, "html_fallback"
         except Exception as e:
             logger.warning(f"HTML fallback failed for {name}: {e}")
+
+    # FINAL fallback: YouTube search by handle or name
+    # Try handle first (more precise), then name
+    if handle_field:
+        cid = _search_channel_id(f"@{handle_field}")
+        if cid:
+            logger.info(f"Search fallback resolved @{handle_field} to {cid}")
+            return cid, "search_handle"
+
+    cid = _search_channel_id(name)
+    if cid:
+        logger.info(f"Search fallback resolved '{name}' to {cid}")
+        return cid, "search_name"
 
     logger.error(f"Could not resolve channel ID for {name} ({url})")
     return None, "failed"
