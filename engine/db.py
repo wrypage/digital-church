@@ -1,6 +1,6 @@
 import sqlite3
 import logging
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 
 from engine.config import DATABASE_PATH
 
@@ -11,8 +11,25 @@ _TABLE_COL_CACHE: Dict[str, List[str]] = {}
 
 
 def get_conn():
-    conn = sqlite3.connect(DATABASE_PATH)
+    """
+    Resilient SQLite connection for concurrent-ish workloads (Streamlit + pipeline).
+    WAL + busy_timeout reduces 'database is locked' errors significantly.
+    """
+    conn = sqlite3.connect(DATABASE_PATH, timeout=30)
+    # Pragmas (best-effort; some return values vary by SQLite build)
+    try:
+        conn.execute("PRAGMA journal_mode=WAL")
+        conn.execute("PRAGMA synchronous=NORMAL")
+        conn.execute("PRAGMA foreign_keys=ON")
+        conn.execute("PRAGMA busy_timeout=8000")  # milliseconds
+    except Exception:
+        pass
     return conn
+
+
+# Backwards compatibility: older code may call get_connection()
+def get_connection():
+    return get_conn()
 
 
 def _table_columns(conn: sqlite3.Connection, table: str) -> List[str]:
@@ -82,16 +99,17 @@ def upsert_channel(channel_id: str, name: str, url: str, method: str):
 
     Supports common column variants:
       - name OR channel_name
-      - url OR channel_url
-      - resolution_method OR resolved_method OR resolution_source (if present)
+      - url OR channel_url OR source_url
+      - resolution_method OR resolved_via OR resolved_method OR resolution_source (if present)
     """
     conn = get_conn()
     cols = _table_columns(conn, "channels")
 
     col_name = _pick_col(cols, ["name", "channel_name"])
-    col_url = _pick_col(cols, ["url", "channel_url"])
+    col_url = _pick_col(cols, ["url", "channel_url", "source_url"])
     col_method = _pick_col(cols, [
-        "resolution_method", "resolved_method", "resolution_source", "method"
+        "resolution_method", "resolved_via", "resolved_method",
+        "resolution_source", "method"
     ])
 
     insert_cols = ["channel_id"]
@@ -114,7 +132,6 @@ def upsert_channel(channel_id: str, name: str, url: str, method: str):
         update_sets.append(f"{col_method}=excluded.{col_method}")
 
     if not update_sets:
-        # Nothing to update besides channel_id; do a simple insert-or-ignore
         sql = f"INSERT OR IGNORE INTO channels ({', '.join(insert_cols)}) VALUES ({', '.join(['?']*len(insert_cols))})"
         conn.execute(sql, insert_vals)
         conn.commit()
@@ -133,6 +150,30 @@ def upsert_channel(channel_id: str, name: str, url: str, method: str):
 
 
 # ---------------- VIDEOS ----------------
+
+
+def upsert_video(video_id,
+                 channel_id,
+                 title,
+                 published_at,
+                 duration_seconds,
+                 status="discovered"):
+    """
+    Backwards-compatible helper expected by engine/youtube.py.
+    Ensures the videos row exists (dedupe safe).
+    """
+    conn = get_conn()
+    cur = conn.cursor()
+    cur.execute(
+        """
+        INSERT OR IGNORE INTO videos
+        (video_id, channel_id, title, published_at, duration_seconds, status)
+        VALUES (?, ?, ?, ?, ?, ?)
+        """,
+        (video_id, channel_id, title, published_at, duration_seconds, status),
+    )
+    conn.commit()
+    conn.close()
 
 
 def insert_or_ignore_video(
@@ -154,7 +195,6 @@ def insert_or_ignore_video(
     insert_cols = ["video_id"]
     insert_vals = [video_id]
 
-    # Only include columns that exist
     for col, val in [
         ("channel_id", channel_id),
         ("title", title),
@@ -167,10 +207,8 @@ def insert_or_ignore_video(
             insert_cols.append(col)
             insert_vals.append(val)
 
-    # discovered_at / updated_at if present
     if "discovered_at" in cols:
         insert_cols.append("discovered_at")
-        # Use SQL function, not a bound param
         sql_values = ", ".join(["?"] * (len(insert_cols) - 1) +
                                ["CURRENT_TIMESTAMP"])
         sql = f"INSERT OR IGNORE INTO videos ({', '.join(insert_cols)}) VALUES ({sql_values})"
@@ -226,29 +264,47 @@ def insert_transcript(
     model: str,
 ):
     """
-    Schema-adaptive transcript insert. Inserts only columns that exist.
+    UPSERT transcript by video_id to avoid UNIQUE constraint failures.
+    Also helps idempotency when rerunning vacuum.
     """
     conn = get_conn()
     cols = _table_columns(conn, "transcripts")
 
-    insert_cols = ["video_id"]
-    insert_vals = [video_id]
+    # Build column/value lists only for existing columns
+    data = {"video_id": video_id}
 
-    mapping = [
-        ("transcript_text", transcript_text),
-        ("segments_json", segments_json),
-        ("language", language),
-        ("word_count", word_count),
-        ("model", model),
-    ]
+    if "transcript_text" in cols:
+        data["transcript_text"] = transcript_text
+    if "segments_json" in cols:
+        data["segments_json"] = segments_json
+    if "language" in cols:
+        data["language"] = language
+    if "word_count" in cols:
+        data["word_count"] = word_count
+    if "model" in cols:
+        data["model"] = model
 
-    for col, val in mapping:
-        if col in cols:
-            insert_cols.append(col)
-            insert_vals.append(val)
+    insert_cols = list(data.keys())
+    placeholders = ", ".join(["?"] * len(insert_cols))
+    insert_vals = [data[c] for c in insert_cols]
 
-    sql = f"INSERT INTO transcripts ({', '.join(insert_cols)}) VALUES ({', '.join(['?']*len(insert_cols))})"
+    # Upsert: update all fields except video_id
+    update_cols = [c for c in insert_cols if c != "video_id"]
+    if update_cols:
+        update_set = ", ".join([f"{c}=excluded.{c}" for c in update_cols])
+        sql = f"""
+        INSERT INTO transcripts ({', '.join(insert_cols)})
+        VALUES ({placeholders})
+        ON CONFLICT(video_id) DO UPDATE SET
+            {update_set}
+        """
+    else:
+        # Only video_id exists (unlikely), just ignore duplicates
+        sql = f"""
+        INSERT OR IGNORE INTO transcripts ({', '.join(insert_cols)})
+        VALUES ({placeholders})
+        """
+
     conn.execute(sql, insert_vals)
-
     conn.commit()
     conn.close()
