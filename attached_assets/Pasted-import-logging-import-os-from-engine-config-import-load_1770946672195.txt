@@ -29,13 +29,10 @@ def _safe_int(value, default=0):
 def run_vacuum():
     run_id = db.create_run("vacuum")
     logger.info(f"Starting Vacuum run #{run_id}")
-    logger.info(
-        f"Limits: max_videos={MAX_VIDEOS_PER_RUN}, max_minutes={MAX_MINUTES_PER_RUN}"
-    )
+    logger.info(f"Limits: max_videos={MAX_VIDEOS_PER_RUN}, max_minutes={MAX_MINUTES_PER_RUN}")
 
     # Optional duration safety rail (seconds). Default 3600 = 60 minutes.
-    max_duration_seconds = _safe_int(
-        os.environ.get("MAX_VIDEO_DURATION_SECONDS", "3600"), 3600)
+    max_duration_seconds = _safe_int(os.environ.get("MAX_VIDEO_DURATION_SECONDS", "3600"), 3600)
 
     total_videos = 0
     total_minutes = 0.0
@@ -51,27 +48,21 @@ def run_vacuum():
 
         for ch in channels:
             if total_videos >= MAX_VIDEOS_PER_RUN:
-                notes_parts.append(
-                    f"MAX_VIDEOS_PER_RUN ({MAX_VIDEOS_PER_RUN}) reached")
+                notes_parts.append(f"MAX_VIDEOS_PER_RUN ({MAX_VIDEOS_PER_RUN}) reached")
                 break
             if total_minutes >= MAX_MINUTES_PER_RUN:
-                notes_parts.append(
-                    f"MAX_MINUTES_PER_RUN ({MAX_MINUTES_PER_RUN}) reached")
+                notes_parts.append(f"MAX_MINUTES_PER_RUN ({MAX_MINUTES_PER_RUN}) reached")
                 break
 
             channel_id, method = resolve_channel_id(ch)
             if not channel_id:
-                notes_parts.append(
-                    f"Failed to resolve: {ch.get('name','(unknown)')}")
+                notes_parts.append(f"Failed to resolve: {ch.get('name','(unknown)')}")
                 continue
 
-            db.upsert_channel(channel_id, ch.get("name", ""),
-                              ch.get("url", ""), method)
+            db.upsert_channel(channel_id, ch.get("name", ""), ch.get("url", ""), method)
 
             videos = discover_videos(channel_id)
-            logger.info(
-                f"  {ch.get('name','(unknown)')}: {len(videos)} videos discovered"
-            )
+            logger.info(f"  {ch.get('name','(unknown)')}: {len(videos)} videos discovered")
 
             for v in videos:
                 if total_videos >= MAX_VIDEOS_PER_RUN:
@@ -112,8 +103,7 @@ def run_vacuum():
                 else:
                     err_msg = err or "Transcription failed"
                     db.update_video_status(video_id, "failed", err_msg)
-                    notes_parts.append(
-                        f"Transcription failed: {video_id} ({err_msg})")
+                    notes_parts.append(f"Transcription failed: {video_id} ({err_msg})")
 
         status = "completed"
         notes = "; ".join(notes_parts) if notes_parts else "All OK"
@@ -124,7 +114,5 @@ def run_vacuum():
         logger.error(notes, exc_info=True)
 
     db.finish_run(run_id, status, total_videos, round(total_minutes, 2), notes)
-    logger.info(
-        f"Vacuum run #{run_id} finished: {status}, {total_videos} videos, {total_minutes:.1f} minutes"
-    )
+    logger.info(f"Vacuum run #{run_id} finished: {status}, {total_videos} videos, {total_minutes:.1f} minutes")
     return run_id
