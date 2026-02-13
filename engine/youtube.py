@@ -15,15 +15,43 @@ def get_youtube_service():
     return build("youtube", "v3", developerKey=YOUTUBE_API_KEY)
 
 
+def _clean_handle(handle: str) -> str:
+    if not handle:
+        return ""
+    h = handle.strip()
+    if h.startswith("@"):
+        h = h[1:]
+    return h
+
+
 def resolve_channel_id(channel_info):
-    url = channel_info.get("url", "")
-    provided_id = channel_info.get("channel_id", "")
-    name = channel_info.get("name", "")
+    """
+    Resolve a channel id using (in this order):
+    1) provided channel_id
+    2) /channel/UC... in URL
+    3) handle from explicit field (handle / youtube_handle) OR from URL /@handle
+    4) /user/username in URL
+    5) HTML fallback on URL
+    """
+    url = (channel_info.get("url") or "").strip()
+    provided_id = (channel_info.get("channel_id") or "").strip()
+    name = (channel_info.get("name") or "").strip()
+
+    # Accept explicit handle fields if present (depending on loader schema)
+    handle_field = (channel_info.get("handle")
+                    or channel_info.get("youtube_handle")
+                    or channel_info.get("YouTube Handle") or "")
+    handle_field = _clean_handle(handle_field)
 
     if provided_id:
         logger.info(f"Channel ID provided for {name}: {provided_id}")
         return provided_id, "provided"
 
+    # URL may be missing; if so, create one from handle
+    if not url and handle_field:
+        url = f"https://www.youtube.com/@{handle_field}"
+
+    # Extract /channel/UC... from URL
     channel_id_match = re.search(r"/channel/(UC[\w-]+)", url)
     if channel_id_match:
         cid = channel_id_match.group(1)
@@ -32,11 +60,17 @@ def resolve_channel_id(channel_info):
 
     yt = get_youtube_service()
 
-    handle_match = re.search(r"/@([\w.-]+)", url)
-    if handle_match:
-        handle = handle_match.group(1)
+    # Resolve handle (prefer explicit field, else parse from URL)
+    handle = handle_field
+    if not handle:
+        handle_match = re.search(r"/@([\w.-]+)", url)
+        if handle_match:
+            handle = _clean_handle(handle_match.group(1))
+
+    if handle:
         try:
-            resp = yt.channels().list(part="id,snippet", forHandle=handle).execute()
+            resp = yt.channels().list(part="id,snippet",
+                                      forHandle=handle).execute()
             if resp.get("items"):
                 cid = resp["items"][0]["id"]
                 logger.info(f"Resolved @{handle} to {cid}")
@@ -44,11 +78,13 @@ def resolve_channel_id(channel_info):
         except Exception as e:
             logger.warning(f"Handle resolution failed for @{handle}: {e}")
 
+    # Resolve legacy /user/username
     user_match = re.search(r"/user/([\w.-]+)", url)
     if user_match:
         username = user_match.group(1)
         try:
-            resp = yt.channels().list(part="id,snippet", forUsername=username).execute()
+            resp = yt.channels().list(part="id,snippet",
+                                      forUsername=username).execute()
             if resp.get("items"):
                 cid = resp["items"][0]["id"]
                 logger.info(f"Resolved /user/{username} to {cid}")
@@ -56,23 +92,28 @@ def resolve_channel_id(channel_info):
         except Exception as e:
             logger.warning(f"Username resolution failed for {username}: {e}")
 
-    try:
-        logger.info(f"Fallback HTML fetch for {url}")
-        resp = requests.get(url, timeout=15, headers={"User-Agent": "Mozilla/5.0"})
-        match = re.search(r'"channelId"\s*:\s*"(UC[\w-]+)"', resp.text)
-        if match:
-            cid = match.group(1)
-            logger.info(f"HTML fallback resolved {name} to {cid}")
-            return cid, "html_fallback"
-    except Exception as e:
-        logger.warning(f"HTML fallback failed for {name}: {e}")
+    # HTML fallback only if we have a URL
+    if url:
+        try:
+            logger.info(f"Fallback HTML fetch for {url}")
+            resp = requests.get(url,
+                                timeout=15,
+                                headers={"User-Agent": "Mozilla/5.0"})
+            match = re.search(r'"channelId"\s*:\s*"(UC[\w-]+)"', resp.text)
+            if match:
+                cid = match.group(1)
+                logger.info(f"HTML fallback resolved {name} to {cid}")
+                return cid, "html_fallback"
+        except Exception as e:
+            logger.warning(f"HTML fallback failed for {name}: {e}")
 
     logger.error(f"Could not resolve channel ID for {name} ({url})")
     return None, "failed"
 
 
 def parse_duration(duration_str):
-    match = re.match(r"PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", duration_str or "")
+    match = re.match(r"PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", duration_str
+                     or "")
     if not match:
         return 0
     hours = int(match.group(1) or 0)
@@ -83,7 +124,8 @@ def parse_duration(duration_str):
 
 def discover_videos(channel_id, max_results=10):
     yt = get_youtube_service()
-    seven_days_ago = (datetime.now(timezone.utc) - timedelta(days=7)).isoformat()
+    seven_days_ago = (datetime.now(timezone.utc) -
+                      timedelta(days=7)).isoformat()
 
     try:
         search_resp = yt.search().list(
@@ -99,7 +141,9 @@ def discover_videos(channel_id, max_results=10):
         logger.error(f"Search failed for channel {channel_id}: {e}")
         return []
 
-    video_ids = [item["id"]["videoId"] for item in search_resp.get("items", [])]
+    video_ids = [
+        item["id"]["videoId"] for item in search_resp.get("items", [])
+    ]
     if not video_ids:
         logger.info(f"No recent videos for channel {channel_id}")
         return []
@@ -126,10 +170,8 @@ def discover_videos(channel_id, max_results=10):
     selected = qualifying[:3]
 
     for v in selected:
-        db.upsert_video(
-            v["video_id"], v["channel_id"], v["title"],
-            v["published_at"], v["duration_seconds"], "discovered"
-        )
+        db.upsert_video(v["video_id"], v["channel_id"], v["title"],
+                        v["published_at"], v["duration_seconds"], "discovered")
 
     logger.info(f"Discovered {len(selected)} videos for channel {channel_id}")
     return selected
