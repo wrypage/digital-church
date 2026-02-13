@@ -28,12 +28,14 @@ def _safe_int(value, default=0):
 
 def run_vacuum():
     run_id = db.create_run("vacuum")
+
     logger.info(f"Starting Vacuum run #{run_id}")
     logger.info(
         f"Limits: max_videos={MAX_VIDEOS_PER_RUN}, max_minutes={MAX_MINUTES_PER_RUN}"
     )
 
-    # Optional duration safety rail (seconds). Default 3600 = 60 minutes.
+    min_duration_seconds = _safe_int(
+        os.environ.get("MIN_DURATION_SECONDS", "480"), 480)
     max_duration_seconds = _safe_int(
         os.environ.get("MAX_VIDEO_DURATION_SECONDS", "3600"), 3600)
 
@@ -43,40 +45,39 @@ def run_vacuum():
 
     try:
         channels = load_channels_csv()
+
         if not channels:
-            msg = "No channels found in channels.csv"
+            msg = "No channels found"
             logger.warning(msg)
             db.finish_run(run_id, "completed", 0, 0, msg)
             return run_id
 
         for ch in channels:
+
             if total_videos >= MAX_VIDEOS_PER_RUN:
-                notes_parts.append(
-                    f"MAX_VIDEOS_PER_RUN ({MAX_VIDEOS_PER_RUN}) reached")
+                notes_parts.append(f"MAX_VIDEOS_PER_RUN reached")
                 break
+
             if total_minutes >= MAX_MINUTES_PER_RUN:
-                notes_parts.append(
-                    f"MAX_MINUTES_PER_RUN ({MAX_MINUTES_PER_RUN}) reached")
+                notes_parts.append(f"MAX_MINUTES_PER_RUN reached")
                 break
 
             channel_id, method = resolve_channel_id(ch)
+
             if not channel_id:
-                notes_parts.append(
-                    f"Failed to resolve: {ch.get('name','(unknown)')}")
+                notes_parts.append(f"Failed to resolve: {ch.get('name')}")
                 continue
 
             db.upsert_channel(channel_id, ch.get("name", ""),
                               ch.get("url", ""), method)
 
             videos = discover_videos(channel_id)
-            logger.info(
-                f"  {ch.get('name','(unknown)')}: {len(videos)} videos discovered"
-            )
+
+            logger.info(f"{ch.get('name')}: {len(videos)} videos discovered")
 
             for v in videos:
+
                 if total_videos >= MAX_VIDEOS_PER_RUN:
-                    break
-                if total_minutes >= MAX_MINUTES_PER_RUN:
                     break
 
                 video_id = v.get("video_id")
@@ -86,34 +87,49 @@ def run_vacuum():
                 duration_seconds = _safe_int(v.get("duration_seconds"), 0)
                 duration_min = duration_seconds / 60.0
 
-                # Skip very long services (protect cost + avoid frequent Whisper failures)
-                if max_duration_seconds and duration_seconds > max_duration_seconds:
-                    msg = f"Skipped (too long {duration_seconds}s): {video_id}"
-                    logger.warning(msg)
-                    db.update_video_status(video_id, "skipped", msg)
-                    notes_parts.append(msg)
+                db.insert_or_ignore_video(
+                    video_id=video_id,
+                    channel_id=channel_id,
+                    title=v.get("title", ""),
+                    published_at=v.get("published_at", ""),
+                    duration_seconds=duration_seconds,
+                )
+
+                if duration_seconds < min_duration_seconds:
+                    db.update_video_status(video_id, "skipped", "Too short")
                     continue
 
+                if duration_seconds > max_duration_seconds:
+                    db.update_video_status(video_id, "skipped", "Too long")
+                    continue
+
+                if (total_minutes + duration_min) > MAX_MINUTES_PER_RUN:
+                    notes_parts.append(
+                        f"Stopped before {video_id}: minute cap")
+                    break
+
+                db.update_video_status(video_id, "downloading_audio", None)
+
                 audio_path = download_audio(video_id)
+
                 if not audio_path:
-                    msg = "Audio download failed"
-                    db.update_video_status(video_id, "failed", msg)
-                    notes_parts.append(f"Download failed: {video_id} ({msg})")
+                    db.update_video_status(video_id, "failed",
+                                           "Audio download failed")
                     continue
 
                 db.update_video_status(video_id, "audio_downloaded", None)
+                db.update_video_status(video_id, "transcribing", None)
 
                 success, err = transcribe_audio(video_id, audio_path)
+
                 cleanup_audio(video_id, success)
 
                 if success:
                     total_videos += 1
                     total_minutes += duration_min
+                    db.update_video_status(video_id, "transcribed", None)
                 else:
-                    err_msg = err or "Transcription failed"
-                    db.update_video_status(video_id, "failed", err_msg)
-                    notes_parts.append(
-                        f"Transcription failed: {video_id} ({err_msg})")
+                    db.update_video_status(video_id, "failed", err)
 
         status = "completed"
         notes = "; ".join(notes_parts) if notes_parts else "All OK"
@@ -124,7 +140,7 @@ def run_vacuum():
         logger.error(notes, exc_info=True)
 
     db.finish_run(run_id, status, total_videos, round(total_minutes, 2), notes)
-    logger.info(
-        f"Vacuum run #{run_id} finished: {status}, {total_videos} videos, {total_minutes:.1f} minutes"
-    )
+
+    logger.info(f"Vacuum run #{run_id} finished: {status}")
+
     return run_id
