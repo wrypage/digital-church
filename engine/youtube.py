@@ -27,10 +27,6 @@ def _clean_handle(handle: str) -> str:
 
 
 def _search_channel_id(query: str):
-    """
-    Fallback: search for channel by name/handle-like query.
-    Returns channelId or None.
-    """
     q = _clean(query)
     if not q:
         return None
@@ -63,11 +59,9 @@ def resolve_channel_id(channel_info):
         logger.info(f"Channel ID provided for {name}: {provided_id}")
         return provided_id, "provided"
 
-    # If URL missing but handle present, construct URL
     if not url and handle_field:
         url = f"https://www.youtube.com/@{handle_field}"
 
-    # Direct /channel/UC... extraction
     channel_id_match = re.search(r"/channel/(UC[\w-]+)", url)
     if channel_id_match:
         cid = channel_id_match.group(1)
@@ -76,7 +70,6 @@ def resolve_channel_id(channel_info):
 
     yt = get_youtube_service()
 
-    # Resolve by handle (prefer explicit handle, else parse from URL)
     handle = handle_field
     if not handle:
         handle_match = re.search(r"/@([\w.-]+)", url)
@@ -94,7 +87,6 @@ def resolve_channel_id(channel_info):
         except Exception as e:
             logger.warning(f"Handle resolution failed for @{handle}: {e}")
 
-    # Legacy /user/username
     user_match = re.search(r"/user/([\w.-]+)", url)
     if user_match:
         username = user_match.group(1)
@@ -108,7 +100,6 @@ def resolve_channel_id(channel_info):
         except Exception as e:
             logger.warning(f"Username resolution failed for {username}: {e}")
 
-    # HTML fallback (sometimes works even when forHandle fails)
     if url:
         try:
             logger.info(f"HTML fallback fetch for {url}")
@@ -123,8 +114,6 @@ def resolve_channel_id(channel_info):
         except Exception as e:
             logger.warning(f"HTML fallback failed for {name}: {e}")
 
-    # FINAL fallback: YouTube search by handle or name
-    # Try handle first (more precise), then name
     if handle_field:
         cid = _search_channel_id(f"@{handle_field}")
         if cid:
@@ -151,17 +140,20 @@ def parse_duration(duration_str):
     return hours * 3600 + minutes * 60 + seconds
 
 
-def discover_videos(channel_id, max_results=10):
+def discover_videos(channel_id, max_results=25):
+    """
+    Return a larger candidate set so Vacuum can skip long services
+    and still find something to transcribe.
+    """
     yt = get_youtube_service()
     seven_days_ago = (datetime.now(timezone.utc) -
-                      timedelta(days=7)).isoformat()
+                      timedelta(days=14)).isoformat()
 
     try:
         search_resp = yt.search().list(
             part="id,snippet",
             channelId=channel_id,
             type="video",
-            eventType="completed",
             order="date",
             publishedAfter=seven_days_ago,
             maxResults=max_results,
@@ -172,6 +164,7 @@ def discover_videos(channel_id, max_results=10):
 
     video_ids = [
         item["id"]["videoId"] for item in search_resp.get("items", [])
+        if item.get("id", {}).get("videoId")
     ]
     if not video_ids:
         logger.info(f"No recent videos for channel {channel_id}")
@@ -182,12 +175,12 @@ def discover_videos(channel_id, max_results=10):
         id=",".join(video_ids),
     ).execute()
 
-    qualifying = []
+    candidates = []
     for item in details_resp.get("items", []):
         duration = parse_duration(item["contentDetails"]["duration"])
         if duration < 62:
             continue
-        qualifying.append({
+        candidates.append({
             "video_id": item["id"],
             "title": item["snippet"]["title"],
             "published_at": item["snippet"]["publishedAt"],
@@ -195,12 +188,13 @@ def discover_videos(channel_id, max_results=10):
             "channel_id": channel_id,
         })
 
-    qualifying.sort(key=lambda x: x["published_at"], reverse=True)
-    selected = qualifying[:3]
+    candidates.sort(key=lambda x: x["published_at"], reverse=True)
 
-    for v in selected:
+    for v in candidates:
         db.upsert_video(v["video_id"], v["channel_id"], v["title"],
                         v["published_at"], v["duration_seconds"], "discovered")
 
-    logger.info(f"Discovered {len(selected)} videos for channel {channel_id}")
-    return selected
+    logger.info(
+        f"Discovered {len(candidates)} candidate videos for channel {channel_id}"
+    )
+    return candidates
