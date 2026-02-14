@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS channels (
     channel_id TEXT PRIMARY KEY,
     channel_name TEXT,
-    source_url TEXT,
+    source_url TEXT UNIQUE,
     resolved_via TEXT,
     added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     active INTEGER DEFAULT 1
