@@ -25,11 +25,28 @@ st.set_page_config(page_title="Digital Pulpit", page_icon=None, layout="wide")
 # -------------------------
 # SQLite direct-read helpers
 # -------------------------
+class _ReadOnlyConnection:
+    """Context manager wrapper for readonly sqlite3 connections."""
+    def __init__(self):
+        self.conn = None
+    
+    def __enter__(self):
+        self.conn = sqlite3.connect(DATABASE_PATH, timeout=15)
+        self.conn.row_factory = sqlite3.Row
+        try:
+            self.conn.execute("PRAGMA busy_timeout=5000")
+        except Exception:
+            pass
+        return self.conn
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if self.conn:
+            self.conn.close()
+        return False
+
+
 def _connect_readonly():
-    # Plain connect; UI is mostly reads. We avoid write locks by not setting WAL here.
-    conn = sqlite3.connect(DATABASE_PATH)
-    conn.row_factory = sqlite3.Row
-    return conn
+    return _ReadOnlyConnection()
 
 
 def _table_cols(conn, table: str):
@@ -47,138 +64,128 @@ def _youtube_url(video_id: str) -> str:
 
 
 def _get_recent_videos(limit: int = 100):
-    conn = _connect_readonly()
-    cols = _table_cols(conn, "videos")
+    with _connect_readonly() as conn:
+        cols = _table_cols(conn, "videos")
 
-    # We’ll select only what exists (schema-adaptive)
-    wanted = [
-        "video_id", "channel_id", "title", "published_at", "duration_seconds",
-        "status", "error_message", "discovered_at", "updated_at"
-    ]
-    select_cols = [c for c in wanted if c in cols]
-    if not select_cols:
-        conn.close()
-        return []
+        # We’ll select only what exists (schema-adaptive)
+        wanted = [
+            "video_id", "channel_id", "title", "published_at", "duration_seconds",
+            "status", "error_message", "discovered_at", "updated_at"
+        ]
+        select_cols = [c for c in wanted if c in cols]
+        if not select_cols:
+            return []
 
-    sql = f"SELECT {', '.join(select_cols)} FROM videos ORDER BY COALESCE(updated_at, discovered_at, published_at, rowid) DESC LIMIT ?"
-    rows = conn.execute(sql, (limit, )).fetchall()
-    conn.close()
-    return [dict(r) for r in rows]
+        sql = f"SELECT {', '.join(select_cols)} FROM videos ORDER BY COALESCE(updated_at, discovered_at, published_at, rowid) DESC LIMIT ?"
+        rows = conn.execute(sql, (limit, )).fetchall()
+        return [dict(r) for r in rows]
 
 
 def _get_recent_transcripts(limit: int = 50):
-    conn = _connect_readonly()
-    tcols = _table_cols(conn, "transcripts")
+    with _connect_readonly() as conn:
+        tcols = _table_cols(conn, "transcripts")
 
-    # transcripts columns vary; we handle common names
-    # Always require video_id
-    if "video_id" not in tcols:
-        conn.close()
-        return []
+        # transcripts columns vary; we handle common names
+        # Always require video_id
+        if "video_id" not in tcols:
+            return []
 
-    # Try to include title by joining videos if possible
-    vcols = _table_cols(conn, "videos") if _safe_has(conn, "videos",
-                                                     "video_id") else []
-    has_videos = "video_id" in vcols
+        # Try to include title by joining videos if possible
+        vcols = _table_cols(conn, "videos") if _safe_has(conn, "videos",
+                                                         "video_id") else []
+        has_videos = "video_id" in vcols
 
-    # Choose transcript text column name (your schema uses transcript_text)
-    text_col = "transcript_text" if "transcript_text" in tcols else None
+        # Choose transcript text column name (your schema uses transcript_text)
+        text_col = "transcript_text" if "transcript_text" in tcols else None
 
-    # Word count / language / model columns may vary
-    wc_col = "word_count" if "word_count" in tcols else None
-    lang_col = "language" if "language" in tcols else None
-    model_col = "model" if "model" in tcols else None
+        # Word count / language / model columns may vary
+        wc_col = "word_count" if "word_count" in tcols else None
+        lang_col = "language" if "language" in tcols else None
+        model_col = "model" if "model" in tcols else None
 
-    base_cols = ["video_id"]
-    if wc_col:
-        base_cols.append(wc_col)
-    if lang_col:
-        base_cols.append(lang_col)
-    if model_col:
-        base_cols.append(model_col)
-
-    if has_videos:
-        select = ["t.video_id"]
+        base_cols = ["video_id"]
         if wc_col:
-            select.append(f"t.{wc_col} AS word_count")
+            base_cols.append(wc_col)
         if lang_col:
-            select.append(f"t.{lang_col} AS language")
+            base_cols.append(lang_col)
         if model_col:
-            select.append(f"t.{model_col} AS transcript_model")
-        if "title" in vcols:
-            select.append("v.title AS title")
-        if "channel_id" in vcols:
-            select.append("v.channel_id AS channel_id")
-        if "status" in vcols:
-            select.append("v.status AS video_status")
-        sql = f"""
-            SELECT {', '.join(select)}
-            FROM transcripts t
-            LEFT JOIN videos v ON v.video_id = t.video_id
-            ORDER BY t.rowid DESC
-            LIMIT ?
-        """
-        rows = conn.execute(sql, (limit, )).fetchall()
-        conn.close()
-        return [dict(r) for r in rows]
+            base_cols.append(model_col)
 
-    # No videos table join
-    sql = f"SELECT {', '.join(base_cols)} FROM transcripts ORDER BY rowid DESC LIMIT ?"
-    rows = conn.execute(sql, (limit, )).fetchall()
-    conn.close()
-    out = []
-    for r in rows:
-        d = dict(r)
-        # normalize names
-        if wc_col and wc_col != "word_count":
-            d["word_count"] = d.get(wc_col)
-        if model_col and model_col != "transcript_model":
-            d["transcript_model"] = d.get(model_col)
-        out.append(d)
-    return out
+        if has_videos:
+            select = ["t.video_id"]
+            if wc_col:
+                select.append(f"t.{wc_col} AS word_count")
+            if lang_col:
+                select.append(f"t.{lang_col} AS language")
+            if model_col:
+                select.append(f"t.{model_col} AS transcript_model")
+            if "title" in vcols:
+                select.append("v.title AS title")
+            if "channel_id" in vcols:
+                select.append("v.channel_id AS channel_id")
+            if "status" in vcols:
+                select.append("v.status AS video_status")
+            sql = f"""
+                SELECT {', '.join(select)}
+                FROM transcripts t
+                LEFT JOIN videos v ON v.video_id = t.video_id
+                ORDER BY t.rowid DESC
+                LIMIT ?
+            """
+            rows = conn.execute(sql, (limit, )).fetchall()
+            return [dict(r) for r in rows]
+
+        # No videos table join
+        sql = f"SELECT {', '.join(base_cols)} FROM transcripts ORDER BY rowid DESC LIMIT ?"
+        rows = conn.execute(sql, (limit, )).fetchall()
+        out = []
+        for r in rows:
+            d = dict(r)
+            # normalize names
+            if wc_col and wc_col != "word_count":
+                d["word_count"] = d.get(wc_col)
+            if model_col and model_col != "transcript_model":
+                d["transcript_model"] = d.get(model_col)
+            out.append(d)
+        return out
 
 
 def _get_transcript_text(video_id: str) -> str:
-    conn = _connect_readonly()
-    tcols = _table_cols(conn, "transcripts")
-    if "video_id" not in tcols:
-        conn.close()
-        return ""
+    with _connect_readonly() as conn:
+        tcols = _table_cols(conn, "transcripts")
+        if "video_id" not in tcols:
+            return ""
 
-    text_col = "transcript_text" if "transcript_text" in tcols else None
-    if not text_col:
-        conn.close()
-        return ""
+        text_col = "transcript_text" if "transcript_text" in tcols else None
+        if not text_col:
+            return ""
 
-    row = conn.execute(
-        f"SELECT {text_col} FROM transcripts WHERE video_id = ? LIMIT 1",
-        (video_id, ),
-    ).fetchone()
-    conn.close()
-    return (row[text_col] if row and row[text_col] else "") or ""
+        row = conn.execute(
+            f"SELECT {text_col} FROM transcripts WHERE video_id = ? LIMIT 1",
+            (video_id, ),
+        ).fetchone()
+        return (row[text_col] if row and row[text_col] else "") or ""
 
 
 def _get_video_row(video_id: str):
-    conn = _connect_readonly()
-    vcols = _table_cols(conn, "videos")
-    if "video_id" not in vcols:
-        conn.close()
-        return None
+    with _connect_readonly() as conn:
+        vcols = _table_cols(conn, "videos")
+        if "video_id" not in vcols:
+            return None
 
-    wanted = [
-        "video_id", "channel_id", "title", "published_at", "duration_seconds",
-        "status", "error_message", "discovered_at", "updated_at"
-    ]
-    select_cols = [c for c in wanted if c in vcols]
-    sql = f"SELECT {', '.join(select_cols)} FROM videos WHERE video_id = ? LIMIT 1"
-    row = conn.execute(sql, (video_id, )).fetchone()
-    conn.close()
-    return dict(row) if row else None
+        wanted = [
+            "video_id", "channel_id", "title", "published_at", "duration_seconds",
+            "status", "error_message", "discovered_at", "updated_at"
+        ]
+        select_cols = [c for c in wanted if c in vcols]
+        sql = f"SELECT {', '.join(select_cols)} FROM videos WHERE video_id = ? LIMIT 1"
+        row = conn.execute(sql, (video_id, )).fetchone()
+        return dict(row) if row else None
 
 
-# -------------------------
-# Auth
-# -------------------------
+    # -------------------------
+    # Auth
+    # -------------------------
 def check_password():
     if not DASHBOARD_PASSWORD:
         return True
