@@ -35,10 +35,14 @@ def _resolve_with_ytdlp(url: str):
     if not url:
         return None
     try:
+        cookies_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "cookies.txt")
         cmd = [
             "yt-dlp", "--print", "channel_id", "--no-warnings",
-            "--no-playlist", url
+            "--no-playlist",
         ]
+        if os.path.exists(cookies_path) and os.path.getsize(cookies_path) > 0:
+            cmd.extend(["--cookies", cookies_path])
+        cmd.append(url)
         r = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
         if r.returncode != 0:
             return None

@@ -45,6 +45,7 @@ def download_audio(video_id: str) -> str | None:
 
     # NOTE: --audio-quality uses ffmpeg "quality scale" for VBR in some modes;
     # this can still produce large files for long videos.
+    cookies_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "cookies.txt")
     cmd = [
         "yt-dlp",
         "-f",
@@ -58,8 +59,10 @@ def download_audio(video_id: str) -> str | None:
         output_path,
         "--no-playlist",
         "--no-warnings",
-        url,
     ]
+    if os.path.exists(cookies_path) and os.path.getsize(cookies_path) > 0:
+        cmd.extend(["--cookies", cookies_path])
+    cmd.append(url)
 
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
