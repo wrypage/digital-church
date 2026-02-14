@@ -9,5 +9,6 @@ dependencies = [
     "openai>=2.20.0",
     "pandas>=2.3.3",
     "streamlit>=1.54.0",
+    "youtube-transcript-api>=1.2.4",
     "yt-dlp>=2026.2.4",
 ]

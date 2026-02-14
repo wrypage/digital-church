@@ -1,9 +1,12 @@
+import os
 import re
 import logging
+import time
 import requests
 import subprocess
 from datetime import datetime, timedelta, timezone
 from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 from engine.config import YOUTUBE_API_KEY
 from engine import db
 
@@ -14,6 +17,28 @@ def get_youtube_service():
     if not YOUTUBE_API_KEY:
         raise ValueError("YOUTUBE_API_KEY not set")
     return build("youtube", "v3", developerKey=YOUTUBE_API_KEY)
+
+
+def _api_call_with_backoff(fn, max_retries=4):
+    for attempt in range(max_retries):
+        try:
+            return fn()
+        except HttpError as e:
+            if e.resp.status in (429, 403):
+                wait = 2 ** (attempt + 1)
+                logger.warning(f"YouTube API {e.resp.status}, backing off {wait}s (attempt {attempt+1}/{max_retries})")
+                time.sleep(wait)
+                continue
+            raise
+        except Exception as e:
+            err_str = str(e)
+            if "429" in err_str or "quotaExceeded" in err_str:
+                wait = 2 ** (attempt + 1)
+                logger.warning(f"YouTube API rate limit, backing off {wait}s (attempt {attempt+1}/{max_retries})")
+                time.sleep(wait)
+                continue
+            raise
+    raise Exception(f"YouTube API call failed after {max_retries} retries (rate limited)")
 
 
 def _clean(s):
@@ -61,12 +86,14 @@ def _search_channel_id(query: str):
         return None
     yt = get_youtube_service()
     try:
-        resp = yt.search().list(
-            part="id,snippet",
-            q=q,
-            type="channel",
-            maxResults=1,
-        ).execute()
+        resp = _api_call_with_backoff(
+            lambda: yt.search().list(
+                part="id,snippet",
+                q=q,
+                type="channel",
+                maxResults=1,
+            ).execute()
+        )
         items = resp.get("items") or []
         if not items:
             return None
@@ -115,8 +142,10 @@ def resolve_channel_id(channel_info):
 
     if handle:
         try:
-            resp = yt.channels().list(part="id,snippet",
-                                      forHandle=handle).execute()
+            resp = _api_call_with_backoff(
+                lambda: yt.channels().list(part="id,snippet",
+                                           forHandle=handle).execute()
+            )
             if resp.get("items"):
                 cid = resp["items"][0]["id"]
                 logger.info(f"Resolved @{handle} to {cid}")
@@ -171,14 +200,16 @@ def discover_videos(channel_id, max_results=25):
                          timedelta(days=14)).isoformat()
 
     try:
-        search_resp = yt.search().list(
-            part="id,snippet",
-            channelId=channel_id,
-            type="video",
-            order="date",
-            publishedAfter=fourteen_days_ago,
-            maxResults=max_results,
-        ).execute()
+        search_resp = _api_call_with_backoff(
+            lambda: yt.search().list(
+                part="id,snippet",
+                channelId=channel_id,
+                type="video",
+                order="date",
+                publishedAfter=fourteen_days_ago,
+                maxResults=max_results,
+            ).execute()
+        )
     except Exception as e:
         logger.error(f"Search failed for channel {channel_id}: {e}")
         return []
@@ -191,10 +222,12 @@ def discover_videos(channel_id, max_results=25):
         logger.info(f"No recent videos for channel {channel_id}")
         return []
 
-    details_resp = yt.videos().list(
-        part="contentDetails,snippet",
-        id=",".join(video_ids),
-    ).execute()
+    details_resp = _api_call_with_backoff(
+        lambda: yt.videos().list(
+            part="contentDetails,snippet",
+            id=",".join(video_ids),
+        ).execute()
+    )
 
     candidates = []
     for item in details_resp.get("items", []):

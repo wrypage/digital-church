@@ -5,7 +5,7 @@ integrations = ["github:1.0.0"]
 
 [nix]
 channel = "stable-25_05"
-packages = ["glibcLocales", "sqlite-interactive", "lsof"]
+packages = ["glibcLocales", "lsof", "sqlite-interactive"]
 
 [workflows]
 runButton = "Project"
@@ -34,3 +34,8 @@ waitForPort = 5000
 [[ports]]
 localPort = 5000
 externalPort = 80
+
+[userenv]
+
+[userenv.shared]
+CAPTIONS_ONLY = "1"

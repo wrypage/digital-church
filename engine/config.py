@@ -9,6 +9,7 @@ DATABASE_PATH = os.environ.get("DATABASE_PATH", "db/digital_pulpit.db")
 MAX_MINUTES_PER_RUN = int(os.environ.get("MAX_MINUTES_PER_RUN", "180"))
 MAX_VIDEOS_PER_RUN = int(os.environ.get("MAX_VIDEOS_PER_RUN", "120"))
 KEEP_AUDIO_ON_FAIL = os.environ.get("KEEP_AUDIO_ON_FAIL", "false").lower() == "true"
+CAPTIONS_ONLY = os.environ.get("CAPTIONS_ONLY", "0").strip() in ("1", "true", "yes")
 YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", "")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
 DASHBOARD_PASSWORD = os.environ.get("DASHBOARD_PASSWORD", "")

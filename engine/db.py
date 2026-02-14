@@ -306,6 +306,7 @@ def insert_transcript(
     language: str,
     word_count: int,
     model: str,
+    provider: str = "openai_api",
 ):
     with get_conn() as conn:
         cols = _table_columns(conn, "transcripts")
@@ -326,6 +327,8 @@ def insert_transcript(
             data["model"] = model
         if "transcript_model" in cols:
             data["transcript_model"] = model
+        if "transcript_provider" in cols:
+            data["transcript_provider"] = provider
 
         insert_cols = list(data.keys())
         placeholders = ", ".join(["?"] * len(insert_cols))

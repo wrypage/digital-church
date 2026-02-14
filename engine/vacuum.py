@@ -1,9 +1,9 @@
 import logging
 import os
-from engine.config import load_channels_csv, MAX_MINUTES_PER_RUN, MAX_VIDEOS_PER_RUN
+from engine.config import load_channels_csv, MAX_MINUTES_PER_RUN, MAX_VIDEOS_PER_RUN, CAPTIONS_ONLY
 from engine import db
 from engine.youtube import resolve_channel_id, discover_videos
-from engine.transcription import download_audio, transcribe_audio, cleanup_audio
+from engine.transcription import download_audio, transcribe_audio, cleanup_audio, fetch_captions
 
 logger = logging.getLogger("digital_pulpit")
 
@@ -30,7 +30,7 @@ def run_vacuum():
     run_id = db.create_run("vacuum")
     logger.info(f"Starting Vacuum run #{run_id}")
     logger.info(
-        f"Limits: max_videos={MAX_VIDEOS_PER_RUN}, max_minutes={MAX_MINUTES_PER_RUN}"
+        f"Limits: max_videos={MAX_VIDEOS_PER_RUN}, max_minutes={MAX_MINUTES_PER_RUN}, captions_only={CAPTIONS_ONLY}"
     )
 
     # Filters
@@ -126,30 +126,41 @@ def run_vacuum():
                         f"MAX_MINUTES_PER_RUN ({MAX_MINUTES_PER_RUN}) reached")
                     break
 
-                db.update_video_status(video_id, "downloading_audio", None)
-
-                audio_path = download_audio(video_id)
-                if not audio_path:
-                    db.update_video_status(video_id, "failed",
-                                           "Audio download failed")
-                    notes_parts.append(f"Download failed: {video_id}")
-                    continue
-
-                db.update_video_status(video_id, "audio_downloaded", None)
-                db.update_video_status(video_id, "transcribing", None)
-
-                success, err = transcribe_audio(video_id, audio_path)
-                cleanup_audio(video_id, success)
-
-                if success:
-                    total_videos += 1
-                    total_minutes += duration_min
-                    db.update_video_status(video_id, "transcribed", None)
+                if CAPTIONS_ONLY:
+                    db.update_video_status(video_id, "fetching_captions", None)
+                    success, err = fetch_captions(video_id)
+                    if success:
+                        total_videos += 1
+                        total_minutes += duration_min
+                    else:
+                        msg = err or "No captions available"
+                        db.update_video_status(video_id, "skipped", msg)
+                        notes_parts.append(f"No captions: {video_id}")
                 else:
-                    msg = err or "Transcription failed"
-                    db.update_video_status(video_id, "failed", msg)
-                    notes_parts.append(
-                        f"Transcription failed: {video_id} ({msg})")
+                    db.update_video_status(video_id, "downloading_audio", None)
+
+                    audio_path = download_audio(video_id)
+                    if not audio_path:
+                        db.update_video_status(video_id, "failed",
+                                               "Audio download failed")
+                        notes_parts.append(f"Download failed: {video_id}")
+                        continue
+
+                    db.update_video_status(video_id, "audio_downloaded", None)
+                    db.update_video_status(video_id, "transcribing", None)
+
+                    success, err = transcribe_audio(video_id, audio_path)
+                    cleanup_audio(video_id, success)
+
+                    if success:
+                        total_videos += 1
+                        total_minutes += duration_min
+                        db.update_video_status(video_id, "transcribed", None)
+                    else:
+                        msg = err or "Transcription failed"
+                        db.update_video_status(video_id, "failed", msg)
+                        notes_parts.append(
+                            f"Transcription failed: {video_id} ({msg})")
 
         notes = "; ".join(notes_parts) if notes_parts else "All OK"
 

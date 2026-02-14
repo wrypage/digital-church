@@ -2,11 +2,13 @@ import os
 import json
 import subprocess
 import logging
+import time
 import traceback
 from pathlib import Path
 
 from openai import OpenAI
 from openai import APIStatusError
+from youtube_transcript_api import YouTubeTranscriptApi
 
 from engine.config import OPENAI_API_KEY, TMP_AUDIO_DIR, KEEP_AUDIO_ON_FAIL
 from engine import db
@@ -420,6 +422,130 @@ def transcribe_audio(video_id: str, audio_path: str) -> tuple[bool, str | None]:
                     os.remove(p)
             except Exception:
                 pass
+
+
+def _get_caption_api():
+    import http.cookiejar
+    import requests as req
+
+    cookies_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "cookies.txt")
+    session = req.Session()
+
+    if os.path.exists(cookies_path) and os.path.getsize(cookies_path) > 0:
+        try:
+            cj = http.cookiejar.MozillaCookieJar(cookies_path)
+            cj.load(ignore_discard=True, ignore_expires=True)
+            session.cookies = cj
+            logger.info(f"Loaded {len(cj)} cookies for caption API")
+        except Exception as e:
+            logger.warning(f"Could not load cookies.txt: {e}")
+
+    return YouTubeTranscriptApi(http_client=session)
+
+
+def fetch_captions(video_id: str, max_retries: int = 4) -> tuple[bool, str | None]:
+    ytt = _get_caption_api()
+
+    for attempt in range(max_retries):
+        try:
+            transcript_list = ytt.list(video_id)
+
+            transcript = None
+            language = "en"
+
+            try:
+                transcript = transcript_list.find_manually_created_transcript(["en", "en-US", "en-GB"])
+                language = transcript.language_code
+                logger.info(f"Found manual captions for {video_id} ({language})")
+            except Exception:
+                pass
+
+            if not transcript:
+                try:
+                    transcript = transcript_list.find_generated_transcript(["en", "en-US", "en-GB"])
+                    language = transcript.language_code
+                    logger.info(f"Found auto captions for {video_id} ({language})")
+                except Exception:
+                    pass
+
+            if not transcript:
+                try:
+                    available = list(transcript_list)
+                    if available:
+                        for t in available:
+                            if not t.is_generated:
+                                transcript = t
+                                language = t.language_code
+                                break
+                        if not transcript:
+                            transcript = available[0]
+                            language = transcript.language_code
+                        logger.info(f"Using non-English captions for {video_id} ({language})")
+                except Exception:
+                    pass
+
+            if not transcript:
+                logger.warning(f"No captions available for {video_id}")
+                return False, "No captions available"
+
+            fetched = transcript.fetch()
+
+            segments = []
+            text_parts = []
+
+            for entry in fetched:
+                if hasattr(entry, 'text'):
+                    t = entry.text
+                    start = getattr(entry, 'start', 0.0)
+                    dur = getattr(entry, 'duration', 0.0)
+                elif isinstance(entry, dict):
+                    t = entry.get("text", "")
+                    start = entry.get("start", 0.0)
+                    dur = entry.get("duration", 0.0)
+                else:
+                    continue
+                text_parts.append(t)
+                segments.append({
+                    "start": float(start),
+                    "end": float(start) + float(dur),
+                    "text": t,
+                })
+
+            full_text = " ".join(text_parts).strip()
+            if not full_text:
+                return False, "Captions fetched but empty"
+
+            word_count = len(full_text.split())
+
+            db.insert_transcript(
+                video_id=video_id,
+                transcript_text=full_text,
+                segments_json=json.dumps(segments),
+                language=language,
+                word_count=word_count,
+                model="youtube_captions",
+                provider="youtube_captions",
+            )
+            db.update_video_status(video_id, "transcribed", None)
+            logger.info(f"Captions saved for {video_id}: {word_count} words, lang={language}")
+            return True, None
+
+        except Exception as e:
+            err_str = str(e)
+            if "429" in err_str or "Too Many Requests" in err_str or "IpBlocked" in type(e).__name__:
+                wait = 2 ** (attempt + 1)
+                logger.warning(f"YouTube rate limit/block for captions {video_id}, backing off {wait}s (attempt {attempt+1}/{max_retries})")
+                time.sleep(wait)
+                continue
+
+            if "TranscriptsDisabled" in type(e).__name__ or "NoTranscriptFound" in type(e).__name__:
+                logger.warning(f"No captions for {video_id}: {type(e).__name__}")
+                return False, f"No captions: {type(e).__name__}"
+
+            logger.error(f"Caption fetch failed for {video_id}: {e}")
+            return False, f"Caption fetch error: {err_str}"
+
+    return False, f"Caption fetch failed after {max_retries} retries (rate limited/blocked)"
 
 
 def cleanup_audio(video_id: str, success: bool):
