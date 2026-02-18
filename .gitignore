@@ -8,6 +8,7 @@ wheels/
 
 # Virtual environments
 .venv
+venv/
 .pythonlibs/
 
 # Environment
@@ -16,6 +17,29 @@ wheels/
 
 # Project specific
 db/*.db
+db/*.db-shm
+db/*.db-wal
 tmp_audio/
 cookies.txt
-cookies.txt
+
+# Audio files
+*.mp3
+*.wav
+*.m4a
+*.aac
+*.ogg
+*.flac
+
+# Transcripts and reports
+*_transcription_report_*.txt
+rss_transcription.log
+transcripts/
+exports/
+
+# Caches
+*.cache
+__pycache__/
+.pytest_cache/
+.whisper_cache/
+*.pyc
+*.pyo

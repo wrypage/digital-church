@@ -1,0 +1,751 @@
+# VALIDATED SERMON FEEDS FOR DIGITAL PULPIT
+# Generated: 2026-02-17 20:52
+# Total Feeds Validated: 32
+
+================================================================================
+# SECTION 1: DETAILED ANALYSIS - TOP 10 FEEDS
+# These are the highest-quality feeds based on all criteria
+================================================================================
+
+### 1. First Free Methodist - FFMC ⭐⭐⭐⭐⭐
+
+**Feed ID**: gc7229p
+**URL**: https://podcasts.subsplash.com/gc7229p/podcast.rss
+**Pastor/Speaker**: First Free Methodist Church, Seattle, WA (office@ffmc.org)
+
+**Activity**:
+- Last Updated: 2026-02-16 (1 days ago)
+- Publishing Schedule: Bi-weekly
+- Total Episodes: 199
+
+**Content Profile**:
+- Average Duration: 30 minutes
+- Current Series/Book: Various topics
+- Content Type: General Teaching
+
+**Quality Metrics**:
+- Metadata Completeness: 100%
+- Publishing Consistency: Bi-weekly
+- Criteria Passed: 5/5 ✅
+
+**Description**:
+Join us for messages preached at the First Free Methodist Church of Seattle along with Pastor Craig Brown's weekly Bible Study called "Passages" to prepare for each week's sermon....
+
+**Recent Episode Titles** (Last 3):
+1. Rev. Hany Salah | Sermon, February 15, 2026 - 29 min
+2. "Holding Others Close Enough" | Sermon, February 8, 2026 - 28 min
+3. "Holding Generations Close" | Sermon, February 1, 2026 - 31 min
+
+**Theological Focus**: General Teaching
+
+**Why This Feed Excels**: Very active publishing, Exceptional metadata quality
+
+--------------------------------------------------------------------------------
+
+### 2. Sermons | Word of Grace Bible Church [wgbc.org] ⭐⭐⭐⭐⭐
+
+**Feed ID**: rpzbx9k
+**URL**: https://podcasts.subsplash.com/rpzbx9k/podcast.rss
+**Pastor/Speaker**: Word of Grace Bible Church (webservice@slovo.org)
+
+**Activity**:
+- Last Updated: 2026-02-15 (2 days ago)
+- Publishing Schedule: Weekly
+- Total Episodes: 194
+
+**Content Profile**:
+- Average Duration: 57 minutes
+- Current Series/Book: Various topics
+- Content Type: General Teaching
+
+**Quality Metrics**:
+- Metadata Completeness: 92%
+- Publishing Consistency: Weekly
+- Criteria Passed: 5/5 ✅
+
+**Description**:
+Official Podcast of Word of Grace Bible Church (Battle Ground, WA). Biblical preaching is of tremendous importance in the life of our local church. The reason for this is that the truth of Scripture i...
+
+**Recent Episode Titles** (Last 3):
+1. Charm Is Deceitful, and Beauty Is Vain - 58 min
+2. The Successful Servant - 62 min
+3. The Beauty of the Good News - 61 min
+
+**Theological Focus**: General Teaching
+
+**Why This Feed Excels**: Very active publishing, Deep, long-form teaching, Consistent weekly schedule
+
+--------------------------------------------------------------------------------
+
+### 3. Emmanuel Church ⭐⭐⭐⭐⭐
+
+**Feed ID**: ykw82ct
+**URL**: https://podcasts.subsplash.com/ykw82ct/podcast.rss
+**Pastor/Speaker**: Emmanuel Church (pete@emmanuelchurch.live)
+
+**Activity**:
+- Last Updated: 2026-02-15 (2 days ago)
+- Publishing Schedule: Weekly
+- Total Episodes: 386
+
+**Content Profile**:
+- Average Duration: 50 minutes
+- Current Series/Book: Various topics
+- Content Type: General Teaching
+
+**Quality Metrics**:
+- Metadata Completeness: 100%
+- Publishing Consistency: Weekly
+- Criteria Passed: 5/5 ✅
+
+**Description**:
+Welcome to Emmanuel Church's Facebook page! 
+We are a Christian community located in Salisbury, Maryland, dedicated to engaging everyone, everywhere through connection with Christ and community. 
+Join...
+
+**Recent Episode Titles** (Last 3):
+1. RLW - Matters of the Heart - 58 min
+2. RLW - The Keys to the Kingdom - 49 min
+3. RLW - Tracking in the Dirt - 51 min
+
+**Theological Focus**: General Teaching
+
+**Why This Feed Excels**: Very active publishing, Deep, long-form teaching, Exceptional metadata quality
+
+--------------------------------------------------------------------------------
+
+### 4. Touching Lives with Dr. James Merritt Audio Podcast ⭐⭐⭐⭐⭐
+
+**Feed ID**: hhwvrbx
+**URL**: https://podcasts.subsplash.com/hhwvrbx/podcast.rss
+**Pastor/Speaker**: Dr. James Merritt (info@touchinglives.org)
+
+**Activity**:
+- Last Updated: 2026-02-15 (2 days ago)
+- Publishing Schedule: Weekly
+- Total Episodes: 199
+
+**Content Profile**:
+- Average Duration: 46 minutes
+- Current Series/Book: Various topics
+- Content Type: General Teaching
+
+**Quality Metrics**:
+- Metadata Completeness: 100%
+- Publishing Consistency: Weekly
+- Criteria Passed: 5/5 ✅
+
+**Description**:
+Under the leadership and dynamic preaching of Dr. James Merritt, Touching Lives exists to touch the lives of the lost and enrich the faith of the found. Our goal is to present the eternal, never-chang...
+
+**Recent Episode Titles** (Last 3):
+1. Bring the Umbrella - 46 min
+2. Never Doubt God - 46 min
+3. Life Begins Here - 50 min
+
+**Theological Focus**: General Teaching
+
+**Why This Feed Excels**: Very active publishing, Deep, long-form teaching, Consistent weekly schedule, Exceptional metadata quality
+
+--------------------------------------------------------------------------------
+
+### 5. First Baptist Church Indian Trail ⭐⭐⭐⭐⭐
+
+**Feed ID**: 8ab0cb3
+**URL**: https://podcasts.subsplash.com/8ab0cb3/podcast.rss
+**Pastor/Speaker**: First Baptist Church Indian Trail (communications@fbcit.org)
+
+**Activity**:
+- Last Updated: 2026-02-15 (2 days ago)
+- Publishing Schedule: Weekly
+- Total Episodes: 194
+
+**Content Profile**:
+- Average Duration: 43 minutes
+- Current Series/Book: When
+- Content Type: General Teaching
+
+**Quality Metrics**:
+- Metadata Completeness: 80%
+- Publishing Consistency: Weekly
+- Criteria Passed: 5/5 ✅
+
+**Description**:
+Located in Indian Trail, NC, our mission is to love and lead everyone we meet into an everyday walk with Christ. We believe our mission is best accomplished through Focused Outreach, Biblical Truth, C...
+
+**Recent Episode Titles** (Last 3):
+1. When The Temperature Rises - 40 min
+2. Achieving The Unachievable - 39 min
+3. When Challenged In Your Faith - 57 min
+
+**Theological Focus**: General Teaching
+
+**Why This Feed Excels**: Very active publishing, Consistent weekly schedule
+
+--------------------------------------------------------------------------------
+
+### 6. Cottonwood Church ⭐⭐⭐⭐⭐
+
+**Feed ID**: dmpbhqc
+**URL**: https://podcasts.subsplash.com/dmpbhqc/podcast.rss
+**Pastor/Speaker**: Cottonwood Church (media@cottonwood.org)
+
+**Activity**:
+- Last Updated: 2026-02-15 (2 days ago)
+- Publishing Schedule: Weekly
+- Total Episodes: 200
+
+**Content Profile**:
+- Average Duration: 42 minutes
+- Current Series/Book: Various topics
+- Content Type: New Testament Exposition
+
+**Quality Metrics**:
+- Metadata Completeness: 100%
+- Publishing Consistency: Weekly
+- Criteria Passed: 5/5 ✅
+
+**Description**:
+Cottonwood is a non-denominational Christian church for all generations with a mission of Bringing a Living Jesus to a Dying World. Located in Los Alamitos in Orange County, California, Cottonwood was...
+
+**Recent Episode Titles** (Last 3):
+1. Worthless Worship & A Woman With Great Faith | Bayless Conley - 43 min
+2. Living in God’s Abundance | Joel Holm - 36 min
+3. Jesus, Master of Three Realms (Mark Chapter 5) | Bayless Conley - 41 min
+
+**Theological Focus**: New Testament Exposition
+
+**Why This Feed Excels**: Very active publishing, Consistent weekly schedule, Exceptional metadata quality
+
+--------------------------------------------------------------------------------
+
+### 7. Lifepoint Church Podcast | Pastor Jeff Kapusta ⭐⭐⭐⭐⭐
+
+**Feed ID**: ddf7ea9
+**URL**: https://podcasts.subsplash.com/ddf7ea9/podcast.rss
+**Pastor/Speaker**: Lifepoint Church (jeff@lifepointnow.com)
+
+**Activity**:
+- Last Updated: 2026-02-15 (2 days ago)
+- Publishing Schedule: Weekly
+- Total Episodes: 505
+
+**Content Profile**:
+- Average Duration: 39 minutes
+- Current Series/Book: Various topics
+- Content Type: General Teaching
+
+**Quality Metrics**:
+- Metadata Completeness: 80%
+- Publishing Consistency: Weekly
+- Criteria Passed: 5/5 ✅
+
+**Description**:
+Weekly messages from Lifepoint Church in Wilmington, North Carolina. Lifepoint exists to point people to life in Jesus. For more information visit http://lifepointnow.com...
+
+**Recent Episode Titles** (Last 3):
+1. Obedience Brings Blessing - 36 min
+2. Celebrating 20 Years of God's Faithfulness - 34 min
+3. What Does The Bible Say About Fasting? - 46 min
+
+**Theological Focus**: General Teaching
+
+**Why This Feed Excels**: Very active publishing
+
+--------------------------------------------------------------------------------
+
+### 8. Proclamation Church - Littleton ⭐⭐⭐⭐⭐
+
+**Feed ID**: j7pxdg9
+**URL**: https://podcasts.subsplash.com/j7pxdg9/podcast.rss
+**Pastor/Speaker**: Proclamation Church (info@proclamationlittleton.org)
+
+**Activity**:
+- Last Updated: 2026-02-15 (2 days ago)
+- Publishing Schedule: Weekly
+- Total Episodes: 23
+
+**Content Profile**:
+- Average Duration: 38 minutes
+- Current Series/Book: Jesus
+- Content Type: New Testament Exposition
+
+**Quality Metrics**:
+- Metadata Completeness: 84%
+- Publishing Consistency: Weekly
+- Criteria Passed: 5/5 ✅
+
+**Description**:
+The following is audio from Proclamation Church in Littleton, Colorado. To learn more about Proclamation Church and to plan your visit, please visit our website at proclamationlittleton.org....
+
+**Recent Episode Titles** (Last 3):
+1. Jesus is...Teacher, The Gospel of Luke - Sermon - Dan Iten 02.15.26 - 37 min
+2. Jesus is...Teacher, The Gospel of Luke - Sermon - Logan Talamas 02.08.26 - 36 min
+3. Jesus is...Lord of the Sabbath, The Gospel of Luke - Sermon - Logan Talamas 02.01.26 - 40 min
+
+**Theological Focus**: New Testament Exposition
+
+**Why This Feed Excels**: Very active publishing, Consistent weekly schedule
+
+--------------------------------------------------------------------------------
+
+### 9. Proclamation Church - Littleton ⭐⭐⭐⭐⭐
+
+**Feed ID**: j7pxdg9
+**URL**: https://podcasts.subsplash.com/j7pxdg9/podcast.rss
+**Pastor/Speaker**: Proclamation Church (info@proclamationlittleton.org)
+
+**Activity**:
+- Last Updated: 2026-02-15 (2 days ago)
+- Publishing Schedule: Weekly
+- Total Episodes: 23
+
+**Content Profile**:
+- Average Duration: 38 minutes
+- Current Series/Book: Jesus
+- Content Type: New Testament Exposition
+
+**Quality Metrics**:
+- Metadata Completeness: 84%
+- Publishing Consistency: Weekly
+- Criteria Passed: 5/5 ✅
+
+**Description**:
+The following is audio from Proclamation Church in Littleton, Colorado. To learn more about Proclamation Church and to plan your visit, please visit our website at proclamationlittleton.org....
+
+**Recent Episode Titles** (Last 3):
+1. Jesus is...Teacher, The Gospel of Luke - Sermon - Dan Iten 02.15.26 - 37 min
+2. Jesus is...Teacher, The Gospel of Luke - Sermon - Logan Talamas 02.08.26 - 36 min
+3. Jesus is...Lord of the Sabbath, The Gospel of Luke - Sermon - Logan Talamas 02.01.26 - 40 min
+
+**Theological Focus**: New Testament Exposition
+
+**Why This Feed Excels**: Very active publishing, Consistent weekly schedule
+
+--------------------------------------------------------------------------------
+
+### 10. CU Church Sermon Podcast ⭐⭐⭐⭐⭐
+
+**Feed ID**: 7p4dfwd
+**URL**: https://podcasts.subsplash.com/7p4dfwd/podcast.rss
+**Pastor/Speaker**: CU Church (noah@cuchurch.com)
+
+**Activity**:
+- Last Updated: 2026-02-15 (2 days ago)
+- Publishing Schedule: Weekly
+- Total Episodes: 175
+
+**Content Profile**:
+- Average Duration: 36 minutes
+- Current Series/Book: Mark 2
+- Content Type: New Testament Exposition
+
+**Quality Metrics**:
+- Metadata Completeness: 80%
+- Publishing Consistency: Weekly
+- Criteria Passed: 5/5 ✅
+
+**Description**:
+Welcome to the weekly audio podcast for CU Church in Champaign/Urbana, IL where our mission is to "Love God, Love People". Visit us at cuchurch.com....
+
+**Recent Episode Titles** (Last 3):
+1. Mark 2:1-12 - 32 min
+2. Mark 1:35-45 - 35 min
+3. Mark 1:21-34 - 38 min
+
+**Theological Focus**: New Testament Exposition
+
+**Why This Feed Excels**: Very active publishing
+
+--------------------------------------------------------------------------------
+
+
+================================================================================
+# SECTION 2: COMPREHENSIVE FEED LISTING
+# All feeds organized by tier
+================================================================================
+
+## TIER 1: EXCELLENT (All 5 Criteria Met)
+
+Feed ID: b6f8617
+URL: https://podcasts.subsplash.com/b6f8617/podcast.rss
+Church: The City Church
+Pastor: The City Church (info@thecitychurch.org.uk)
+Last Updated: 2026-02-15 (2 days ago)
+Avg Duration: 32 minutes
+Publishing: Bi-weekly
+Episodes: 825
+Description: The sermon library of The City Church - a church in Canterbury, UK, inviting everyone to encounter Jesus.
+https://www.thecitychurch.org.uk
+Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: j7pxdg9
+URL: https://podcasts.subsplash.com/j7pxdg9/podcast.rss
+Church: Proclamation Church - Littleton
+Pastor: Proclamation Church (info@proclamationlittleton.org)
+Last Updated: 2026-02-15 (2 days ago)
+Avg Duration: 38 minutes
+Publishing: Weekly
+Episodes: 23
+Description: The following is audio from Proclamation Church in Littleton, Colorado. To learn more about Proclamation Church and to plan your visit, please visit our website at proclamationlittleton.org.
+Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: j7pxdg9
+URL: https://podcasts.subsplash.com/j7pxdg9/podcast.rss
+Church: Proclamation Church - Littleton
+Pastor: Proclamation Church (info@proclamationlittleton.org)
+Last Updated: 2026-02-15 (2 days ago)
+Avg Duration: 38 minutes
+Publishing: Weekly
+Episodes: 23
+Description: The following is audio from Proclamation Church in Littleton, Colorado. To learn more about Proclamation Church and to plan your visit, please visit our website at proclamationlittleton.org.
+Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: dmpbhqc
+URL: https://podcasts.subsplash.com/dmpbhqc/podcast.rss
+Church: Cottonwood Church
+Pastor: Cottonwood Church (media@cottonwood.org)
+Last Updated: 2026-02-15 (2 days ago)
+Avg Duration: 42 minutes
+Publishing: Weekly
+Episodes: 200
+Description: Cottonwood is a non-denominational Christian church for all generations with a mission of Bringing a Living Jesus to a Dying World. Located in Los Alamitos in Orange County, California, Cottonwood was
+Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: ykw82ct
+URL: https://podcasts.subsplash.com/ykw82ct/podcast.rss
+Church: Emmanuel Church
+Pastor: Emmanuel Church (pete@emmanuelchurch.live)
+Last Updated: 2026-02-15 (2 days ago)
+Avg Duration: 50 minutes
+Publishing: Weekly
+Episodes: 386
+Description: Welcome to Emmanuel Church's Facebook page! 
+We are a Christian community located in Salisbury, Maryland, dedicated to engaging everyone, everywhere through connection with Christ and community. 
+Join
+Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: hfvyk22
+URL: https://podcasts.subsplash.com/hfvyk22/podcast.rss
+Church: Word of Life Church Podcast
+Pastor: Pastor Brian Zahnd (accounts@wolc.com)
+Last Updated: 2026-02-15 (2 days ago)
+Avg Duration: 31 minutes
+Publishing: Weekly
+Episodes: 825
+Description: Word of Life Church in St. Joseph, Missouri is a thriving non-denominational church led by Pastor Brian & Peri Zahnd. We are followers of Jesus seeking to be an authentic expression of the kingdom of 
+Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: 8ab0cb3
+URL: https://podcasts.subsplash.com/8ab0cb3/podcast.rss
+Church: First Baptist Church Indian Trail
+Pastor: First Baptist Church Indian Trail (communications@fbcit.org)
+Last Updated: 2026-02-15 (2 days ago)
+Avg Duration: 43 minutes
+Publishing: Weekly
+Episodes: 194
+Description: Located in Indian Trail, NC, our mission is to love and lead everyone we meet into an everyday walk with Christ. We believe our mission is best accomplished through Focused Outreach, Biblical Truth, C
+Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: rpzbx9k
+URL: https://podcasts.subsplash.com/rpzbx9k/podcast.rss
+Church: Sermons | Word of Grace Bible Church [wgbc.org]
+Pastor: Word of Grace Bible Church (webservice@slovo.org)
+Last Updated: 2026-02-15 (2 days ago)
+Avg Duration: 57 minutes
+Publishing: Weekly
+Episodes: 194
+Description: Official Podcast of Word of Grace Bible Church (Battle Ground, WA). Biblical preaching is of tremendous importance in the life of our local church. The reason for this is that the truth of Scripture i
+Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: gc7229p
+URL: https://podcasts.subsplash.com/gc7229p/podcast.rss
+Church: First Free Methodist - FFMC
+Pastor: First Free Methodist Church, Seattle, WA (office@ffmc.org)
+Last Updated: 2026-02-16 (1 days ago)
+Avg Duration: 30 minutes
+Publishing: Bi-weekly
+Episodes: 199
+Description: Join us for messages preached at the First Free Methodist Church of Seattle along with Pastor Craig Brown's weekly Bible Study called "Passages" to prepare for each week's sermon.
+Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: 63c1b64
+URL: https://podcasts.subsplash.com/63c1b64/podcast.rss
+Church: LIFEGATE DENVER SERMONS
+Pastor: LIFEGATE DENVER (info@lifegatedenver.com)
+Last Updated: 2026-02-15 (2 days ago)
+Avg Duration: 32 minutes
+Publishing: Weekly
+Episodes: 565
+Description: Welcome to the LIFEGATE Denver podcast! We are a church led by Nirup Alphonse. Based in Denver, Colorado, we as a church exist to see people made alive in Christ. For more information, visit lifegated
+Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: ddf7ea9
+URL: https://podcasts.subsplash.com/ddf7ea9/podcast.rss
+Church: Lifepoint Church Podcast | Pastor Jeff Kapusta
+Pastor: Lifepoint Church (jeff@lifepointnow.com)
+Last Updated: 2026-02-15 (2 days ago)
+Avg Duration: 39 minutes
+Publishing: Weekly
+Episodes: 505
+Description: Weekly messages from Lifepoint Church in Wilmington, North Carolina. Lifepoint exists to point people to life in Jesus. For more information visit http://lifepointnow.com
+Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: 7p4dfwd
+URL: https://podcasts.subsplash.com/7p4dfwd/podcast.rss
+Church: CU Church Sermon Podcast
+Pastor: CU Church (noah@cuchurch.com)
+Last Updated: 2026-02-15 (2 days ago)
+Avg Duration: 36 minutes
+Publishing: Weekly
+Episodes: 175
+Description: Welcome to the weekly audio podcast for CU Church in Champaign/Urbana, IL where our mission is to "Love God, Love People". Visit us at cuchurch.com.
+Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: hhwvrbx
+URL: https://podcasts.subsplash.com/hhwvrbx/podcast.rss
+Church: Touching Lives with Dr. James Merritt Audio Podcast
+Pastor: Dr. James Merritt (info@touchinglives.org)
+Last Updated: 2026-02-15 (2 days ago)
+Avg Duration: 46 minutes
+Publishing: Weekly
+Episodes: 199
+Description: Under the leadership and dynamic preaching of Dr. James Merritt, Touching Lives exists to touch the lives of the lost and enrich the faith of the found. Our goal is to present the eternal, never-chang
+Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: y7htx7p
+URL: https://podcasts.subsplash.com/y7htx7p/podcast.rss
+Church: Rock Creek Church with Pastor Sam Hall
+Pastor: Pastor Sam Hall (pastorsamhall@outlook.com)
+Last Updated: 2026-02-15 (2 days ago)
+Avg Duration: 31 minutes
+Publishing: Bi-weekly
+Episodes: 111
+Description: Rock Creek Church with Pastor Sam Hall.
+Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:✅
+---
+
+## TIER 2: GOOD (4 of 5 Criteria Met)
+
+Feed ID: t9g8svy
+URL: https://podcasts.subsplash.com/t9g8svy/podcast.rss
+Church: Peninsula Grace Sermons
+Pastor: Peninsula Grace Church (justin@peninsulagrace.org)
+Last Updated: 2025-12-21 (58 days ago)
+Avg Duration: 38 minutes
+Publishing: Weekly
+Episodes: 41
+Description: Weekly sermons from Peninsula Grace Church in Soldotna, AK.
+Criteria: active:❌ longform:✅ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: p8rfd4p
+URL: https://podcasts.subsplash.com/p8rfd4p/podcast.rss
+Church: Liberty Church | Cleveland, Texas
+Pastor: Liberty Church (media@lccleveland.com)
+Last Updated: 2025-12-28 (51 days ago)
+Avg Duration: 34 minutes
+Publishing: Bi-weekly
+Episodes: 314
+Description: Welcome to Liberty Church in Cleveland, Texas. We are a church that believes in Jesus! A church with a vision to see people Love God, Love People and see their lives changed when they actively follow 
+Criteria: active:❌ longform:✅ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: wkxjq28
+URL: https://podcasts.subsplash.com/wkxjq28/podcast.rss
+Church: Living Faith Christian Church Sermons
+Pastor: Living Faith Christian Church (info@livingfaithri.org)
+Last Updated: 2026-02-08 (9 days ago)
+Avg Duration: 44 minutes
+Publishing: Weekly
+Episodes: 198
+Description: Living Faith Christian Church is a community of Christ followers, committed to loving God and loving people - in our neighborhoods and in the nations.
+
+This podcast features weekly sermons from Pastor
+Criteria: active:❌ longform:✅ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: 339gh4r
+URL: https://podcasts.subsplash.com/339gh4r/podcast.rss
+Church: Connect with Skip Heitzig Podcast
+Pastor: Skip Heitzig (webservants@calvaryabq.org)
+Last Updated: 2026-02-17 (0 days ago)
+Avg Duration: 26 minutes
+Publishing: Daily
+Episodes: 1213
+Description: From topical studies to verse-by-verse exposition through the entire Bible, Connect with Skip Heitzig presents the Word of God in a format that is contemporary, relaxed, and relevant each day.
+Criteria: active:✅ longform:❌ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: y7nqvh3
+URL: https://podcasts.subsplash.com/y7nqvh3/podcast.rss
+Church: Marked by Grace
+Pastor: Heath Lambert (stuartm@fbcjax.com)
+Last Updated: 2026-02-16 (1 days ago)
+Avg Duration: 9 minutes
+Publishing: Weekly
+Episodes: 215
+Description: Marked by Grace is podcast ministry from Pastor Heath Lambert where he weekly applies the grace of Jesus to all of life.
+Criteria: active:✅ longform:❌ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: pcxmsbf
+URL: https://podcasts.subsplash.com/pcxmsbf/podcast.rss
+Church: Real Life Radio with Jack Hibbs
+Pastor: Real Life Ministry (mail@jackhibbs.com)
+Last Updated: 2026-02-17 (0 days ago)
+Publishing: Daily
+Episodes: 123
+Description: Pastor Jack's desire is to see your relationship with Christ deepen and your effectiveness for His purposes maximized. His bold preaching will encourage and challenge you to walk with Jesus.
+Criteria: active:✅ longform:❓ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: jzvzbyc
+URL: https://podcasts.subsplash.com/jzvzbyc/podcast.rss
+Church: Peninsula Community Chapel
+Pastor: Peninsula Community Chapel (pgrimes@pccyorktown.com)
+Last Updated: 2026-02-15 (2 days ago)
+Avg Duration: 37 minutes
+Publishing: Weekly
+Episodes: 180
+Description: Peninsula Community Chapel is a place where you can feel at home, grow in your relationship with Christ, and find opportunities to serve both locally and globally. Join us for worship and fellowship o
+Criteria: active:✅ longform:✅ theological:❌ metadata:✅ consistent:✅
+---
+
+Feed ID: 9dkr3zd
+URL: https://podcasts.subsplash.com/9dkr3zd/podcast.rss
+Church: The Expositor's Podcast with Dr. Joel Dover
+Pastor: Calvary Chapel Newnan (joel@calvarynewnan.org)
+Last Updated: 2026-02-08 (9 days ago)
+Avg Duration: 47 minutes
+Publishing: Weekly
+Episodes: 427
+Description: Verse by Verse Expository teaching with Pastor Joel Dover, Pastor at Calvary Chapel Church in Newnan GA.
+Criteria: active:❌ longform:✅ theological:✅ metadata:✅ consistent:✅
+---
+
+## TIER 3: REVIEW NEEDED (3 of 5 Criteria Met)
+
+Feed ID: j5x4kzq
+URL: https://podcasts.subsplash.com/j5x4kzq/podcast.rss
+Church: Victory Church
+Pastor: Victory Church of Morganton NC (info@victorync.life)
+Last Updated: 2024-03-03 (716 days ago)
+Avg Duration: 87 minutes
+Publishing: Bi-weekly
+Episodes: 164
+Description: Welcome to Victory Church! Looking for a place to belong? A place to start over? At Victory Church we are passionate about relationships – real, deep, and genuine. The kind of friendships that allow y
+Criteria: active:❌ longform:❌ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: 7e27240
+URL: https://podcasts.subsplash.com/7e27240/podcast.rss
+Church: Renovation Church
+Pastor: Pastor Léonce B. Crump Jr. (missionatl@renovationchurch.com)
+Last Updated: 2020-10-25 (1941 days ago)
+Avg Duration: 41 minutes
+Publishing: Every 47 days
+Episodes: 424
+Description: Renovation Church is a Spirit-Led, Expectant, Jesus-Centered, Authentic, Socially Conscious, Generous, Transcultural, and Intentional community in Atlanta, GA.
+Criteria: active:❌ longform:✅ theological:✅ metadata:✅ consistent:❌
+---
+
+Feed ID: xbznkbv
+URL: https://podcasts.subsplash.com/xbznkbv/podcast.rss
+Church: Soma Spokane Sermons
+Pastor: Soma Spokane (info@somaspokane.org)
+Last Updated: 2025-12-21 (58 days ago)
+Avg Duration: 41 minutes
+Publishing: Weekly
+Episodes: 573
+Description: Our vision is Gospel Saturation: that every person in our region would have a regular encounter with the good news of Jesus Christ in both word and deed.
+Criteria: active:❌ longform:✅ theological:⚠️ metadata:✅ consistent:✅
+---
+
+Feed ID: sm67hqk
+URL: https://podcasts.subsplash.com/sm67hqk/podcast.rss
+Church: THE PENTECOSTALS OF WEST HOUSTON PODCAST
+Pastor: Bishop Scott T. Lewis (kirk@powh.org)
+Last Updated: 2026-01-11 (37 days ago)
+Avg Duration: 89 minutes
+Publishing: Weekly
+Episodes: 102
+Description: We are a multicultural Pentecostal Church located on the west side of Houston, TX. Please enjoy our latest service.
+Criteria: active:❌ longform:❌ theological:✅ metadata:✅ consistent:✅
+---
+
+Feed ID: 9ndhytj
+URL: https://podcasts.subsplash.com/9ndhytj/podcast.rss
+Church: HOF Arlington
+Pastor: Household of Faith Arlington (admin@hofarlington.org)
+Last Updated: 2023-11-08 (832 days ago)
+Avg Duration: 42 minutes
+Publishing: Weekly
+Episodes: 138
+Description: Welcome to Household of Faith Arlington where we are expanding the family of Christ by Loving God and Loving People.
+Criteria: active:❌ longform:✅ theological:❌ metadata:✅ consistent:✅
+---
+
+Feed ID: 67x9cqm
+URL: https://podcasts.subsplash.com/67x9cqm/podcast.rss
+Church: High Pointe Baptist Church Sermons
+Pastor: HPBC
+Last Updated: 2026-02-15 (2 days ago)
+Publishing: Weekly
+Episodes: 300
+Description: <p>We praise God for your desire to hear the Word of God preached!</p>
+<p></p>
+<p>High Pointe Baptist Church exists to glorify God by making wholehearted followers of Jesus Christ among all peoples. W
+Criteria: active:✅ longform:❓ theological:✅ metadata:❌ consistent:✅
+---
+
+Feed ID: yx65bqg
+URL: https://podcasts.subsplash.com/yx65bqg/podcast.rss
+Church: Sovereign Grace Church of Louisville Sermons
+Pastor: Sovereign Grace Church of Louisville (info@sgclouisville.org)
+Last Updated: 2025-12-21 (58 days ago)
+Avg Duration: 47 minutes
+Publishing: Every 22 days
+Episodes: 690
+Description: Sermons from Sovereign Grace Church of Louisville in Louisville, KY.
+Criteria: active:❌ longform:✅ theological:✅ metadata:✅ consistent:❌
+---
+
+## REJECTED FEEDS
+
+Feed ID: ym7btyw
+Reason: Failed quality criteria
+---
+
+Feed ID: dk27w4q
+Reason: 403 Client Error: Forbidden for url: https://feeds.buzzsprout.com/2218302.rss
+---
+
+Feed ID: nf62p4g
+Reason: Failed quality criteria
+---
+
+## SUMMARY STATISTICS
+
+Total Feeds Discovered: 32
+Feeds Analyzed: 32
+Tier 1 (Excellent): 14
+Tier 2 (Good): 8
+Tier 3 (Review): 7
+Rejected: 3
+
+Average Duration: 42 minutes
+Most Common Publishing Schedule: Bi-weekly

@@ -10,8 +10,19 @@ logger = logging.getLogger("digital_pulpit")
 
 
 def normalize_text(text):
+    """
+    Normalize text for theological keyword matching.
+    Handles possessives and punctuation properly.
+    """
+    if not text:
+        return ""
+
     text = text.lower()
+    # Remove possessives before word boundaries (God's → God)
+    text = re.sub(r"'s\b", "", text)
+    # Remove other punctuation
     text = re.sub(r"[^\w\s]", " ", text)
+    # Collapse whitespace
     text = re.sub(r"\s+", " ", text).strip()
     return text
 
@@ -41,6 +52,10 @@ def calculate_axis_score(category_scores, positive_cat, negative_cat):
 
 
 def analyze_transcript(video_id):
+    """
+    Analyze a transcript for theological content and compute density/axis scores.
+    Returns True on success, False on failure.
+    """
     config = load_theology_config()
     if not config:
         logger.error("Theology config not loaded")
@@ -51,8 +66,20 @@ def analyze_transcript(video_id):
         logger.warning(f"No transcript for {video_id}")
         return False
 
-    full_text = transcript["full_text"]
-    word_count = transcript["word_count"]
+    # Safety checks for transcript data
+    full_text = transcript.get("full_text", "")
+    if not full_text or not full_text.strip():
+        logger.warning(f"Empty transcript text for {video_id}")
+        return False
+
+    # Get word count from transcript, or calculate as fallback
+    word_count = transcript.get("word_count", 0)
+    if word_count == 0:
+        word_count = len(full_text.split())
+        if word_count == 0:
+            logger.warning(f"Zero word count for {video_id}")
+            return False
+
     normalized = normalize_text(full_text)
 
     categories = config.get("theological_categories", {})
@@ -107,17 +134,23 @@ def compute_zscore(values):
 
 
 def generate_weekly_drift():
+    """
+    Generate weekly drift reports for each channel.
+    Computes z-scores for theological axes to detect drift over time.
+    """
     config = load_theology_config()
     if not config:
+        logger.error("Theology config not loaded")
         return False
 
     today = datetime.utcnow().date()
     week_start = today - timedelta(days=today.weekday() + 7)
     week_end = week_start + timedelta(days=6)
 
-    results = db.get_all_brain_results()
+    # FIX: Get only results from this specific week, not all results ever
+    results = db.get_brain_results_for_week(week_start, week_end)
     if not results:
-        logger.warning("No brain results to compute drift")
+        logger.warning(f"No brain results for week {week_start} to {week_end}")
         return False
 
     channels = {}
@@ -131,11 +164,17 @@ def generate_weekly_drift():
         if len(ch_results) < 1:
             continue
 
-        densities = [r["theological_density"] for r in ch_results]
-        grace_scores = [r["grace_vs_effort"] for r in ch_results]
-        hope_scores = [r["hope_vs_fear"] for r in ch_results]
-        doctrine_scores = [r["doctrine_vs_experience"] for r in ch_results]
-        scripture_scores = [r["scripture_vs_story"] for r in ch_results]
+        # Extract scores with safety checks
+        densities = [r.get("theological_density", 0.0) for r in ch_results if r.get("theological_density") is not None]
+        grace_scores = [r.get("grace_vs_effort", 0.0) for r in ch_results if r.get("grace_vs_effort") is not None]
+        hope_scores = [r.get("hope_vs_fear", 0.0) for r in ch_results if r.get("hope_vs_fear") is not None]
+        doctrine_scores = [r.get("doctrine_vs_experience", 0.0) for r in ch_results if r.get("doctrine_vs_experience") is not None]
+        scripture_scores = [r.get("scripture_vs_story", 0.0) for r in ch_results if r.get("scripture_vs_story") is not None]
+
+        # Skip if we don't have enough data
+        if not densities or not grace_scores:
+            logger.warning(f"Insufficient data for channel {channel_id} in week {week_start}")
+            continue
 
         grace_z = compute_zscore(grace_scores)
         hope_z = compute_zscore(hope_scores)
