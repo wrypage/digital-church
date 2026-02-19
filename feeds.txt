@@ -34,3 +34,13 @@ https://podcasts.subsplash.com/f67c286/podcast.rss
 https://podcasts.subsplash.com/fx352s8/podcast.rss
 https://podcasts.subsplash.com/y86qz9b/podcast.rss
 https://podcasts.subsplash.com/z7qw8vq/podcast.rss
+
+# Apple Podcast feeds (extracted via iTunes Lookup API)
+https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/cbb40a38-726f-4243-a86e-b0ed01477640/ff9164b2-aa64-410d-9ee1-b0ed0147765c/podcast.rss
+https://feeds.simplecast.com/mnjhoO1E
+http://feeds.thevillagechurch.net/sermons
+https://api.sardius.media/feeds/8d5F99Ed22aB004/1968826fF8/rss
+https://feeds.acast.com/public/shows/6845b19da13d3373731451b5
+https://podcasts.subsplash.com/yfdp58n/podcast.rss
+https://anchor.fm/s/efdfe518/podcast/rss
+https://podcasts.subsplash.com/5wfy676/podcast.rss
