@@ -32,6 +32,38 @@
     "story": {
       "keywords": ["story", "testimony", "personal", "journey", "life", "happened", "remember", "told me", "my friend", "illustration", "example", "imagine", "picture this", "let me tell you"],
       "weight": 1.0
+    },
+    "immanence": {
+      "keywords": ["immanent", "near", "with us", "among us", "present", "dwelling", "indwelling", "abide", "remain", "close", "intimate", "Emmanuel", "God with us"],
+      "weight": 1.0
+    },
+    "transcendence": {
+      "keywords": ["transcendent", "holy", "majesty", "beyond", "otherness", "above", "exalted", "sovereign", "almighty", "infinite", "eternal", "separate", "most high"],
+      "weight": 1.0
+    },
+    "prophetic": {
+      "keywords": ["prophetic", "justice", "declare", "proclaim", "thus says", "warning", "repent", "righteousness", "social justice", "oppression", "liberation"],
+      "weight": 1.0
+    },
+    "pastoral": {
+      "keywords": ["pastoral", "shepherd", "care", "comfort", "nurture", "tend", "guide", "gentle", "compassion", "heal", "wounded", "hurting"],
+      "weight": 1.0
+    },
+    "didactic": {
+      "keywords": ["teach", "teaching", "instruction", "learn", "understand", "explain", "educate", "lesson", "principle", "truth", "knowledge", "study"],
+      "weight": 1.0
+    },
+    "christ": {
+      "keywords": ["Christ", "Jesus", "Son", "Savior", "Lord", "Messiah", "Lamb", "King Jesus", "our Lord", "the Son"],
+      "weight": 1.0
+    },
+    "father": {
+      "keywords": ["Father", "God the Father", "Heavenly Father", "Abba", "Creator", "Yahweh", "Jehovah", "the Father"],
+      "weight": 1.0
+    },
+    "spirit": {
+      "keywords": ["Holy Spirit", "Spirit of God", "Comforter", "Paraclete", "Spirit", "pneuma", "breath of God", "the Spirit"],
+      "weight": 1.0
     }
   },
   "drift_axes": {

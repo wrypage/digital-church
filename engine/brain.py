@@ -291,6 +291,50 @@ def theological_density(category_density: Dict[str, float]) -> float:
     return float(sum(category_density.values()))
 
 
+def compute_signals(category_density: Dict[str, float]) -> Dict:
+    """
+    Compute Brain v2.1 signals from category densities.
+    Returns dict with:
+    - immanence_vs_transcendence: axis score [-1, 1]
+    - mode_distribution: {prophetic, pastoral, didactic} proportions
+    - trinity_distribution: {christ, father, spirit} proportions
+    """
+    eps = 1e-9
+
+    # 1) immanence_vs_transcendence axis (same formula as other axes)
+    imm = float(category_density.get("immanence", 0.0))
+    trans = float(category_density.get("transcendence", 0.0))
+    imm_vs_trans = (imm - trans) / (imm + trans + eps)
+
+    # 2) mode_distribution (prophetic/pastoral/didactic)
+    prophetic = float(category_density.get("prophetic", 0.0))
+    pastoral = float(category_density.get("pastoral", 0.0))
+    didactic = float(category_density.get("didactic", 0.0))
+    mode_total = prophetic + pastoral + didactic + eps
+    mode_dist = {
+        "prophetic": prophetic / mode_total,
+        "pastoral": pastoral / mode_total,
+        "didactic": didactic / mode_total,
+    }
+
+    # 3) trinity_distribution (christ/father/spirit)
+    christ = float(category_density.get("christ", 0.0))
+    father = float(category_density.get("father", 0.0))
+    spirit = float(category_density.get("spirit", 0.0))
+    trinity_total = christ + father + spirit + eps
+    trinity_dist = {
+        "christ": christ / trinity_total,
+        "father": father / trinity_total,
+        "spirit": spirit / trinity_total,
+    }
+
+    return {
+        "immanence_vs_transcendence": float(imm_vs_trans),
+        "mode_distribution": mode_dist,
+        "trinity_distribution": trinity_dist,
+    }
+
+
 # -----------------------------
 # Baseline + drift
 # -----------------------------
@@ -570,6 +614,9 @@ def analyze_one(
     axis_scores = score_axes(cat_density, cfg)
     theo_density = theological_density(cat_density)
 
+    # 1b) Brain v2.1 signals
+    signals = compute_signals(cat_density)
+
     # 2) scripture refs (basic)
     scripture_refs = extract_scripture_refs(full_text)
 
@@ -620,6 +667,29 @@ def analyze_one(
         snips = find_keyword_snippets(full_text, kws, MAX_EVIDENCE_PER_CATEGORY)
         write_evidence(conn, video_id, channel_id, None, cat, snips)
 
+    # 5b) evidence snippets for signal categories
+    # immanence_vs_transcendence axis
+    imm_vs_trans_val = signals.get("immanence_vs_transcendence", 0.0)
+    imm_favored = "immanence" if imm_vs_trans_val >= 0 else "transcendence"
+    imm_kws = (cfg.categories.get(imm_favored, {}) or {}).get("keywords", [])
+    if imm_kws:
+        snips = find_keyword_snippets(full_text, imm_kws, MAX_EVIDENCE_PER_AXIS)
+        write_evidence(conn, video_id, channel_id, "immanence_vs_transcendence", imm_favored, snips)
+
+    # mode_distribution categories (prophetic, pastoral, didactic)
+    for mode_cat in ["prophetic", "pastoral", "didactic"]:
+        kws = (cfg.categories.get(mode_cat, {}) or {}).get("keywords", [])
+        if kws:
+            snips = find_keyword_snippets(full_text, kws, MAX_EVIDENCE_PER_CATEGORY)
+            write_evidence(conn, video_id, channel_id, None, mode_cat, snips)
+
+    # trinity_distribution categories (christ, father, spirit)
+    for trinity_cat in ["christ", "father", "spirit"]:
+        kws = (cfg.categories.get(trinity_cat, {}) or {}).get("keywords", [])
+        if kws:
+            snips = find_keyword_snippets(full_text, kws, MAX_EVIDENCE_PER_CATEGORY)
+            write_evidence(conn, video_id, channel_id, None, trinity_cat, snips)
+
     # 6) persist results
     top_cats = [k for k, _ in _top_n_dict(cat_density, 5)]
 
@@ -642,7 +712,8 @@ def analyze_one(
         "zscores": {"axes": axis_z, "categories": cat_z},
         "drift_level": drift_level,
         "hooks": hooks,
-        "version": "brain_v2",
+        "signals": signals,
+        "version": "brain_v2.1",
         "analyzed_at": datetime.utcnow().isoformat() + "Z",
     }
 
