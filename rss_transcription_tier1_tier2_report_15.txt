@@ -1,0 +1,201 @@
+================================================================================
+RSS FEED TRANSCRIPTION REPORT - TIER 1 & TIER 2
+================================================================================
+
+Generated: 2026-02-18 10:42:59
+Run ID: 15
+Whisper Model: base
+
+================================================================================
+SUMMARY
+================================================================================
+
+Feeds Processed: 25
+  - Tier 1 (Excellent): 6
+  - Tier 2 (Good): 19
+
+Total Episodes: 125
+  - Successfully Transcribed: 125
+  - Already Transcribed: 0
+  - Failed: 0
+Total Words Transcribed: 773,329
+
+================================================================================
+PROCESSED FEEDS
+================================================================================
+
+1. Her Solid Ground (Tier 1)
+   Feed ID: 2855ywq
+   Avg Duration: 34 min
+   Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+2. Calvary Chapel Oxnard (Tier 1)
+   Feed ID: a0a341d
+   Avg Duration: 38 min
+   Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+3. Prophecy Watchers (Tier 2)
+   Feed ID: 03fe243
+   Avg Duration: 46 min
+   Criteria: active:✅ longform:✅ theological:❌ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+4. Calvary Chapel Old Bridge (Tier 2)
+   Feed ID: 23n7qsd
+   Avg Duration: 30 min
+   Criteria: active:✅ longform:❓ theological:✅ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+5. Sound Truth Radio (Tier 2)
+   Feed ID: 3fc730b
+   Avg Duration: 30 min
+   Criteria: active:✅ longform:❓ theological:✅ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+6. Calvary Chapel Chester Springs - Sunday (Tier 2)
+   Feed ID: 5760c6e
+   Avg Duration: 37 min
+   Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:❌
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+7. UNSHACKLED! Audio Dramas (Tier 2)
+   Feed ID: 9sgs2hm
+   Avg Duration: 30 min
+   Criteria: active:✅ longform:✅ theological:❌ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+8. Calvary Chapel Fort Lauderdale (Tier 2)
+   Feed ID: j3t57y7
+   Avg Duration: 56 min
+   Criteria: active:❌ longform:✅ theological:✅ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+9. The River Church Podcast (Tier 2)
+   Feed ID: jk7nyqm
+   Avg Duration: 55 min
+   Criteria: active:❌ longform:✅ theological:✅ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+10. Christ Church (Moscow, ID) (Tier 2)
+   Feed ID: sdvrsgc
+   Avg Duration: 36 min
+   Criteria: active:❌ longform:✅ theological:✅ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+11. Outreach Center Church (Tier 2)
+   Feed ID: ytkv5ts
+   Avg Duration: 105 min
+   Criteria: active:✅ longform:❌ theological:✅ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+12. Becoming Something with Jonathan Pokluda (Tier 2)
+   Feed ID: z73b3th
+   Avg Duration: 39 min
+   Criteria: active:✅ longform:✅ theological:❌ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+13. Fairview Fellowship Church (Tier 2)
+   Feed ID: f67c286
+   Avg Duration: 37 min
+   Criteria: active:❌ longform:✅ theological:✅ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+14. Proclamation Church - Littleton (Tier 1)
+   Feed ID: j7pxdg9
+   Avg Duration: 38 min
+   Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+15. First Free Methodist - FFMC (Tier 1)
+   Feed ID: gc7229p
+   Avg Duration: 30 min
+   Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+16. CU Church Sermon Podcast (Tier 1)
+   Feed ID: 7p4dfwd
+   Avg Duration: 36 min
+   Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+17. Rock Creek Church with Pastor Sam Hall (Tier 1)
+   Feed ID: y7htx7p
+   Avg Duration: 31 min
+   Criteria: active:✅ longform:✅ theological:✅ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+18. Peninsula Grace Sermons (Tier 2)
+   Feed ID: t9g8svy
+   Avg Duration: 38 min
+   Criteria: active:❌ longform:✅ theological:✅ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+19. Liberty Church | Cleveland, Texas (Tier 2)
+   Feed ID: p8rfd4p
+   Avg Duration: 34 min
+   Criteria: active:❌ longform:✅ theological:✅ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+20. Living Faith Christian Church Sermons (Tier 2)
+   Feed ID: wkxjq28
+   Avg Duration: 44 min
+   Criteria: active:❌ longform:✅ theological:✅ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+21. Connect with Skip Heitzig Podcast (Tier 2)
+   Feed ID: 339gh4r
+   Avg Duration: 26 min
+   Criteria: active:✅ longform:❌ theological:✅ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+22. Marked by Grace (Tier 2)
+   Feed ID: y7nqvh3
+   Avg Duration: 9 min
+   Criteria: active:✅ longform:❌ theological:✅ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+23. Real Life Radio with Jack Hibbs (Tier 2)
+   Feed ID: pcxmsbf
+   Avg Duration: 30 min
+   Criteria: active:✅ longform:❓ theological:✅ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+24. Peninsula Community Chapel (Tier 2)
+   Feed ID: jzvzbyc
+   Avg Duration: 37 min
+   Criteria: active:✅ longform:✅ theological:❌ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+
+25. The Expositor's Podcast with Dr. Joel Dover (Tier 2)
+   Feed ID: 9dkr3zd
+   Avg Duration: 47 min
+   Criteria: active:❌ longform:✅ theological:✅ metadata:✅ consistent:✅
+   Episodes Processed: 5
+   Successfully Transcribed: 5
+

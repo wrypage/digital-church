@@ -1,0 +1,795 @@
+{
+  "climate_snapshot": {
+    "period_days": 30,
+    "current": {
+      "count": 141,
+      "avg_density": 85.62523278841333,
+      "avg_axes": {
+        "grace_vs_effort": -0.04942999637898877,
+        "hope_vs_fear": 0.40387399181827416,
+        "doctrine_vs_experience": 0.024605890228807565,
+        "scripture_vs_story": 0.16698053501712906
+      },
+      "top_categories": [
+        [
+          "scripture_reference",
+          1974.3927417837258
+        ],
+        [
+          "christ",
+          1819.602031309658
+        ],
+        [
+          "story",
+          1391.6728284695637
+        ],
+        [
+          "hope",
+          1096.4215776056444
+        ],
+        [
+          "experience",
+          890.2659351540203
+        ]
+      ],
+      "top_books": [
+        [
+          "john",
+          411
+        ],
+        [
+          "isaiah",
+          251
+        ],
+        [
+          "mark",
+          176
+        ],
+        [
+          "revelation",
+          158
+        ],
+        [
+          "matthew",
+          150
+        ]
+      ],
+      "drift_distribution": {
+        "moderate_shift": 70,
+        "stable": 60,
+        "anomaly": 5,
+        "strong_shift": 6
+      }
+    },
+    "previous": {
+      "count": 83,
+      "avg_density": 89.96122428531842,
+      "avg_axes": {
+        "grace_vs_effort": 0.015887434812758127,
+        "hope_vs_fear": 0.5500027358811794,
+        "doctrine_vs_experience": -0.026848453831558504,
+        "scripture_vs_story": 0.20643270451827708
+      },
+      "top_categories": [
+        [
+          "christ",
+          1503.545335846555
+        ],
+        [
+          "scripture_reference",
+          1265.4225611125885
+        ],
+        [
+          "story",
+          803.0383439389084
+        ],
+        [
+          "hope",
+          744.2279364623383
+        ],
+        [
+          "experience",
+          535.1041746660813
+        ]
+      ],
+      "top_books": [
+        [
+          "john",
+          321
+        ],
+        [
+          "mark",
+          265
+        ],
+        [
+          "james",
+          150
+        ],
+        [
+          "acts",
+          122
+        ],
+        [
+          "matthew",
+          109
+        ]
+      ],
+      "drift_distribution": {
+        "moderate_shift": 32,
+        "strong_shift": 8,
+        "stable": 31,
+        "anomaly": 12
+      }
+    },
+    "deltas": {
+      "density": -4.335991496905095,
+      "axes": {
+        "grace_vs_effort": -0.06531743119174689,
+        "hope_vs_fear": -0.14612874406290527,
+        "doctrine_vs_experience": 0.05145434406036607,
+        "scripture_vs_story": -0.03945216950114802
+      }
+    },
+    "drift_rate": {
+      "current": 57.446808510638306,
+      "previous": 62.65060240963856,
+      "delta": -5.203793899000253
+    },
+    "generated_at": "2026-02-25T13:04:07.210216Z"
+  },
+  "intent_climate_v2": {
+    "climate_v2": {
+      "time_window": {
+        "key": "2026-01-26..2026-02-25",
+        "days": 30,
+        "sermons_included": 120,
+        "channels_included": 45
+      },
+      "the_message_this_window": {
+        "headline": "Assurance in Christ over striving",
+        "summary": "Top burden: Assurance in Christ over striving | Warnings: Scripture, truth, and discernment | Calls to action: Repentance, holiness, and obedience",
+        "confidence": 0.65
+      },
+      "primary_messages_being_pressed": [
+        {
+          "message": "Assurance in Christ over striving",
+          "share": 0.319,
+          "confidence": 0.869,
+          "evidence": [
+            {
+              "sermon_id": "91e275a644aefd71",
+              "channel_name": "Real Life Radio with Jack Hibbs",
+              "speaker": "",
+              "published_at": "2026-02-18 10:00:00",
+              "excerpt": "### Emotional Register The tone of the sermon is a mix of exhortational and warning-heavy, with moments of comfort and assurance."
+            },
+            {
+              "sermon_id": "70a7541787a951a8",
+              "channel_name": "Sound Truth Radio",
+              "speaker": "",
+              "published_at": "2026-02-18 10:00:00",
+              "excerpt": "There is also a comforting assurance in recognizing the authority and faithfulness of Jesus Christ, who offers access to God and fulfillment of prophecy."
+            },
+            {
+              "sermon_id": "53f49d1fd1892a21",
+              "channel_name": "Prophecy Watchers",
+              "speaker": "",
+              "published_at": "2026-02-17 10:00:00",
+              "excerpt": "The sermon contains moments of hope and assurance, particularly in the context of the transformative power of the gospel and the potential for revival."
+            }
+          ]
+        },
+        {
+          "message": "Repentance, holiness, and obedience",
+          "share": 0.213,
+          "confidence": 0.763,
+          "evidence": [
+            {
+              "sermon_id": "70a7541787a951a8",
+              "channel_name": "Sound Truth Radio",
+              "speaker": "",
+              "published_at": "2026-02-18 10:00:00",
+              "excerpt": "### Emotional Register The tone of the sermon is a mix of warning and exhortation, with a strong emphasis on the urgency of repentance and the consequences of ignoring God's guidance."
+            },
+            {
+              "sermon_id": "11db919e2cdbfdc6",
+              "channel_name": "Sound Truth Radio",
+              "speaker": "",
+              "published_at": "2026-02-17 10:00:00",
+              "excerpt": "### Pastoral Burden The pastor is pressing the congregation to recognize the urgency of repentance and to place their trust in Jesus for salvation, especially in light of prophetic warnings about end times."
+            },
+            {
+              "sermon_id": "11db919e2cdbfdc6",
+              "channel_name": "Sound Truth Radio",
+              "speaker": "",
+              "published_at": "2026-02-17 10:00:00",
+              "excerpt": "The preacher warns of the consequences of ignoring God's call to repentance, using historical and prophetic examples to illustrate the seriousness of the situation."
+            }
+          ]
+        },
+        {
+          "message": "Scripture, truth, and discernment",
+          "share": 0.109,
+          "confidence": 0.659,
+          "evidence": [
+            {
+              "sermon_id": "0847a2a9176c3b12",
+              "channel_name": "Connect with Skip Heitzig Podcast",
+              "speaker": "",
+              "published_at": "2026-02-18 10:00:00",
+              "excerpt": "The pastor emphasizes the importance of knowing, guarding, and speaking this truth, as outlined in 2 Timothy 4, amidst a culture that often embraces relativism and personal truths."
+            },
+            {
+              "sermon_id": "0847a2a9176c3b12",
+              "channel_name": "Connect with Skip Heitzig Podcast",
+              "speaker": "",
+              "published_at": "2026-02-18 10:00:00",
+              "excerpt": "### Pastoral Burden The pastor is pressing the congregation to recognize and adhere to the objective truth of Scripture, equipping themselves to discern and counter the subjective truths prevalent in today's society."
+            },
+            {
+              "sermon_id": "0847a2a9176c3b12",
+              "channel_name": "Connect with Skip Heitzig Podcast",
+              "speaker": "",
+              "published_at": "2026-02-18 10:00:00",
+              "excerpt": "### Emotional Register The tone of the sermon is urgent and corrective, with a strong emphasis on the need to return to and uphold the objective truth of Scripture."
+            }
+          ]
+        }
+      ],
+      "warnings_repeated": [
+        {
+          "warning": "Scripture, truth, and discernment",
+          "share": 0.273,
+          "confidence": 0.8230000000000001,
+          "evidence": [
+            {
+              "sermon_id": "0847a2a9176c3b12",
+              "channel_name": "Connect with Skip Heitzig Podcast",
+              "speaker": "",
+              "published_at": "2026-02-18 10:00:00",
+              "excerpt": "### Scripture Anchors (Reference \u2192 Purpose) - 2 Timothy 4:1-5 \u2014 Used to underscore the charge to preach the Word and the warning against turning away from sound doctrine."
+            },
+            {
+              "sermon_id": "11db919e2cdbfdc6",
+              "channel_name": "Sound Truth Radio",
+              "speaker": "",
+              "published_at": "2026-02-17 10:00:00",
+              "excerpt": "### Scripture Anchors (Reference \u2192 Purpose) - Isaiah 20 \u2014 Used to illustrate the inappropriate response of the people under siege and the symbolic act of Isaiah as a warning."
+            },
+            {
+              "sermon_id": "069adbc6ddf560b6",
+              "channel_name": "Calvary Chapel Signal Hill",
+              "speaker": "",
+              "published_at": "2026-02-15 10:00:00",
+              "excerpt": "- Avoid listening to misinformation and misinterpretations of scripture, especially regarding prophecy and anti-Semitic views."
+            }
+          ]
+        },
+        {
+          "warning": "Repentance, holiness, and obedience",
+          "share": 0.25,
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "sermon_id": "70a7541787a951a8",
+              "channel_name": "Sound Truth Radio",
+              "speaker": "",
+              "published_at": "2026-02-18 10:00:00",
+              "excerpt": "### Emotional Register The tone of the sermon is a mix of warning and exhortation, with a strong emphasis on the urgency of repentance and the consequences of ignoring God's guidance."
+            },
+            {
+              "sermon_id": "11db919e2cdbfdc6",
+              "channel_name": "Sound Truth Radio",
+              "speaker": "",
+              "published_at": "2026-02-17 10:00:00",
+              "excerpt": "### Pastoral Burden The pastor is pressing the congregation to recognize the urgency of repentance and to place their trust in Jesus for salvation, especially in light of prophetic warnings about end times."
+            },
+            {
+              "sermon_id": "d659228a3a129f0e",
+              "channel_name": "Calvary Chapel of San Antonio",
+              "speaker": "",
+              "published_at": "2026-02-15 10:00:00",
+              "excerpt": "### Emotional Register The tone of the sermon is urgent and warning-heavy, with a strong exhortation for self-examination and repentance."
+            }
+          ]
+        }
+      ],
+      "encouragements_amplified": [
+        {
+          "encouragement": "Scripture, truth, and discernment",
+          "share": 1.0,
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "sermon_id": "7183644885356984",
+              "channel_name": "Sound Truth Radio",
+              "speaker": "",
+              "published_at": "2026-02-16 10:00:00",
+              "excerpt": "- Be encouraged that God's redemptive plans include all nations, as prophesied in Scripture."
+            },
+            {
+              "sermon_id": "5cb63d2c12d26a89",
+              "channel_name": "Connect with Skip Heitzig Podcast",
+              "speaker": "",
+              "published_at": "2026-02-15 10:00:00",
+              "excerpt": "- The sermon concludes with a call to focus the will, based on scripture and the anticipation of future judgment, urging believers to live with deeply held convictions."
+            }
+          ]
+        }
+      ],
+      "calls_to_action_most_urged": [
+        {
+          "action": "Repentance, holiness, and obedience",
+          "share": 0.25,
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "sermon_id": "70a7541787a951a8",
+              "channel_name": "Sound Truth Radio",
+              "speaker": "",
+              "published_at": "2026-02-18 10:00:00",
+              "excerpt": "### Emotional Register The tone of the sermon is a mix of warning and exhortation, with a strong emphasis on the urgency of repentance and the consequences of ignoring God's guidance."
+            },
+            {
+              "sermon_id": "79eaac371efcb49b",
+              "channel_name": "Real Life Radio with Jack Hibbs",
+              "speaker": "",
+              "published_at": "2026-02-17 10:00:00",
+              "excerpt": "There is a strong emphasis on the need for repentance and reliance on God, balanced with the assurance of God's control and purpose in the believer's life."
+            },
+            {
+              "sermon_id": "11db919e2cdbfdc6",
+              "channel_name": "Sound Truth Radio",
+              "speaker": "",
+              "published_at": "2026-02-17 10:00:00",
+              "excerpt": "### Pastoral Burden The pastor is pressing the congregation to recognize the urgency of repentance and to place their trust in Jesus for salvation, especially in light of prophetic warnings about end times."
+            }
+          ]
+        },
+        {
+          "action": "Assurance in Christ over striving",
+          "share": 0.209,
+          "confidence": 0.759,
+          "evidence": [
+            {
+              "sermon_id": "70a7541787a951a8",
+              "channel_name": "Sound Truth Radio",
+              "speaker": "",
+              "published_at": "2026-02-18 10:00:00",
+              "excerpt": "There is also a comforting assurance in recognizing the authority and faithfulness of Jesus Christ, who offers access to God and fulfillment of prophecy."
+            },
+            {
+              "sermon_id": "53f49d1fd1892a21",
+              "channel_name": "Prophecy Watchers",
+              "speaker": "",
+              "published_at": "2026-02-17 10:00:00",
+              "excerpt": "The sermon contains moments of hope and assurance, particularly in the context of the transformative power of the gospel and the potential for revival."
+            },
+            {
+              "sermon_id": "60ab95a9c1669cc3",
+              "channel_name": "Marked by Grace",
+              "speaker": "",
+              "published_at": "2026-02-16 10:00:00",
+              "excerpt": "The preacher shares personal experiences to illustrate the depth of God's love, providing assurance and encouragement to the congregation."
+            }
+          ]
+        },
+        {
+          "action": "Depend on God over self-reliance",
+          "share": 0.145,
+          "confidence": 0.6950000000000001,
+          "evidence": [
+            {
+              "sermon_id": "91e275a644aefd71",
+              "channel_name": "Real Life Radio with Jack Hibbs",
+              "speaker": "",
+              "published_at": "2026-02-18 10:00:00",
+              "excerpt": "### Pastoral Burden The pastor is pressing the congregation to recognize the reality of the spiritual realm, trust in God's promises, and avoid the pitfalls of emotional and impulsive decision-making that lead away from God's will."
+            },
+            {
+              "sermon_id": "7183644885356984",
+              "channel_name": "Sound Truth Radio",
+              "speaker": "",
+              "published_at": "2026-02-16 10:00:00",
+              "excerpt": "Pastor Malcolm emphasizes the reliability of biblical prophecy and the folly of relying on worldly wisdom, urging the congregation to place their trust in God's Word."
+            },
+            {
+              "sermon_id": "537e13ab3c9f941c",
+              "channel_name": "North Point Community Church",
+              "speaker": "",
+              "published_at": "2026-02-15 18:24:35",
+              "excerpt": "It is comforting in its assurance that God is ultimately in control of outcomes, and it challenges the congregation to trust God with the consequences of their decisions."
+            }
+          ]
+        }
+      ],
+      "underlying_concerns_implied_by_repetition": [],
+      "tone_and_atmosphere": {
+        "tone_tags_ranked": [
+          {
+            "tag": "hopeful",
+            "share": 0.247
+          },
+          {
+            "tag": "text-anchored",
+            "share": 0.149
+          },
+          {
+            "tag": "doctrinal",
+            "share": 0.142
+          },
+          {
+            "tag": "effort-forward",
+            "share": 0.133
+          },
+          {
+            "tag": "experiential",
+            "share": 0.111
+          },
+          {
+            "tag": "grace-forward",
+            "share": 0.104
+          }
+        ],
+        "axes_avg": {
+          "hope_vs_fear": 0.395,
+          "grace_vs_effort": -0.069,
+          "scripture_vs_story": 0.155,
+          "doctrine_vs_experience": 0.06
+        }
+      },
+      "questions_for_leaders": [
+        "If these burdens are accurate, what formation practices (Word, prayer, community) need strengthening right now?",
+        "Which warnings are repeated most\u2014and do our people know how to respond without panic?",
+        "What does the dominant tone suggest about congregational emotional weather in this season?",
+        "Where are pastors calling for action\u2014personal repentance, corporate unity, mission\u2014and what support is required?",
+        "Are we hearing one shared message across channels, or distinct local burdens requiring local responses?"
+      ],
+      "method_notes": {
+        "how_inferred": "Intent inferred from Brain intent_vectors grounded in explicit language and repeated emphasis. Climate filters out obvious bumpers/branding/URLs. Climate v2 also performs conservative semantic bucketing (meaning-level clustering) and requires cross-channel repetition (min unique channels and mentions) before elevating a burden to the network level."
+      }
+    }
+  },
+  "theme_convergence": [
+    {
+      "theme": "scripture_reference",
+      "total_density": 1652.4,
+      "sermon_count": 120,
+      "avg_density": 13.77
+    },
+    {
+      "theme": "christ",
+      "total_density": 1560.1,
+      "sermon_count": 120,
+      "avg_density": 13.0
+    },
+    {
+      "theme": "story",
+      "total_density": 1184.1,
+      "sermon_count": 120,
+      "avg_density": 9.87
+    }
+  ],
+  "scripture_focus": [
+    {
+      "book": "john",
+      "total_references": 341,
+      "sermon_count": 61,
+      "avg_refs_per_sermon": 5.6
+    },
+    {
+      "book": "isaiah",
+      "total_references": 211,
+      "sermon_count": 39,
+      "avg_refs_per_sermon": 5.4
+    },
+    {
+      "book": "mark",
+      "total_references": 156,
+      "sermon_count": 38,
+      "avg_refs_per_sermon": 4.1
+    },
+    {
+      "book": "revelation",
+      "total_references": 136,
+      "sermon_count": 43,
+      "avg_refs_per_sermon": 3.2
+    },
+    {
+      "book": "matthew",
+      "total_references": 132,
+      "sermon_count": 47,
+      "avg_refs_per_sermon": 2.8
+    }
+  ],
+  "elias_preface": "",
+  "observations": [
+    "## Elias",
+    "",
+    "I sat with these sermons the way I would sit in our own church\u2014Bible open, asking what is shaping us.",
+    "",
+    "We leaned heavily into **scripture reference** this month\u2014120 sermons carrying that weight.",
+    "",
+    "Across different pulpits, a similar burden surfaced: Concern that there is deviation going on, falling away, departure from the faith because of deception. Almost entirely on jesus as the high priest of our christian faith.",
+    "",
+    "> concern that there is deviation going on, falling away, departure from the faith because of deception. That brings us to our text. 2 Timothy chapter 4, beginning in verse 1. I charge you, therefore, before God and the Lord Jesus Christ, who will judge the\u2026",
+    "*Speak Your Truth - Part A \u2014 Connect with Skip Heitzig Podcast*",
+    "",
+    "We kept returning to **John**\u2014341 references across 61 sermons.",
+    "That tells us something about where our imagination is resting.",
+    "",
+    "Across the network we are grace vs effort leaning away from center, hope vs fear leaning toward center, doctrine vs experience leaning toward center, scripture vs story leaning toward center.",
+    "",
+    "Drift sat at 57.45%. Not a collapse. Not a revival. Just movement.",
+    "",
+    "When we preach conviction without assurance, we quietly teach people to strive without rest.",
+    "",
+    "If John is shaping us, may it not just increase our references\u2014may it deepen our love for Christ Himself.",
+    ""
+  ],
+  "elias_closing_style": "",
+  "elias_closing_line": "",
+  "resonant_sermons": [
+    {
+      "video_id": "9168391b71616d60",
+      "channel_name": "Marked by Grace",
+      "title": "What is the Bible?",
+      "published_at": "2026-02-09 10:00:00",
+      "reason": "High 'scripture_reference' density",
+      "theological_density": 121.31715771230505,
+      "category_density": 58.925476603119584,
+      "quote_bank": [
+        {
+          "video_id": "9168391b71616d60",
+          "channel_name": "Marked by Grace",
+          "title": "What is the Bible?",
+          "published_at": "2026-02-09 10:00:00",
+          "category": "scripture_reference",
+          "excerpt": "call genres in the one book of the Bible. But it's 66 books of the Bible that was written actually over thousands of years. The last book of the Bible, Revelation, was written at the end of the first century. So we're coming up on\u2026",
+          "intelligence_score": 1.3
+        },
+        {
+          "video_id": "9168391b71616d60",
+          "channel_name": "Marked by Grace",
+          "title": "What is the Bible?",
+          "published_at": "2026-02-09 10:00:00",
+          "category": "scripture_reference",
+          "excerpt": "Really important, really profound question, a lot to say about it. I'm going to try to answer it by talking about just one passage of Scripture. It's in 2 Timothy chapter 3 verses 15 to 16. And this is how the Bible describes the Bible.\u2026",
+          "intelligence_score": 0.5
+        }
+      ]
+    },
+    {
+      "video_id": "c77975f9d1b47ce1",
+      "channel_name": "Calvary Chapel Oxnard",
+      "title": "Acts: The 10th Study",
+      "published_at": "2026-02-04 10:00:00",
+      "reason": "High 'scripture_reference' density",
+      "theological_density": 156.14617940199338,
+      "category_density": 38.205980066445186,
+      "quote_bank": [
+        {
+          "video_id": "c77975f9d1b47ce1",
+          "channel_name": "Calvary Chapel Oxnard",
+          "title": "Acts: The 10th Study",
+          "published_at": "2026-02-04 10:00:00",
+          "category": "scripture_reference",
+          "excerpt": "do to be saved? Now that's a theological truth that all of us have to deal with if we're going to put into practice the Great Commission of Matthew 28. Someone cannot accept the gospel message if they are not convicted of their sin condition\u2026",
+          "intelligence_score": 4.9
+        },
+        {
+          "video_id": "c77975f9d1b47ce1",
+          "channel_name": "Calvary Chapel Oxnard",
+          "title": "Acts: The 10th Study",
+          "published_at": "2026-02-04 10:00:00",
+          "category": "scripture_reference",
+          "excerpt": "if you could distill the New Testament down into just a few verses, there's probably not a better example than what we just read there in verses 29 to 34. The gospel is so simple, but it's really incredible and it has a complexity that's\u2026",
+          "intelligence_score": 3.3
+        },
+        {
+          "video_id": "c77975f9d1b47ce1",
+          "channel_name": "Calvary Chapel Oxnard",
+          "title": "Acts: The 10th Study",
+          "published_at": "2026-02-04 10:00:00",
+          "category": "scripture_reference",
+          "excerpt": "that's like in the middle of it, but that's going to set the stage for what we're going to study this evening in Acts 16 and 17. In verse 29, then he called for a light, ran in and fell down trembling before Paul and\u2026",
+          "intelligence_score": 2.1
+        }
+      ]
+    },
+    {
+      "video_id": "c7f07d0134ac6d22",
+      "channel_name": "Sermons | Word of Grace Bible Church [wgbc.org]",
+      "title": "The Successful Servant",
+      "published_at": "2026-02-08 10:00:00",
+      "reason": "High 'christ' density",
+      "theological_density": 142.3670668953688,
+      "category_density": 51.45797598627787,
+      "quote_bank": [
+        {
+          "video_id": "c7f07d0134ac6d22",
+          "channel_name": "Sermons | Word of Grace Bible Church [wgbc.org]",
+          "title": "The Successful Servant",
+          "published_at": "2026-02-08 10:00:00",
+          "category": "christ",
+          "excerpt": "That's the only reason why they will be for eternal, eternal punishment. And those who are in Christ, those who express or accept Christ as their personal Lord and Savior, their lives, our lives is determined, is defined by our relationship with Christ. How much\u2026",
+          "intelligence_score": 2.9
+        },
+        {
+          "video_id": "c7f07d0134ac6d22",
+          "channel_name": "Sermons | Word of Grace Bible Church [wgbc.org]",
+          "title": "The Successful Servant",
+          "published_at": "2026-02-08 10:00:00",
+          "category": "christ",
+          "excerpt": "else in the universe for all of us. Quite often we know that, we agree with that, we even can say that, say that, express that Jesus is very important for us. But in reality, we are quite often we don't live like that. We\u2026",
+          "intelligence_score": 2.5
+        }
+      ]
+    },
+    {
+      "video_id": "fad8e71809c31d74",
+      "channel_name": "Selah - A Podcast by Koinonia Fellowship",
+      "title": "The Benefits of God",
+      "published_at": "2026-02-01 10:00:00",
+      "reason": "High 'christ' density",
+      "theological_density": 129.4718909710392,
+      "category_density": 45.996592844974444,
+      "quote_bank": [
+        {
+          "video_id": "fad8e71809c31d74",
+          "channel_name": "Selah - A Podcast by Koinonia Fellowship",
+          "title": "The Benefits of God",
+          "published_at": "2026-02-01 10:00:00",
+          "category": "christ",
+          "excerpt": "blessed through his word today. Gospel chapter 1 beginning at verse 35. Again, the next day after John stood and two of his disciples and looking upon Jesus as he walked, he saith behold the Lamb of God. And the two disciples heard him speak\u2026",
+          "intelligence_score": 3.7
+        },
+        {
+          "video_id": "fad8e71809c31d74",
+          "channel_name": "Selah - A Podcast by Koinonia Fellowship",
+          "title": "The Benefits of God",
+          "published_at": "2026-02-01 10:00:00",
+          "category": "christ",
+          "excerpt": "the two which heard John speak and followed him was Andrew, Simon Peter's brother. He first found his own brother, Simon, and said unto him, we have found the Messiah which is being interpreted to Christ. And he brought him to Jesus. And when Jesus\u2026",
+          "intelligence_score": 2.9
+        },
+        {
+          "video_id": "fad8e71809c31d74",
+          "channel_name": "Selah - A Podcast by Koinonia Fellowship",
+          "title": "The Benefits of God",
+          "published_at": "2026-02-01 10:00:00",
+          "category": "christ",
+          "excerpt": "and two of his disciples and looking upon Jesus as he walked, he saith behold the Lamb of God. And the two disciples heard him speak and they follow Jesus. Then Jesus turned and saw them following and said unto them, what's Seeky? They said\u2026",
+          "intelligence_score": 1.8
+        }
+      ]
+    },
+    {
+      "video_id": "3b870a7927f246d4",
+      "channel_name": "Lifepoint Church Podcast | Pastor Jeff Kapusta",
+      "title": "Obedience Brings Blessing",
+      "published_at": "2026-02-15 10:00:00",
+      "reason": "High 'story' density",
+      "theological_density": 120.55335968379447,
+      "category_density": 35.57312252964427,
+      "quote_bank": [
+        {
+          "video_id": "3b870a7927f246d4",
+          "channel_name": "Lifepoint Church Podcast | Pastor Jeff Kapusta",
+          "title": "Obedience Brings Blessing",
+          "published_at": "2026-02-15 10:00:00",
+          "category": "story",
+          "excerpt": "This is hard, God. I don't know if I could do this anymore. Every Monday. Call Pastor Jeff, like life points still hiring. And then I remember, oh yeah, I follow a guy that his obedience led him to a cross. It's kind of what\u2026",
+          "intelligence_score": 4.5
+        },
+        {
+          "video_id": "3b870a7927f246d4",
+          "channel_name": "Lifepoint Church Podcast | Pastor Jeff Kapusta",
+          "title": "Obedience Brings Blessing",
+          "published_at": "2026-02-15 10:00:00",
+          "category": "story",
+          "excerpt": "10, verse 10. The thief comes only to steal and kill and destroy. I have come, Jesus is speaking. I have come that they may have life and have it. Let's try that again. I have come that they may have life and have it\u2026",
+          "intelligence_score": 2.5
+        },
+        {
+          "video_id": "3b870a7927f246d4",
+          "channel_name": "Lifepoint Church Podcast | Pastor Jeff Kapusta",
+          "title": "Obedience Brings Blessing",
+          "published_at": "2026-02-15 10:00:00",
+          "category": "story",
+          "excerpt": "and I don't think you should build a theology around that, but it's fun sometimes to just think. These are human beings just like us. Imagine if one of them was you and this group of servants was your group of friends. There had to\u2026",
+          "intelligence_score": 1.4
+        }
+      ]
+    },
+    {
+      "video_id": "2b094148bceba2b1",
+      "channel_name": "UNSHACKLED! Audio Dramas",
+      "title": "3917 Clinton Goodwin Classic",
+      "published_at": "2026-02-07 10:00:00",
+      "reason": "High 'story' density",
+      "theological_density": 112.06896551724137,
+      "category_density": 27.586206896551722,
+      "quote_bank": [
+        {
+          "video_id": "2b094148bceba2b1",
+          "channel_name": "UNSHACKLED! Audio Dramas",
+          "title": "3917 Clinton Goodwin Classic",
+          "published_at": "2026-02-07 10:00:00",
+          "category": "story",
+          "excerpt": "he didn't want to be until his heart and mind and very life were unshackled. We had a gas again? No, but we're out of cash. We can stop at a gas station. Take what we need. They always have money. But they also have\u2026",
+          "intelligence_score": 2.1
+        },
+        {
+          "video_id": "2b094148bceba2b1",
+          "channel_name": "UNSHACKLED! Audio Dramas",
+          "title": "3917 Clinton Goodwin Classic",
+          "published_at": "2026-02-07 10:00:00",
+          "category": "story",
+          "excerpt": "mind and very life were unshackled. We had a gas again? No, but we're out of cash. We can stop at a gas station. Take what we need. They always have money. But they also have people around. I never slowed us down. I'm thinking\u2026",
+          "intelligence_score": 2.1
+        },
+        {
+          "video_id": "2b094148bceba2b1",
+          "channel_name": "UNSHACKLED! Audio Dramas",
+          "title": "3917 Clinton Goodwin Classic",
+          "published_at": "2026-02-07 10:00:00",
+          "category": "story",
+          "excerpt": "saw my dad pray or read the Bible, but Mother did both. What are you reading, Mama? The Proverbs. They helped me understand life. I remember when I was real little and you read Bible stories to us. I'm glad you remember. How come Papa\u2026",
+          "intelligence_score": 2.1
+        }
+      ]
+    }
+  ],
+  "outliers": [
+    {
+      "video_id": "d734ef547cddd134",
+      "channel_name": "Calvary Chapel Signal Hill",
+      "title": "Isaiah 21",
+      "published_at": "2026-02-15 10:00:00",
+      "drift_level": "anomaly",
+      "drift_magnitude": 7.3,
+      "axis_scores": {
+        "grace_vs_effort": 0.49067713444553485,
+        "hope_vs_fear": 0.5435767349157455,
+        "doctrine_vs_experience": 0.793965859468043,
+        "scripture_vs_story": 0.7476324970925401
+      }
+    },
+    {
+      "video_id": "fdff17fa95877d31",
+      "channel_name": "Independent Bible Church WV",
+      "title": "True Greatness",
+      "published_at": "2026-02-08 10:00:00",
+      "drift_level": "anomaly",
+      "drift_magnitude": 5.37,
+      "axis_scores": {
+        "grace_vs_effort": -0.8060182697474476,
+        "hope_vs_fear": -0.17476406850751486,
+        "doctrine_vs_experience": 0.5807200929152149,
+        "scripture_vs_story": -0.3885003885003884
+      }
+    },
+    {
+      "video_id": "0847a2a9176c3b12",
+      "channel_name": "Connect with Skip Heitzig Podcast",
+      "title": "Speak Your Truth - Part A",
+      "published_at": "2026-02-18 10:00:00",
+      "drift_level": "anomaly",
+      "drift_magnitude": 4.68,
+      "axis_scores": {
+        "grace_vs_effort": -0.7444168734491315,
+        "hope_vs_fear": -0.49261083743842365,
+        "doctrine_vs_experience": 0.9314703925482368,
+        "scripture_vs_story": 0.27731558513588467
+      }
+    }
+  ],
+  "metadata": {
+    "days": 30,
+    "limit": 120,
+    "total_sermons": 120,
+    "generated_at": "2026-02-25T13:04:07.279974Z",
+    "window_key": "2026-01-26..2026-02-25"
+  }
+}

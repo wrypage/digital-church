@@ -1,0 +1,876 @@
+{
+  "climate_snapshot": {
+    "period_days": 30,
+    "current": {
+      "count": 169,
+      "avg_density": 40.666096515001,
+      "avg_axes": {
+        "grace_vs_effort": -0.12926418513276022,
+        "hope_vs_fear": 0.5061094546519819,
+        "doctrine_vs_experience": -0.5837257856718567,
+        "scripture_vs_story": 0.11952941776493142
+      },
+      "top_categories": [
+        [
+          "christ",
+          1669.2918517248256
+        ],
+        [
+          "scripture_reference",
+          1301.575514621887
+        ],
+        [
+          "story",
+          882.580578588027
+        ],
+        [
+          "experience",
+          518.7446001566594
+        ],
+        [
+          "hope",
+          387.5379008570344
+        ]
+      ],
+      "top_books": [
+        [
+          "john",
+          544
+        ],
+        [
+          "isaiah",
+          274
+        ],
+        [
+          "mark",
+          271
+        ],
+        [
+          "james",
+          233
+        ],
+        [
+          "matthew",
+          186
+        ]
+      ],
+      "drift_distribution": {
+        "stable": 80,
+        "moderate_shift": 86,
+        "strong_shift": 3
+      }
+    },
+    "previous": {
+      "count": 55,
+      "avg_density": 33.71268649427701,
+      "avg_axes": {
+        "grace_vs_effort": -0.046623353540483595,
+        "hope_vs_fear": 0.6096247334946134,
+        "doctrine_vs_experience": -0.6543892396195183,
+        "scripture_vs_story": 0.12239651151956199
+      },
+      "top_categories": [
+        [
+          "scripture_reference",
+          430.9910705254025
+        ],
+        [
+          "christ",
+          382.9005630861505
+        ],
+        [
+          "story",
+          282.9308531173383
+        ],
+        [
+          "experience",
+          157.21750985835357
+        ],
+        [
+          "hope",
+          151.87940410900296
+        ]
+      ],
+      "top_books": [
+        [
+          "john",
+          188
+        ],
+        [
+          "mark",
+          170
+        ],
+        [
+          "acts",
+          77
+        ],
+        [
+          "luke",
+          75
+        ],
+        [
+          "matthew",
+          73
+        ]
+      ],
+      "drift_distribution": {
+        "anomaly": 10,
+        "stable": 22,
+        "moderate_shift": 19,
+        "strong_shift": 4
+      }
+    },
+    "deltas": {
+      "density": 6.953410020723993,
+      "axes": {
+        "grace_vs_effort": -0.08264083159227663,
+        "hope_vs_fear": -0.10351527884263156,
+        "doctrine_vs_experience": 0.0706634539476616,
+        "scripture_vs_story": -0.0028670937546305675
+      }
+    },
+    "drift_rate": {
+      "current": 52.662721893491124,
+      "previous": 60.0,
+      "delta": -7.337278106508876
+    },
+    "generated_at": "2026-02-22T19:44:01.610639Z"
+  },
+  "intent_climate_v2": {
+    "climate_v2": {
+      "time_window": {
+        "key": "2026-01-23..2026-02-22",
+        "days": 30,
+        "sermons_included": 169,
+        "channels_included": 45
+      },
+      "the_message_this_window": {
+        "headline": "re-anchor the church in scripture and the authority of the word.",
+        "summary": "Top burden: re-anchor the church in scripture and the authority of the word. | Warnings: and don't forget, every tuesday we have prayer at 7 o'clock | Calls to action: and don't forget, every tuesday we have prayer at 7 o'clock",
+        "confidence": 0.65
+      },
+      "primary_messages_being_pressed": [
+        {
+          "message": "re-anchor the church in scripture and the authority of the word.",
+          "share": 0.352,
+          "confidence": 0.902,
+          "evidence": [
+            {
+              "sermon_id": "91e275a644aefd71",
+              "channel_name": "Real Life Radio with Jack Hibbs",
+              "speaker": "",
+              "published_at": "2026-02-18 10:00:00",
+              "excerpt": "him whatsoever. It would be as nothing had happened at all. Isn't that trippy? Isn't that weird? But yet that's the worlds that we know of according to the scripture that are in collision. And it's a rare time when those worlds manifest in real time together, where we on this side in our material humaneness,"
+            },
+            {
+              "sermon_id": "0847a2a9176c3b12",
+              "channel_name": "Connect with Skip Heitzig Podcast",
+              "speaker": "",
+              "published_at": "2026-02-18 10:00:00",
+              "excerpt": "essentially mean the same thing. In other words, what Paul is saying is your ministry Timothy is to teach people the word, which is sound doctrine. And when he says, preach the word, he means, preach the scripture, the word of God. You're listening to Connect With Skip Heitzing. Every day, the generosity of friends like"
+            },
+            {
+              "sermon_id": "70a7541787a951a8",
+              "channel_name": "Sound Truth Radio",
+              "speaker": "",
+              "published_at": "2026-02-18 10:00:00",
+              "excerpt": "on him all the glory of his father's house in the offspring and the posterity all the vessels of small quantity from the cups to all the pictures and the Scripture says that to Jesus every nishal bow and that he will be glorified. Now when we come to verse 25 there's a couple of different"
+            }
+          ]
+        },
+        {
+          "message": "protect unity, forgiveness, and love within the body.",
+          "share": 0.202,
+          "confidence": 0.752,
+          "evidence": [
+            {
+              "sermon_id": "0847a2a9176c3b12",
+              "channel_name": "Connect with Skip Heitzig Podcast",
+              "speaker": "",
+              "published_at": "2026-02-18 10:00:00",
+              "excerpt": "word, changing lives through clear, practical Bible teaching. In this month, we want to thank you with a powerful and inspiring resource from Skip's wife, Lenya Heitzing. It's her book, Reload Love, transforming bullets to beauty and battlegrounds to playgrounds. This remarkable book tells the true story of how God took Lenya's heartbreak over suffering children"
+            },
+            {
+              "sermon_id": "a5e489001a9a28d0",
+              "channel_name": "Connect with Skip Heitzig Podcast",
+              "speaker": "",
+              "published_at": "2026-02-17 10:00:00",
+              "excerpt": "you help reach thousands of people every day with God's life-changing truth. Encouraging them to know Him and grow in His Word. And to thank you for your support this month, we'll send you Reload Love, Transforming Bullets to Beauty, and Battlegrounds to Playgrounds, a powerful book by Skip's wife, Leniah Heitzig. It's a gripping, hope-filled"
+            },
+            {
+              "sermon_id": "11db919e2cdbfdc6",
+              "channel_name": "Sound Truth Radio",
+              "speaker": "",
+              "published_at": "2026-02-17 10:00:00",
+              "excerpt": "Israel and it was a strong city of the Philistines. At that time the Lord spoke by Isaiah the son of Amos saying, go and remove the sackcloth from your body, take your sandals off your feet, and he did so walking naked and barefoot. Now of course the prophets wore, prophets like Isaiah wore these"
+            }
+          ]
+        },
+        {
+          "message": "call people into prayer, dependence, and abiding trust.",
+          "share": 0.116,
+          "confidence": 0.666,
+          "evidence": [
+            {
+              "sermon_id": "91e275a644aefd71",
+              "channel_name": "Real Life Radio with Jack Hibbs",
+              "speaker": "",
+              "published_at": "2026-02-18 10:00:00",
+              "excerpt": "father-in-law was dying a while back at USC and we all gathered around his bed there and we were singing hymns and we were praying and the family was there and we were waiting for him to go see Jesus. He knew he was gonna see Jesus, we knew he was and it was quite an"
+            },
+            {
+              "sermon_id": "0847a2a9176c3b12",
+              "channel_name": "Connect with Skip Heitzig Podcast",
+              "speaker": "",
+              "published_at": "2026-02-18 10:00:00",
+              "excerpt": "need to be aware of. You'll see what I mean when we get through it, but second Timothy chapter four, let's have a word of prayer. Father, we ask that you will give us your wisdom and discernment to understand the days in which we live to be able to not only know our times, but"
+            },
+            {
+              "sermon_id": "79eaac371efcb49b",
+              "channel_name": "Real Life Radio with Jack Hibbs",
+              "speaker": "",
+              "published_at": "2026-02-17 10:00:00",
+              "excerpt": "I thought I would never, I didn't hear the Greg Laurie must have left the part out, I think, because I found out after I prayed the prayer I went back to the prayer room that sin was waiting outside for me in the parking lot. How did that happen? Oh, child of God, now what's"
+            }
+          ]
+        }
+      ],
+      "warnings_repeated": [
+        {
+          "warning": "and don't forget, every tuesday we have prayer at 7 o'clock",
+          "share": 0.007,
+          "confidence": 0.557,
+          "evidence": [
+            {
+              "sermon_id": "dc74245b2f5e1c51",
+              "channel_name": "Nexus Church",
+              "speaker": "",
+              "published_at": "2026-02-15 10:00:00",
+              "excerpt": "And don't forget, every Tuesday we have prayer at 7 o'clock"
+            },
+            {
+              "sermon_id": "595f7b9b58410bf0",
+              "channel_name": "Nexus Church",
+              "speaker": "",
+              "published_at": "2026-02-11 10:00:00",
+              "excerpt": "And don't forget, every Tuesday we have prayer at 7 o'clock"
+            },
+            {
+              "sermon_id": "e842fc60854ba028",
+              "channel_name": "Nexus Church",
+              "speaker": "",
+              "published_at": "2026-02-08 10:00:00",
+              "excerpt": "And don't forget, every Tuesday we have prayer at 7 o'clock"
+            }
+          ]
+        },
+        {
+          "warning": "don't miss coming into the house and praying and believing for god to move in your life in a powerful way",
+          "share": 0.007,
+          "confidence": 0.557,
+          "evidence": [
+            {
+              "sermon_id": "dc74245b2f5e1c51",
+              "channel_name": "Nexus Church",
+              "speaker": "",
+              "published_at": "2026-02-15 10:00:00",
+              "excerpt": "Don't miss coming into the house and praying and believing for God to move in your life in a powerful way"
+            },
+            {
+              "sermon_id": "595f7b9b58410bf0",
+              "channel_name": "Nexus Church",
+              "speaker": "",
+              "published_at": "2026-02-11 10:00:00",
+              "excerpt": "Don't miss coming into the house and praying and believing for God to move in your life in a powerful way"
+            },
+            {
+              "sermon_id": "e842fc60854ba028",
+              "channel_name": "Nexus Church",
+              "speaker": "",
+              "published_at": "2026-02-08 10:00:00",
+              "excerpt": "Don't miss coming into the house and praying and believing for God to move in your life in a powerful way"
+            }
+          ]
+        }
+      ],
+      "encouragements_amplified": [
+        {
+          "encouragement": "you're listening to marked by grace, a podcast applying the grace of jesus to all of life",
+          "share": 0.008,
+          "confidence": 0.558,
+          "evidence": [
+            {
+              "sermon_id": "60ab95a9c1669cc3",
+              "channel_name": "Marked by Grace",
+              "speaker": "",
+              "published_at": "2026-02-16 10:00:00",
+              "excerpt": "You're listening to Marked By Grace, a podcast applying the grace of Jesus to all of life"
+            },
+            {
+              "sermon_id": "9168391b71616d60",
+              "channel_name": "Marked by Grace",
+              "speaker": "",
+              "published_at": "2026-02-09 10:00:00",
+              "excerpt": "You're listening to Marked By Grace, a podcast applying the Grace of Jesus to all of life"
+            },
+            {
+              "sermon_id": "31e221fdab82ed4c",
+              "channel_name": "Marked by Grace",
+              "speaker": "",
+              "published_at": "2026-02-02 10:00:00",
+              "excerpt": "You're listening to Marked By Grace, a podcast applying the Grace of Jesus to all of life"
+            }
+          ]
+        },
+        {
+          "encouragement": "i'm glad you're interested in what we have to say as we try to serve the lord jesus christ",
+          "share": 0.008,
+          "confidence": 0.558,
+          "evidence": [
+            {
+              "sermon_id": "3dfb6fd0d119317b",
+              "channel_name": "Word of Life Church Podcast",
+              "speaker": "",
+              "published_at": "2026-02-15 10:00:00",
+              "excerpt": "I'm glad you're interested in what we have to say as we try to serve the Lord Jesus Christ"
+            },
+            {
+              "sermon_id": "84882c633037b6c2",
+              "channel_name": "Word of Life Church Podcast",
+              "speaker": "",
+              "published_at": "2026-02-08 10:00:00",
+              "excerpt": "I'm glad you're interested in what we have to say as we try to serve the Lord Jesus Christ"
+            },
+            {
+              "sermon_id": "be975e4d3932888d",
+              "channel_name": "Word of Life Church Podcast",
+              "speaker": "",
+              "published_at": "2026-02-01 10:00:00",
+              "excerpt": "I'm glad you're interested in what we have to say as we try to serve the Lord Jesus Christ"
+            }
+          ]
+        }
+      ],
+      "calls_to_action_most_urged": [
+        {
+          "action": "and don't forget, every tuesday we have prayer at 7 o'clock",
+          "share": 0.005,
+          "confidence": 0.555,
+          "evidence": [
+            {
+              "sermon_id": "dc74245b2f5e1c51",
+              "channel_name": "Nexus Church",
+              "speaker": "",
+              "published_at": "2026-02-15 10:00:00",
+              "excerpt": "And don't forget, every Tuesday we have prayer at 7 o'clock"
+            },
+            {
+              "sermon_id": "595f7b9b58410bf0",
+              "channel_name": "Nexus Church",
+              "speaker": "",
+              "published_at": "2026-02-11 10:00:00",
+              "excerpt": "And don't forget, every Tuesday we have prayer at 7 o'clock"
+            },
+            {
+              "sermon_id": "e842fc60854ba028",
+              "channel_name": "Nexus Church",
+              "speaker": "",
+              "published_at": "2026-02-08 10:00:00",
+              "excerpt": "And don't forget, every Tuesday we have prayer at 7 o'clock"
+            }
+          ]
+        },
+        {
+          "action": "don't miss coming into the house and praying and believing for god to move in your life in a powerful way",
+          "share": 0.005,
+          "confidence": 0.555,
+          "evidence": [
+            {
+              "sermon_id": "dc74245b2f5e1c51",
+              "channel_name": "Nexus Church",
+              "speaker": "",
+              "published_at": "2026-02-15 10:00:00",
+              "excerpt": "Don't miss coming into the house and praying and believing for God to move in your life in a powerful way"
+            },
+            {
+              "sermon_id": "595f7b9b58410bf0",
+              "channel_name": "Nexus Church",
+              "speaker": "",
+              "published_at": "2026-02-11 10:00:00",
+              "excerpt": "Don't miss coming into the house and praying and believing for God to move in your life in a powerful way"
+            },
+            {
+              "sermon_id": "e842fc60854ba028",
+              "channel_name": "Nexus Church",
+              "speaker": "",
+              "published_at": "2026-02-08 10:00:00",
+              "excerpt": "Don't miss coming into the house and praying and believing for God to move in your life in a powerful way"
+            }
+          ]
+        },
+        {
+          "action": "now let's dive into today's teaching from pastor skip heizig",
+          "share": 0.004,
+          "confidence": 0.554,
+          "evidence": [
+            {
+              "sermon_id": "0847a2a9176c3b12",
+              "channel_name": "Connect with Skip Heitzig Podcast",
+              "speaker": "",
+              "published_at": "2026-02-18 10:00:00",
+              "excerpt": "Now let's dive into today's teaching from Pastor Skip Heizig"
+            },
+            {
+              "sermon_id": "e9bc1687518c29f0",
+              "channel_name": "Connect with Skip Heitzig Podcast",
+              "speaker": "",
+              "published_at": "2026-02-16 10:00:00",
+              "excerpt": "Now let's dive into today's teaching from Pastor Skip Heizig"
+            },
+            {
+              "sermon_id": "5cb63d2c12d26a89",
+              "channel_name": "Connect with Skip Heitzig Podcast",
+              "speaker": "",
+              "published_at": "2026-02-15 10:00:00",
+              "excerpt": "Now let's dive into today's teaching from Pastor Skip Heizig"
+            }
+          ]
+        }
+      ],
+      "underlying_concerns_implied_by_repetition": [
+        {
+          "concern": "i am like one without strength but i cry to you for help lord in the morning my prayer comes before you why lord do you reject me and hide your face from me and look how he says this darkness is my closest friend this is a man that was gifted full of wisdom a great worship leader serve god faithfully and in this season was in a very dark place mentally and this is in the bible it's in the psalms and that's why i want you to hear it feel it believe that god is not afraid of your honesty he cares if you hurt he hurts and it's really hard for me to talk about but i was like in a bad place i just worked and worked and worked and worked and worked and worked and taken on a little more and a little more and a little more and a little more and a little more and then it was just too much and so i ask for help some of you right now you might not be in a great place and you hesitate to ask for help you don't want to admit it",
+          "share": 0.143,
+          "confidence": 0.6930000000000001,
+          "evidence": [
+            {
+              "sermon_id": "e64e21199349103d",
+              "channel_name": "Life.Church with Craig Groeschel",
+              "speaker": "",
+              "published_at": "2026-02-15 13:30:00",
+              "excerpt": "I am like one without strength But I cry to you for help lord In the morning my prayer comes before you Why lord do you reject me and hide your face from me and look how he says this Darkness is my closest friend This is a man that was gifted Full of wisdom a great worship leader Serve God faithfully and in this season was in a very dark place mentally And this is in the Bible It's in the Psalms And that's why I want you to hear it feel it believe that God is not afraid of your honesty He cares if you hurt He hurts And it's really hard for me to talk about but I was like in a bad place I just worked and worked and worked and worked and worked and worked and taken on a little more and a little more and a little more and a little more and a little more And then it was just too much And so I ask for help Some of you right now you might not be in a great place and you hesitate to ask for help You don't want to admit it"
+            }
+          ]
+        },
+        {
+          "concern": "you're completely exhausted you pushed your body beyond your brain's capacity and now it's all starting to push back some of you may be there right now it's just it's just too much the anxiety is crushing the fear keeps you awake you're trying not to be depressed you're trying to press forward you're trying not to be burned out what do you do when you find yourself there",
+          "share": 0.143,
+          "confidence": 0.6930000000000001,
+          "evidence": [
+            {
+              "sermon_id": "e64e21199349103d",
+              "channel_name": "Life.Church with Craig Groeschel",
+              "speaker": "",
+              "published_at": "2026-02-15 13:30:00",
+              "excerpt": "You're completely exhausted You pushed your body beyond your brain's capacity and now it's all starting to push back Some of you may be there right now It's just it's just too much The anxiety is crushing The fear keeps you awake You're trying not to be depressed you're trying to press forward you're trying not to be burned out What do you do when you find yourself there"
+            }
+          ]
+        }
+      ],
+      "tone_and_atmosphere": {
+        "tone_tags_ranked": [
+          {
+            "tag": "experience-forward",
+            "share": 0.257
+          },
+          {
+            "tag": "hope-leaning",
+            "share": 0.244
+          },
+          {
+            "tag": "effort-forward",
+            "share": 0.134
+          },
+          {
+            "tag": "scripture-forward",
+            "share": 0.121
+          },
+          {
+            "tag": "grace-forward",
+            "share": 0.092
+          },
+          {
+            "tag": "steady",
+            "share": 0.058
+          }
+        ],
+        "axes_avg": {
+          "hope_vs_fear": 0.506,
+          "grace_vs_effort": -0.129,
+          "scripture_vs_story": 0.12,
+          "doctrine_vs_experience": -0.584
+        }
+      },
+      "questions_for_leaders": [
+        "If these burdens are accurate, what formation practices (Word, prayer, community) need strengthening right now?",
+        "Which warnings are repeated most\u2014and do our people know how to respond without panic?",
+        "What does the dominant tone suggest about congregational emotional weather in this season?",
+        "Where are pastors calling for action\u2014personal repentance, corporate unity, mission\u2014and what support is required?",
+        "Are we hearing one shared message across channels, or distinct local burdens requiring local responses?"
+      ],
+      "method_notes": {
+        "how_inferred": "Intent inferred from Brain intent_vectors (primary burden, secondary burdens, warnings, encouragements, calls to action) grounded in explicit language, repetition, and imperative markers. No judgments of correctness; no motive speculation."
+      }
+    }
+  },
+  "theme_convergence": [
+    {
+      "theme": "christ",
+      "total_density": 1669.3,
+      "sermon_count": 169,
+      "avg_density": 9.88
+    },
+    {
+      "theme": "scripture_reference",
+      "total_density": 1301.6,
+      "sermon_count": 169,
+      "avg_density": 7.7
+    },
+    {
+      "theme": "story",
+      "total_density": 882.6,
+      "sermon_count": 169,
+      "avg_density": 5.22
+    }
+  ],
+  "scripture_focus": [
+    {
+      "book": "john",
+      "total_references": 544,
+      "sermon_count": 93,
+      "avg_refs_per_sermon": 5.8
+    },
+    {
+      "book": "isaiah",
+      "total_references": 274,
+      "sermon_count": 51,
+      "avg_refs_per_sermon": 5.4
+    },
+    {
+      "book": "mark",
+      "total_references": 271,
+      "sermon_count": 53,
+      "avg_refs_per_sermon": 5.1
+    },
+    {
+      "book": "james",
+      "total_references": 233,
+      "sermon_count": 53,
+      "avg_refs_per_sermon": 4.4
+    },
+    {
+      "book": "matthew",
+      "total_references": 186,
+      "sermon_count": 68,
+      "avg_refs_per_sermon": 2.7
+    }
+  ],
+  "elias_preface": "",
+  "observations": [
+    "## Elias",
+    "",
+    "I sat with these sermons the way I would sit in our own church\u2014Bible open, asking what is shaping us.",
+    "",
+    "We leaned heavily into **christ** this month\u2014169 sermons carrying that weight.",
+    "",
+    "Across different pulpits, a similar burden surfaced: And it is either obedience or disobedience. Faith because of deception.",
+    "",
+    "> and it is either obedience or disobedience. And here's the problem. If you're a Christian and you said, Jesus is my Lord, your answer is already yes. The Bible says that whoever puts their hand to the plow and looks back is unfit for the\u2026",
+    "*Obedience Brings Blessing \u2014 Lifepoint Church Podcast | Pastor Jeff Kapusta*",
+    "",
+    "We kept returning to **John**\u2014544 references across 93 sermons.",
+    "That tells us something about where our imagination is resting.",
+    "",
+    "Across the network we are grace vs effort leaning away from center, hope vs fear leaning toward center, doctrine vs experience leaning away from center, scripture vs story leaning toward center.",
+    "",
+    "Drift sat at 52.66%. Not a collapse. Not a revival. Just movement.",
+    "",
+    "When we preach conviction without assurance, we quietly teach people to strive without rest.",
+    "",
+    "If John is shaping us, may it not just increase our references\u2014may it deepen our love for Christ Himself.",
+    ""
+  ],
+  "elias_closing_style": "",
+  "elias_closing_line": "",
+  "resonant_sermons": [
+    {
+      "video_id": "6088d495627603e4",
+      "channel_name": "Selah - A Podcast by Koinonia Fellowship",
+      "title": "Convenient Christianity...Consider Your Ways",
+      "published_at": "2026-02-15 10:00:00",
+      "reason": "High 'christ' density",
+      "theological_density": 73.08707124010554,
+      "category_density": 33.64116094986807,
+      "quote_bank": [
+        {
+          "video_id": "6088d495627603e4",
+          "channel_name": "Selah - A Podcast by Koinonia Fellowship",
+          "title": "Convenient Christianity...Consider Your Ways",
+          "published_at": "2026-02-15 10:00:00",
+          "category": "christ",
+          "excerpt": "blessed through his word today. Gospel chapter 1 beginning at verse 35. Again, the next day after John stood and two of his disciples and looking upon Jesus as he walked, he saith behold the Lamb of God. And the two disciples heard him speak\u2026",
+          "intelligence_score": 3.7
+        },
+        {
+          "video_id": "6088d495627603e4",
+          "channel_name": "Selah - A Podcast by Koinonia Fellowship",
+          "title": "Convenient Christianity...Consider Your Ways",
+          "published_at": "2026-02-15 10:00:00",
+          "category": "christ",
+          "excerpt": "blessed through his word today. Gospel chapter 1 beginning at verse 35. Again, the next day after John stood and two of his disciples and looking upon Jesus as he walked, he saith behold the Lamb of God. And the two disciples heard him speak\u2026",
+          "intelligence_score": 3.7
+        },
+        {
+          "video_id": "6088d495627603e4",
+          "channel_name": "Selah - A Podcast by Koinonia Fellowship",
+          "title": "Convenient Christianity...Consider Your Ways",
+          "published_at": "2026-02-15 10:00:00",
+          "category": "christ",
+          "excerpt": "the two which heard John speak and followed him was Andrew, Simon Peter's brother. He first found his own brother, Simon, and said unto him, we have found the Messiah which is being interpreted to Christ. And he brought him to Jesus. And when Jesus\u2026",
+          "intelligence_score": 2.9
+        }
+      ]
+    },
+    {
+      "video_id": "fad8e71809c31d74",
+      "channel_name": "Selah - A Podcast by Koinonia Fellowship",
+      "title": "The Benefits of God",
+      "published_at": "2026-02-01 10:00:00",
+      "reason": "High 'christ' density",
+      "theological_density": 73.08707124010554,
+      "category_density": 33.64116094986807,
+      "quote_bank": [
+        {
+          "video_id": "fad8e71809c31d74",
+          "channel_name": "Selah - A Podcast by Koinonia Fellowship",
+          "title": "The Benefits of God",
+          "published_at": "2026-02-01 10:00:00",
+          "category": "christ",
+          "excerpt": "blessed through his word today. Gospel chapter 1 beginning at verse 35. Again, the next day after John stood and two of his disciples and looking upon Jesus as he walked, he saith behold the Lamb of God. And the two disciples heard him speak\u2026",
+          "intelligence_score": 3.7
+        },
+        {
+          "video_id": "fad8e71809c31d74",
+          "channel_name": "Selah - A Podcast by Koinonia Fellowship",
+          "title": "The Benefits of God",
+          "published_at": "2026-02-01 10:00:00",
+          "category": "christ",
+          "excerpt": "blessed through his word today. Gospel chapter 1 beginning at verse 35. Again, the next day after John stood and two of his disciples and looking upon Jesus as he walked, he saith behold the Lamb of God. And the two disciples heard him speak\u2026",
+          "intelligence_score": 3.7
+        },
+        {
+          "video_id": "fad8e71809c31d74",
+          "channel_name": "Selah - A Podcast by Koinonia Fellowship",
+          "title": "The Benefits of God",
+          "published_at": "2026-02-01 10:00:00",
+          "category": "christ",
+          "excerpt": "the two which heard John speak and followed him was Andrew, Simon Peter's brother. He first found his own brother, Simon, and said unto him, we have found the Messiah which is being interpreted to Christ. And he brought him to Jesus. And when Jesus\u2026",
+          "intelligence_score": 2.9
+        }
+      ]
+    },
+    {
+      "video_id": "9168391b71616d60",
+      "channel_name": "Marked by Grace",
+      "title": "What is the Bible?",
+      "published_at": "2026-02-09 10:00:00",
+      "reason": "High 'scripture_reference' density",
+      "theological_density": 92.90953545232271,
+      "category_density": 52.97473512632437,
+      "quote_bank": [
+        {
+          "video_id": "9168391b71616d60",
+          "channel_name": "Marked by Grace",
+          "title": "What is the Bible?",
+          "published_at": "2026-02-09 10:00:00",
+          "category": "scripture_reference",
+          "excerpt": "the Christian life together. If you have a question you'd like me to address, you can send that into Marked By Grace at FBCJacks.com. That's Marked By Grace at FBCJacks with an X.com. And I would love to get your question. But the question this\u2026",
+          "intelligence_score": 4.3
+        },
+        {
+          "video_id": "9168391b71616d60",
+          "channel_name": "Marked by Grace",
+          "title": "What is the Bible?",
+          "published_at": "2026-02-09 10:00:00",
+          "category": "scripture_reference",
+          "excerpt": "the Christian life together. If you have a question you'd like me to address, you can send that into Marked By Grace at FBCJacks.com. That's Marked By Grace at FBCJacks with an X.com. And I would love to get your question. But the question this\u2026",
+          "intelligence_score": 4.3
+        },
+        {
+          "video_id": "9168391b71616d60",
+          "channel_name": "Marked by Grace",
+          "title": "What is the Bible?",
+          "published_at": "2026-02-09 10:00:00",
+          "category": "scripture_reference",
+          "excerpt": "glad that we get to think through the issues in life and Scripture and the Christian life together. If you have a question you'd like me to address, you can send that into Marked By Grace at FBCJacks.com. That's Marked By Grace at FBCJacks with\u2026",
+          "intelligence_score": 3.5
+        }
+      ]
+    },
+    {
+      "video_id": "768ecdd5a956f31e",
+      "channel_name": "Calvary Chapel Oxnard",
+      "title": "The Great Escape",
+      "published_at": "2026-01-25 10:00:00",
+      "reason": "High 'scripture_reference' density",
+      "theological_density": 57.565789473684205,
+      "category_density": 26.55075187969925,
+      "quote_bank": [
+        {
+          "video_id": "768ecdd5a956f31e",
+          "channel_name": "Calvary Chapel Oxnard",
+          "title": "The Great Escape",
+          "published_at": "2026-01-25 10:00:00",
+          "category": "scripture_reference",
+          "excerpt": "him to escape what otherwise would be certain death. Peter had no assurance that this would be the outcome. He had seen his fellow Apostle and friend James, the brother of John, not to be confused with James, the brother of Jesus. But the Apostle\u2026",
+          "intelligence_score": 2.5
+        },
+        {
+          "video_id": "768ecdd5a956f31e",
+          "channel_name": "Calvary Chapel Oxnard",
+          "title": "The Great Escape",
+          "published_at": "2026-01-25 10:00:00",
+          "category": "scripture_reference",
+          "excerpt": "Perhaps the most famous escape artist in history, Henry Houdini, he became famous for his ability to escape handcuffs, jail cells, straight jackets, even underwater tanks. He became quite a sensation in the early 1900s and his ability to escape from seemingly impossible confinements brought\u2026",
+          "intelligence_score": 1.7
+        },
+        {
+          "video_id": "768ecdd5a956f31e",
+          "channel_name": "Calvary Chapel Oxnard",
+          "title": "The Great Escape",
+          "published_at": "2026-01-25 10:00:00",
+          "category": "scripture_reference",
+          "excerpt": "to escape from seemingly impossible confinements brought him fortune and fame. He traveled across the U.S. as part of a series of Vodville acts and traveled to Europe where audiences were astonished at his ability as an escape artist. It seems there was no lock\u2026",
+          "intelligence_score": 1.7
+        }
+      ]
+    },
+    {
+      "video_id": "e599c14dde7bf095",
+      "channel_name": "Marked by Grace",
+      "title": "What Is Life?",
+      "published_at": "2026-01-26 10:00:00",
+      "reason": "High 'story' density",
+      "theological_density": 83.3937635968093,
+      "category_density": 33.35750543872371,
+      "quote_bank": [
+        {
+          "video_id": "e599c14dde7bf095",
+          "channel_name": "Marked by Grace",
+          "title": "What Is Life?",
+          "published_at": "2026-01-26 10:00:00",
+          "category": "story",
+          "excerpt": "but it's not alive. Okay, so you got that. Then there is in the creation, living creatures. And in the most entry level sort of living creature, an example of that would be like a daffodil. It's alive. It has a life span. It's an\u2026",
+          "intelligence_score": 2.2
+        },
+        {
+          "video_id": "e599c14dde7bf095",
+          "channel_name": "Marked by Grace",
+          "title": "What Is Life?",
+          "published_at": "2026-01-26 10:00:00",
+          "category": "story",
+          "excerpt": "but it's not alive. Okay, so you got that. Then there is in the creation, living creatures. And in the most entry level sort of living creature, an example of that would be like a daffodil. It's alive. It has a life span. It's an\u2026",
+          "intelligence_score": 2.2
+        },
+        {
+          "video_id": "e599c14dde7bf095",
+          "channel_name": "Marked by Grace",
+          "title": "What Is Life?",
+          "published_at": "2026-01-26 10:00:00",
+          "category": "story",
+          "excerpt": "be joining you with this podcast. If you've got a question you'd like me to answer, you can send it into Marked By Grace at fbcjax.com. That's Marked By Grace at fbcjax with an x.com. I'd love to get to your question. You might think\u2026",
+          "intelligence_score": 1.5
+        }
+      ]
+    },
+    {
+      "video_id": "3b870a7927f246d4",
+      "channel_name": "Lifepoint Church Podcast | Pastor Jeff Kapusta",
+      "title": "Obedience Brings Blessing",
+      "published_at": "2026-02-15 10:00:00",
+      "reason": "High 'story' density",
+      "theological_density": 48.87690925426775,
+      "category_density": 14.195867026055705,
+      "quote_bank": [
+        {
+          "video_id": "3b870a7927f246d4",
+          "channel_name": "Lifepoint Church Podcast | Pastor Jeff Kapusta",
+          "title": "Obedience Brings Blessing",
+          "published_at": "2026-02-15 10:00:00",
+          "category": "story",
+          "excerpt": "This is hard, God. I don't know if I could do this anymore. Every Monday. Call Pastor Jeff, like life points still hiring. And then I remember, oh yeah, I follow a guy that his obedience led him to a cross. It's kind of what\u2026",
+          "intelligence_score": 4.5
+        },
+        {
+          "video_id": "3b870a7927f246d4",
+          "channel_name": "Lifepoint Church Podcast | Pastor Jeff Kapusta",
+          "title": "Obedience Brings Blessing",
+          "published_at": "2026-02-15 10:00:00",
+          "category": "story",
+          "excerpt": "10, verse 10. The thief comes only to steal and kill and destroy. I have come, Jesus is speaking. I have come that they may have life and have it. Let's try that again. I have come that they may have life and have it\u2026",
+          "intelligence_score": 2.5
+        },
+        {
+          "video_id": "3b870a7927f246d4",
+          "channel_name": "Lifepoint Church Podcast | Pastor Jeff Kapusta",
+          "title": "Obedience Brings Blessing",
+          "published_at": "2026-02-15 10:00:00",
+          "category": "story",
+          "excerpt": "10, verse 10. The thief comes only to steal and kill and destroy. I have come, Jesus is speaking. I have come that they may have life and have it. Let's try that again. I have come that they may have life and have it\u2026",
+          "intelligence_score": 2.5
+        }
+      ]
+    }
+  ],
+  "outliers": [
+    {
+      "video_id": "27f9c96f600f2bb3",
+      "channel_name": "Elevation with Steven Furtick",
+      "title": "More Ready Than You Recognize",
+      "published_at": "2026-02-01 20:00:00",
+      "drift_level": "strong_shift",
+      "drift_magnitude": 2.57,
+      "axis_scores": {
+        "grace_vs_effort": -0.28571428552451017,
+        "hope_vs_fear": 0.7999999996280399,
+        "doctrine_vs_experience": -0.5833333332203247,
+        "scripture_vs_story": -0.2653061224238053
+      }
+    },
+    {
+      "video_id": "9d6c04ca1ab2e5a4",
+      "channel_name": "Sound Truth Radio",
+      "title": "Thursday Broadcast",
+      "published_at": "2026-02-12 10:00:00",
+      "drift_level": "strong_shift",
+      "drift_magnitude": 2.31,
+      "axis_scores": {
+        "grace_vs_effort": 0.0,
+        "hope_vs_fear": 0.03999999999360957,
+        "doctrine_vs_experience": -0.5555555553090125,
+        "scripture_vs_story": 0.9473684209530583
+      }
+    },
+    {
+      "video_id": "768ecdd5a956f31e",
+      "channel_name": "Calvary Chapel Oxnard",
+      "title": "The Great Escape",
+      "published_at": "2026-01-25 10:00:00",
+      "drift_level": "strong_shift",
+      "drift_magnitude": 2.07,
+      "axis_scores": {
+        "grace_vs_effort": -0.999999998936,
+        "hope_vs_fear": 0.8666666665437156,
+        "doctrine_vs_experience": -0.9999999996453333,
+        "scripture_vs_story": 0.7795275590289946
+      }
+    }
+  ],
+  "metadata": {
+    "days": 30,
+    "limit": 200,
+    "total_sermons": 169,
+    "generated_at": "2026-02-22T19:44:01.642801Z",
+    "window_key": "2026-01-23..2026-02-22"
+  }
+}

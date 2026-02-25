@@ -1,8 +1,8 @@
 {
-  "version": "5.2",
+  "version": "5.4",
   "theological_categories": {
     "grace": {
-      "keywords": ["grace", "mercy", "forgiveness", "unmerited", "gift", "pardon", "compassion", "redemption", "justified", "freely"],
+      "keywords": ["grace", "mercy", "forgiveness", "unmerited", "gift", "pardon", "compassion", "redemption", "justified", "freely", "reconciled", "reconciliation"],
       "weight": 1.0
     },
     "effort": {
@@ -10,7 +10,7 @@
       "weight": 1.0
     },
     "hope": {
-      "keywords": ["hope", "promise", "future", "restoration", "heaven", "eternal", "glory", "coming", "resurrection", "victory"],
+      "keywords": ["hope", "promise", "future", "restoration", "heaven", "eternal", "glory", "coming", "resurrection", "victory", "assurance", "assured", "confident", "confidence", "secure", "security"],
       "weight": 1.0
     },
     "fear": {

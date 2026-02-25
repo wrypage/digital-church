@@ -3,6 +3,7 @@ import logging
 from datetime import datetime, timedelta
 from engine.config import load_theology_config
 from engine import db
+from engine.climate_agenda import generate_climate_agenda
 
 logger = logging.getLogger("digital_pulpit")
 
@@ -26,13 +27,10 @@ def score_sentence_quality(sentence, avatar_config, category_scores):
     score = 0.0
     normalized = sentence.lower()
 
-    # Reward affinity category keywords
     affinity_cats = avatar_config.get("affinity_categories", [])
     for cat in affinity_cats:
-        # Simple keyword presence check (could load keywords from config)
         score += category_scores.get(cat, 0) * 0.5
 
-    # Reward moderate length (too short or too long is bad)
     length = len(sentence)
     if 100 <= length <= 200:
         score += 2.0
@@ -41,7 +39,6 @@ def score_sentence_quality(sentence, avatar_config, category_scores):
     elif length < 50:
         score -= 1.0
 
-    # Reward theological language density
     theological_indicators = ["god", "christ", "jesus", "lord", "spirit", "faith", "grace", "gospel", "scripture", "biblical"]
     for word in theological_indicators:
         if word in normalized:
@@ -61,7 +58,6 @@ def select_quotes_for_avatar(avatar_key, avatar_config, brain_results_with_trans
 
     scored = []
     for item in brain_results_with_transcripts:
-        # Safety checks
         if not item.get("brain") or not item.get("transcript"):
             continue
 
@@ -73,12 +69,11 @@ def select_quotes_for_avatar(avatar_key, avatar_config, brain_results_with_trans
     scored.sort(key=lambda x: x[0], reverse=True)
 
     quotes = []
-    for score, item, raw_scores in scored[:5]:  # Look at top 5 instead of 3
+    for score, item, raw_scores in scored[:5]:
         text = item["transcript"].get("full_text", "")
         if not text or not text.strip():
             continue
 
-        # Split into sentences more carefully
         sentences = []
         for s in text.replace("!", ".").replace("?", ".").split("."):
             s = s.strip()
@@ -88,9 +83,8 @@ def select_quotes_for_avatar(avatar_key, avatar_config, brain_results_with_trans
         if not sentences:
             continue
 
-        # Score each sentence and pick the best
         sentence_scores = []
-        for sent in sentences[:30]:  # Check first 30 sentences
+        for sent in sentences[:30]:
             sent_score = score_sentence_quality(sent, avatar_config, raw_scores)
             sentence_scores.append((sent_score, sent))
 
@@ -106,19 +100,19 @@ def select_quotes_for_avatar(avatar_key, avatar_config, brain_results_with_trans
                 "affinity_score": round(score, 2),
             })
 
-        # Stop after finding 3 good quotes
         if len(quotes) >= 3:
             break
 
     return quotes
 
 
-def generate_avatar_section(avatar_key, avatar_config, quotes):
+def generate_avatar_section(avatar_key, avatar_config, quotes, briefing=None):
     """
-    Generate markdown section for an avatar with their selected quotes.
-    Includes fallback handling for missing config or quotes.
+    Generate markdown section for an avatar with:
+      - a targeted prompt anchored in "What are our pastors trying to tell us?"
+      - 0–3 signal receipts (quotes)
+      - fallback handling
     """
-    # Safety checks for required fields
     name = avatar_config.get("name", f"Avatar {avatar_key}")
     tradition = avatar_config.get("tradition", "Unknown tradition")
     voice = avatar_config.get("voice", "Neutral")
@@ -129,23 +123,34 @@ def generate_avatar_section(avatar_key, avatar_config, quotes):
     lines.append(f"*Voice: {voice}*")
     lines.append("")
 
-    if quotes:
-        # Primary quote
-        lines.append(f'"{quotes[0]["quote"]}"')
-        lines.append(f'— From "{quotes[0]["title"]}" ({quotes[0]["channel"]})')
+    # Targeted prompt (new)
+    if briefing:
+        lines.append("**Targeted prompt (anchored inquiry):**")
+        lines.append("- What are our pastors trying to tell us in this window, through your lens?")
+        if briefing.get("top_message"):
+            lines.append(f"- Isolate the signal being pressed: {briefing['top_message']}")
+        if briefing.get("top_warning"):
+            lines.append(f"- Name what this repeated warning suggests about the moment: {briefing['top_warning']}")
+        if briefing.get("top_cta"):
+            lines.append(f"- Translate the main call-to-action into practical next steps: {briefing['top_cta']}")
         lines.append("")
 
-        # Additional supporting quotes
+    # Receipts
+    if quotes:
+        lines.append("**Signal receipts:**")
+        lines.append(f"\"{quotes[0]['quote']}\"")
+        lines.append(f"— From \"{quotes[0]['title']}\" ({quotes[0]['channel']})")
+        lines.append("")
+
         if len(quotes) > 1:
             lines.append("Additional signals:")
             for q in quotes[1:]:
                 quote_preview = q["quote"][:150]
                 if len(q["quote"]) > 150:
                     quote_preview += "..."
-                lines.append(f'  - "{quote_preview}" — {q["channel"]}')
+                lines.append(f"  - \"{quote_preview}\" — {q['channel']}")
             lines.append("")
     else:
-        # No quotes found - use fallback
         if fallback:
             lines.append(fallback)
         else:
@@ -210,15 +215,85 @@ def run_assembly():
 
         logger.info(f"Matched {len(items)} brain results with transcripts")
 
+        # Build Elias anchor from intent climate
+        agenda = generate_climate_agenda(days=30, limit=240, limit_each=2)
+        intent_pack = agenda.get("intent_climate_v2") or {}
+        intent = intent_pack.get("climate_v2") if isinstance(intent_pack, dict) else None
+
+        top_message = ""
+        top_warning = ""
+        top_cta = ""
+
+        if intent:
+            pm = intent.get("primary_messages_being_pressed") or []
+            wr = intent.get("warnings_repeated") or []
+            ca = intent.get("calls_to_action_most_urged") or []
+            top_message = (pm[0].get("message") if pm else "") or ""
+            top_warning = (wr[0].get("warning") if wr else "") or ""
+            top_cta = (ca[0].get("action") if ca else "") or ""
+
         today = datetime.utcnow().date()
         week_start = today - timedelta(days=today.weekday())
         week_end = week_start + timedelta(days=6)
 
         script_parts = []
-        script_parts.append(f"# The Digital Pulpit — Weekly Script")
+        script_parts.append("# The Digital Pulpit — Weekly Script")
         script_parts.append(f"## Week of {week_start} to {week_end}")
         script_parts.append(f"*Generated: {datetime.utcnow().isoformat()}*")
         script_parts.append("")
+        script_parts.append("---")
+        script_parts.append("")
+
+        # Elias session anchor (new)
+        script_parts.append("## Elias — Session Anchor")
+        script_parts.append("**Guiding question:** What are our pastors trying to tell us?")
+        script_parts.append("")
+        if intent:
+            tw = intent.get("time_window") or {}
+            msg = intent.get("the_message_this_window") or {}
+            script_parts.append(f"Time window: {tw.get('key','')}")
+            script_parts.append(f"Channels: {tw.get('channels_included','')} | Sermons: {tw.get('sermons_included','')}")
+            script_parts.append("")
+            if msg.get("headline"):
+                script_parts.append(f"**Headline:** {msg.get('headline')}")
+            if msg.get("summary"):
+                script_parts.append(f"{msg.get('summary')}")
+            script_parts.append("")
+
+            def _block(title: str, rows, key):
+                script_parts.append(f"### {title}")
+                if not rows:
+                    script_parts.append("(none detected in this window)")
+                    script_parts.append("")
+                    return
+                for r in rows[:3]:
+                    val = (r.get(key) or "").strip()
+                    if not val:
+                        continue
+                    script_parts.append(f"- {val}")
+                    ev = r.get("evidence") or []
+                    if ev:
+                        ex = (ev[0].get("excerpt") or "").strip()
+                        if ex:
+                            script_parts.append(f"  - \"{ex}\"")
+                            script_parts.append(f"  - ({ev[0].get('channel_name','')} — {ev[0].get('published_at','')})")
+                script_parts.append("")
+
+            _block("Primary messages being pressed", intent.get("primary_messages_being_pressed") or [], "message")
+            _block("Warnings repeated", intent.get("warnings_repeated") or [], "warning")
+            _block("Encouragements amplified", intent.get("encouragements_amplified") or [], "encouragement")
+            _block("Calls to action most urged", intent.get("calls_to_action_most_urged") or [], "action")
+
+            qs = intent.get("questions_for_leaders") or []
+            if qs:
+                script_parts.append("### Questions for leaders")
+                for q in qs[:5]:
+                    script_parts.append(f"- {q}")
+                script_parts.append("")
+        else:
+            script_parts.append("No intent climate data available for this window.")
+            script_parts.append("")
+
         script_parts.append("---")
         script_parts.append("")
 
@@ -227,10 +302,21 @@ def run_assembly():
         avatars_with_quotes = 0
         total_quotes = 0
 
-        for avatar_key, avatar_config in avatars.items():
+        # Preferred order to keep the “inquiry loop” stable
+        preferred_order = ["sully", "aris", "noni", "elena", "tio"]
+        ordered_keys = [k for k in preferred_order if k in avatars] + [k for k in avatars.keys() if k not in preferred_order]
+
+        briefing = {
+            "top_message": top_message,
+            "top_warning": top_warning,
+            "top_cta": top_cta,
+        }
+
+        for avatar_key in ordered_keys:
+            avatar_config = avatars.get(avatar_key, {})
             try:
                 quotes = select_quotes_for_avatar(avatar_key, avatar_config, items)
-                section = generate_avatar_section(avatar_key, avatar_config, quotes)
+                section = generate_avatar_section(avatar_key, avatar_config, quotes, briefing=briefing)
                 script_parts.append(section)
                 script_parts.append("---")
                 script_parts.append("")
@@ -248,7 +334,6 @@ def run_assembly():
 
             except Exception as e:
                 logger.error(f"Failed to process avatar {avatar_key}: {e}", exc_info=True)
-                # Still add a minimal section so script isn't broken
                 fallback = avatar_config.get("fallback_intro", "Error generating section")
                 script_parts.append(f"## {avatar_config.get('name', avatar_key)}")
                 script_parts.append(fallback)
@@ -275,10 +360,6 @@ def run_assembly():
 
 
 def generate_fallback_script(avatars):
-    """
-    Generate a fallback script when no sermon data is available.
-    Uses fallback_intro from each avatar config.
-    """
     parts = []
     parts.append("# The Digital Pulpit — Weekly Script (Fallback)")
     parts.append(f"*Generated: {datetime.utcnow().isoformat()}*")

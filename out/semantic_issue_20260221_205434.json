@@ -1,0 +1,161 @@
+[
+  {
+    "cluster_id": 1,
+    "label": "forgetting, promises, faith, spiritual, defeat",
+    "claim_count": 2,
+    "sermon_count": 2,
+    "channel_count": 1,
+    "representative_claims": [
+      "Forgetting God's promises leads to a lapse of faith and spiritual defeat.",
+      "Spiritual defeat often begins with lapses of faith and forgetting God\u2019s promises."
+    ],
+    "representatives": [
+      {
+        "video_id": "91e275a644aefd71",
+        "title": "Worlds In Collision - A",
+        "channel_name": "Real Life Radio with Jack Hibbs",
+        "published_at": "2026-02-18 10:00:00",
+        "core_thesis": "The material and spiritual worlds are in constant collision, and Christians must recognize the deeper, more powerful reality of the spiritual realm. God's way and promises are often at odds with human emotion, haste, and worldly ways, as illustrated by Saul and David's contrasting responses to spiritual challenges.",
+        "sample_claim": "Forgetting God's promises leads to a lapse of faith and spiritual defeat.",
+        "receipts": [
+          {
+            "excerpt": "Listen, if Jesus does not physically return to this earth, he is not the Messiah. He must return to planet earth, but as we turn our microscope in further, he must return to the nation of Israel.",
+            "supports": "claim",
+            "notes": "Directly links Jesus\u2019 messianic identity to biblical prophecy and physical fulfillment."
+          },
+          {
+            "excerpt": "It is a fact, biblically, spiritually, that there's a greater world behind the material world, spiritually, whatever we see materially, behind that world is a spiritual realm that is far deeper, far greater and far more powerful.",
+            "supports": "thesis",
+            "notes": "Stresses the unseen spiritual reality as the true context for Christian life."
+          }
+        ]
+      },
+      {
+        "video_id": "79eaac371efcb49b",
+        "title": "The Good, The Bad, And... - B",
+        "channel_name": "Real Life Radio with Jack Hibbs",
+        "published_at": "2026-02-17 10:00:00",
+        "core_thesis": "The sermon contrasts the lives and spiritual trajectories of David and Saul, urging believers to reckon their old sinful selves as dead and to live in faith and obedience to God\u2019s promises, rather than giving in to fear, self-reliance, or secret sin. True transformation and protection against spiritual defeat come from continual repentance, surrender, and reliance on Christ\u2019s work.",
+        "sample_claim": "Spiritual defeat often begins with lapses of faith and forgetting God\u2019s promises.",
+        "receipts": [
+          {
+            "excerpt": "In fact, the Bible gives me the authority to now say to me, the old me, your dead. Get back in your tomb where you belong.",
+            "supports": "thesis",
+            "notes": "Illustrates the call for believers to actively reject old sinful patterns and live out their new identity."
+          },
+          {
+            "excerpt": "It's too bad Saul. Saul could have stopped at any moment and said, you know what? I'm repenting, I'm quitting being in charge. If you just repent, he could have been preserved.",
+            "supports": "claim",
+            "notes": "Shows how repentance is always possible and underlines the loss in refusing it, contrasting Saul\u2019s rebellion and David\u2019s repentance."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "label": "human, heart, divided, unreliable, because",
+    "claim_count": 2,
+    "sermon_count": 2,
+    "channel_count": 1,
+    "representative_claims": [
+      "The human heart is unreliable because it is divided, depraved, and delusional.",
+      "The human heart is divided, deceitful, and prone to self-delusion due to sin."
+    ],
+    "representatives": [
+      {
+        "video_id": "a5e489001a9a28d0",
+        "title": "Follow Your Heart - Part B",
+        "channel_name": "Connect with Skip Heitzig Podcast",
+        "published_at": "2026-02-17 10:00:00",
+        "core_thesis": "Following your own heart is unreliable and potentially dangerous because the human heart is divided, depraved, and delusional; instead, believers are called to seek and follow God's heart, relying on His wisdom, Word, Spirit, and godly counsel for guidance.",
+        "sample_claim": "The human heart is unreliable because it is divided, depraved, and delusional.",
+        "receipts": [
+          {
+            "excerpt": "Advice that is not rooted in biblical truth or bathed in prayer is going to be bad advice.",
+            "supports": "claim",
+            "notes": "Underscores that even from well-meaning sources, advice must be filtered by biblical standards."
+          },
+          {
+            "excerpt": "Our hearts are divided. David even prayed in Psalm 86, unite my heart to fear your name. That is, give me an undivided heart because he knew our hearts are divided.",
+            "supports": "thesis",
+            "notes": "Emphasizes scripturally the instability and unreliability of human affections and will."
+          }
+        ]
+      },
+      {
+        "video_id": "e9bc1687518c29f0",
+        "title": "Follow Your Heart - Part A",
+        "channel_name": "Connect with Skip Heitzig Podcast",
+        "published_at": "2026-02-16 10:00:00",
+        "core_thesis": "Following your heart is not reliable guidance for making decisions because the human heart is divided, depraved, and delusional; instead, decisions must be rooted in God's will and wisdom, not just personal feelings or good intentions.",
+        "sample_claim": "The human heart is divided, deceitful, and prone to self-delusion due to sin.",
+        "receipts": [
+          {
+            "excerpt": "\"He who trusts in his own heart is a fool. But whoever walks wisely will be delivered.\"",
+            "supports": "thesis | claim",
+            "notes": "Direct biblical support for the main argument that self-trust is spiritually dangerous."
+          },
+          {
+            "excerpt": "\"Good intentions do not always produce good results. In fact, good intentions are not always God\u2019s intentions.\"",
+            "supports": "thesis | claim",
+            "notes": "Highlights the insufficiency of sincerity or positive feelings as a basis for action."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "label": "even, well, give, advice, people",
+    "claim_count": 2,
+    "sermon_count": 2,
+    "channel_count": 1,
+    "representative_claims": [
+      "Even well-intentioned believers can give unbiblical or harmful advice.",
+      "Even well-meaning people, including God's people, can give bad advice."
+    ],
+    "representatives": [
+      {
+        "video_id": "a5e489001a9a28d0",
+        "title": "Follow Your Heart - Part B",
+        "channel_name": "Connect with Skip Heitzig Podcast",
+        "published_at": "2026-02-17 10:00:00",
+        "core_thesis": "Following your own heart is unreliable and potentially dangerous because the human heart is divided, depraved, and delusional; instead, believers are called to seek and follow God's heart, relying on His wisdom, Word, Spirit, and godly counsel for guidance.",
+        "sample_claim": "Even well-intentioned believers can give unbiblical or harmful advice.",
+        "receipts": [
+          {
+            "excerpt": "Advice that is not rooted in biblical truth or bathed in prayer is going to be bad advice.",
+            "supports": "claim",
+            "notes": "Underscores that even from well-meaning sources, advice must be filtered by biblical standards."
+          },
+          {
+            "excerpt": "Our hearts are divided. David even prayed in Psalm 86, unite my heart to fear your name. That is, give me an undivided heart because he knew our hearts are divided.",
+            "supports": "thesis",
+            "notes": "Emphasizes scripturally the instability and unreliability of human affections and will."
+          }
+        ]
+      },
+      {
+        "video_id": "e9bc1687518c29f0",
+        "title": "Follow Your Heart - Part A",
+        "channel_name": "Connect with Skip Heitzig Podcast",
+        "published_at": "2026-02-16 10:00:00",
+        "core_thesis": "Following your heart is not reliable guidance for making decisions because the human heart is divided, depraved, and delusional; instead, decisions must be rooted in God's will and wisdom, not just personal feelings or good intentions.",
+        "sample_claim": "Even well-meaning people, including God's people, can give bad advice.",
+        "receipts": [
+          {
+            "excerpt": "\"He who trusts in his own heart is a fool. But whoever walks wisely will be delivered.\"",
+            "supports": "thesis | claim",
+            "notes": "Direct biblical support for the main argument that self-trust is spiritually dangerous."
+          },
+          {
+            "excerpt": "\"Good intentions do not always produce good results. In fact, good intentions are not always God\u2019s intentions.\"",
+            "supports": "thesis | claim",
+            "notes": "Highlights the insufficiency of sincerity or positive feelings as a basis for action."
+          }
+        ]
+      }
+    ]
+  }
+]

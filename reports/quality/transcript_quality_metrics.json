@@ -1,0 +1,126 @@
+{
+  "total_transcripts": 108,
+  "empty_text_count": 0,
+  "null_word_count": 0,
+  "word_count_min": 1308,
+  "word_count_avg": 6620.81,
+  "word_count_max": 12040,
+  "word_count_median": 6643,
+  "longest_transcripts": [
+    {
+      "transcript_id": 88,
+      "video_id": "68b4f06919a992b0",
+      "word_count": 12040
+    },
+    {
+      "transcript_id": 14,
+      "video_id": "dc0a2c1b1c0665bb",
+      "word_count": 10888
+    },
+    {
+      "transcript_id": 13,
+      "video_id": "502f7d9af91db6fa",
+      "word_count": 10511
+    },
+    {
+      "transcript_id": 32,
+      "video_id": "069adbc6ddf560b6",
+      "word_count": 9890
+    },
+    {
+      "transcript_id": 16,
+      "video_id": "b33f91e7be7d7e59",
+      "word_count": 9767
+    },
+    {
+      "transcript_id": 15,
+      "video_id": "df4e23b01d390908",
+      "word_count": 9718
+    },
+    {
+      "transcript_id": 95,
+      "video_id": "ac8800eb8ec5e157",
+      "word_count": 9510
+    },
+    {
+      "transcript_id": 94,
+      "video_id": "224d313f0d68f9e4",
+      "word_count": 9472
+    },
+    {
+      "transcript_id": 73,
+      "video_id": "943bfc2fc596fb34",
+      "word_count": 9151
+    },
+    {
+      "transcript_id": 92,
+      "video_id": "297468b3ea89e80c",
+      "word_count": 8954
+    }
+  ],
+  "shortest_transcripts": [
+    {
+      "transcript_id": 41,
+      "video_id": "4e492843c465beef",
+      "word_count": 1308
+    },
+    {
+      "transcript_id": 76,
+      "video_id": "fff27fa6b5ef676a",
+      "word_count": 2857
+    },
+    {
+      "transcript_id": 31,
+      "video_id": "fca16f0da36b7c27",
+      "word_count": 3529
+    },
+    {
+      "transcript_id": 99,
+      "video_id": "5d1a7c6feaae7dbf",
+      "word_count": 3645
+    },
+    {
+      "transcript_id": 65,
+      "video_id": "1a0397ec38e539f8",
+      "word_count": 3734
+    },
+    {
+      "transcript_id": 64,
+      "video_id": "58132d58898065a0",
+      "word_count": 3750
+    },
+    {
+      "transcript_id": 97,
+      "video_id": "11db919e2cdbfdc6",
+      "word_count": 3751
+    },
+    {
+      "transcript_id": 98,
+      "video_id": "7183644885356984",
+      "word_count": 3870
+    },
+    {
+      "transcript_id": 62,
+      "video_id": "84882c633037b6c2",
+      "word_count": 3883
+    },
+    {
+      "transcript_id": 100,
+      "video_id": "9d6c04ca1ab2e5a4",
+      "word_count": 3937
+    }
+  ],
+  "duplicate_video_ids": [],
+  "language_distribution": {
+    "en": 108
+  },
+  "provider_distribution": {
+    "whisper_local": 108
+  },
+  "model_distribution": {
+    "base": 108
+  },
+  "version_distribution": {
+    "v1.0": 108
+  }
+}

@@ -1,238 +1,335 @@
-#!/usr/bin/env python3
-"""
-engine/agenda.py - Assembly Agenda Generator
-
-Selects analyzed sermons from last N days and categorizes them by:
-1) drift (anomaly/strong/moderate) - top 5 by drift magnitude
-2) imbalance - top 5 by max absolute axis score
-3) stable exemplars - low drift magnitude
-
-Attaches evidence snippets from brain_evidence for each item.
-"""
-
-import argparse
 import json
-import math
-import sqlite3
+import logging
 from datetime import datetime, timedelta
-from typing import Dict, List, Optional
 
-from .config import DATABASE_PATH
+from engine.config import load_theology_config
+from engine import db
+from engine.climate_agenda import generate_climate_agenda
 
-
-def _connect(db_path: str = DATABASE_PATH) -> sqlite3.Connection:
-    conn = sqlite3.connect(db_path)
-    conn.row_factory = sqlite3.Row
-    return conn
+logger = logging.getLogger("digital_pulpit")
 
 
-def _safe_json_load(s: Optional[str], default):
-    if not s:
-        return default
+def compute_affinity_score(brain_result, avatar_config, category_scores):
+    affinity_cats = avatar_config.get("affinity_categories", [])
+    score = 0.0
+    for cat in affinity_cats:
+        score += category_scores.get(cat, 0)
+    return score
+
+
+def score_sentence_quality(sentence, avatar_config, category_scores):
+    """
+    Score a sentence for theological relevance and quality.
+    Higher scores indicate better quotes.
+    """
+    if not sentence or len(sentence) < 30:
+        return 0.0
+
+    score = 0.0
+    normalized = sentence.lower()
+
+    affinity_cats = avatar_config.get("affinity_categories", [])
+    for cat in affinity_cats:
+        score += category_scores.get(cat, 0) * 0.5
+
+    length = len(sentence)
+    if 100 <= length <= 200:
+        score += 2.0
+    elif 200 < length <= 300:
+        score += 1.0
+    elif length < 50:
+        score -= 1.0
+
+    theological_indicators = [
+        "god", "christ", "jesus", "lord", "spirit", "faith", "grace", "gospel", "scripture", "biblical"
+    ]
+    for word in theological_indicators:
+        if word in normalized:
+            score += 0.5
+
+    return score
+
+
+def select_quotes_for_avatar(avatar_key, avatar_config, brain_results_with_transcripts):
+    """
+    Select best quotes for an avatar from brain results.
+    Uses affinity scoring + sentence quality metrics.
+    """
+    if not brain_results_with_transcripts:
+        logger.warning(f"No brain results available for avatar {avatar_key}")
+        return []
+
+    scored = []
+    for item in brain_results_with_transcripts:
+        if not item.get("brain") or not item.get("transcript"):
+            continue
+
+        raw_json = item["brain"].get("raw_scores_json", "{}")
+        raw = json.loads(raw_json) if raw_json else {}
+        affinity = compute_affinity_score(item["brain"], avatar_config, raw)
+        scored.append((affinity, item, raw))
+
+    scored.sort(key=lambda x: x[0], reverse=True)
+
+    quotes = []
+    for score, item, raw_scores in scored[:5]:
+        text = item["transcript"].get("full_text", "")
+        if not text or not text.strip():
+            continue
+
+        sentences = []
+        for s in text.replace("!", ".").replace("?", ".").split("."):
+            s = s.strip()
+            if len(s) > 30:
+                sentences.append(s)
+
+        if not sentences:
+            continue
+
+        sentence_scores = []
+        for sent in sentences[:30]:
+            sent_score = score_sentence_quality(sent, avatar_config, raw_scores)
+            sentence_scores.append((sent_score, sent))
+
+        if sentence_scores:
+            sentence_scores.sort(key=lambda x: x[0], reverse=True)
+            best_sentence = sentence_scores[0][1]
+
+            quotes.append({
+                "video_id": item["brain"].get("video_id", ""),
+                "title": item["brain"].get("title", "Unknown"),
+                "channel": item["brain"].get("channel_name", "Unknown"),
+                "quote": best_sentence[:300],
+                "affinity_score": round(score, 2),
+            })
+
+        if len(quotes) >= 3:
+            break
+
+    return quotes
+
+
+def run_assembly():
+    run_id = db.create_run("assembly")
+    logger.info(f"Starting Assembly run #{run_id}")
+
     try:
-        return json.loads(s)
-    except Exception:
-        return default
+        config = load_theology_config()
+        if not config:
+            db.finish_run(run_id, "failed", 0, 0, "Config not loaded")
+            return run_id
+
+        avatars = config.get("avatars", {})
+        if not avatars:
+            logger.warning("No avatars configured in theology config")
+            db.finish_run(run_id, "failed", 0, 0, "No avatars in config")
+            return run_id
+
+        logger.info(f"Loaded {len(avatars)} avatars from config")
+
+        brain_results = db.get_all_brain_results()
+        if not brain_results:
+            logger.warning("No brain results available for assembly")
+            today = datetime.utcnow().date()
+            week_start = today - timedelta(days=today.weekday())
+            week_end = week_start + timedelta(days=6)
+            script = generate_fallback_script(avatars)
+            db.insert_assembly_script(
+                str(week_start), str(week_end), script,
+                json.dumps({"note": "fallback - no data"}), ""
+            )
+            db.finish_run(run_id, "completed", 0, 0, "Fallback script generated (no data)")
+            return run_id
+
+        items = []
+        for br in brain_results:
+            video_id = br.get("video_id")
+            if not video_id:
+                continue
+            transcript = db.get_transcript(video_id)
+            if transcript:
+                items.append({"brain": br, "transcript": transcript})
+
+        if not items:
+            db.finish_run(run_id, "failed", 0, 0, "No matching transcripts")
+            return run_id
+
+        today = datetime.utcnow().date()
+        week_start = today - timedelta(days=today.weekday())
+        week_end = week_start + timedelta(days=6)
+
+        # Elias anchor (intent-led climate)
+        agenda = generate_climate_agenda(days=30, limit=240, limit_each=2)
+        intent = (agenda.get("intent_climate_v2") or {}).get("climate_v2") or {}
+
+        script_parts = []
+        script_parts.append("# The Digital Pulpit — Weekly Script")
+        script_parts.append(f"## Week of {week_start} to {week_end}")
+        script_parts.append(f"*Generated: {datetime.utcnow().isoformat()}*\n")
+
+        script_parts.append("---\n")
+        script_parts.append("## Elias — Session Anchor")
+        script_parts.append("**Guiding question:** What are our pastors trying to tell us?\n")
+
+        if intent:
+            tw = intent.get("time_window") or {}
+            msg = intent.get("the_message_this_window") or {}
+            script_parts.append(
+                f"Window: {tw.get('key','')}  |  Sermons: {tw.get('sermons_included','')}  |  Channels: {tw.get('channels_included','')}\n"
+            )
+            if msg.get("headline"):
+                script_parts.append(f"**Headline:** {msg.get('headline')}\n")
+            if msg.get("summary"):
+                script_parts.append(f"{msg.get('summary')}\n")
+
+            def _block(title: str, rows, key):
+                script_parts.append(f"### {title}")
+                if not rows:
+                    script_parts.append("(none detected in this window)\n")
+                    return
+                for r in rows[:3]:
+                    val = (r.get(key) or "").strip()
+                    if not val:
+                        continue
+                    script_parts.append(f"- {val}")
+                    ev = r.get("evidence") or []
+                    if ev:
+                        ex = (ev[0].get("excerpt") or "").strip()
+                        if ex:
+                            script_parts.append(f"  - \"{ex}\"")
+                            script_parts.append(f"  - ({ev[0].get('channel_name','')} — {ev[0].get('published_at','')})")
+                script_parts.append("")
+
+            _block("Primary messages being pressed", intent.get("primary_messages_being_pressed") or [], "message")
+            _block("Warnings repeated", intent.get("warnings_repeated") or [], "warning")
+            _block("Encouragements amplified", intent.get("encouragements_amplified") or [], "encouragement")
+            _block("Calls to action most urged", intent.get("calls_to_action_most_urged") or [], "action")
+
+            qs = intent.get("questions_for_leaders") or []
+            if qs:
+                script_parts.append("### Questions for leaders")
+                for q in qs[:5]:
+                    script_parts.append(f"- {q}")
+                script_parts.append("")
+        else:
+            script_parts.append("No intent climate data available for this window.\n")
+
+        script_parts.append("---\n")
+
+        preferred_order = ["sully", "aris", "noni", "elena", "tio"]
+        ordered_keys = [k for k in preferred_order if k in avatars] + [k for k in avatars.keys() if k not in preferred_order]
+
+        top_message = ""
+        top_warning = ""
+        top_cta = ""
+        if intent:
+            p = intent.get("primary_messages_being_pressed") or []
+            w = intent.get("warnings_repeated") or []
+            c = intent.get("calls_to_action_most_urged") or []
+            top_message = (p[0].get("message") if p else "") or ""
+            top_warning = (w[0].get("warning") if w else "") or ""
+            top_cta = (c[0].get("action") if c else "") or ""
+
+        avatar_assignments = {}
+        source_ids = set()
+        avatars_with_quotes = 0
+        total_quotes = 0
+
+        for avatar_key in ordered_keys:
+            avatar_config = avatars.get(avatar_key) or {}
+            try:
+                quotes = select_quotes_for_avatar(avatar_key, avatar_config, items)
+
+                name = avatar_config.get("name", avatar_key)
+                tradition = avatar_config.get("tradition", "")
+                voice = avatar_config.get("voice", "")
+
+                script_parts.append(f"## {name}{f' ({tradition})' if tradition else ''}")
+                if voice:
+                    script_parts.append(f"*Voice: {voice}*")
+                script_parts.append("")
+
+                script_parts.append("**Targeted prompt:**")
+                prompt_lines = []
+                if top_message:
+                    prompt_lines.append(f"- Isolate the signal: pastors are pressing: {top_message}")
+                if top_warning:
+                    prompt_lines.append(f"- Name what this warning suggests about the moment: {top_warning}")
+                if top_cta:
+                    prompt_lines.append(f"- Translate the main call-to-action into practical next steps: {top_cta}")
+                if not prompt_lines:
+                    prompt_lines.append("- Respond to the latest climate using your distinctive lens.")
+                script_parts.extend(prompt_lines)
+                script_parts.append("")
+
+                if quotes:
+                    script_parts.append("**Signal receipts:**")
+                    script_parts.append(f"- \"{quotes[0]['quote']}\"")
+                    script_parts.append(f"  — From \"{quotes[0]['title']}\" ({quotes[0]['channel']})")
+                    script_parts.append("")
+                else:
+                    fallback = avatar_config.get("fallback_intro", "")
+                    if fallback:
+                        script_parts.append(fallback)
+                        script_parts.append("")
+
+                script_parts.append("---\n")
+
+                avatar_assignments[avatar_key] = [q["video_id"] for q in quotes]
+                for q in quotes:
+                    source_ids.add(q["video_id"])
+
+                if quotes:
+                    avatars_with_quotes += 1
+                    total_quotes += len(quotes)
+
+            except Exception as e:
+                logger.error(f"Failed to process avatar {avatar_key}: {e}", exc_info=True)
+                fallback = avatar_config.get("fallback_intro", "Error generating section")
+                script_parts.append(f"## {avatar_config.get('name', avatar_key)}")
+                script_parts.append(fallback)
+                script_parts.append("---\n")
+
+        full_script = "\n".join(script_parts)
+
+        db.insert_assembly_script(
+            str(week_start), str(week_end), full_script,
+            json.dumps(avatar_assignments),
+            ",".join(source_ids)
+        )
+
+        summary = f"{len(avatars)} avatars ({avatars_with_quotes} with quotes, {total_quotes} total quotes)"
+        db.finish_run(run_id, "completed", len(items), 0, summary)
+
+    except Exception as e:
+        logger.error(f"Assembly run failed: {e}", exc_info=True)
+        db.finish_run(run_id, "failed", 0, 0, str(e))
+
+    return run_id
 
 
-def compute_drift_magnitude(zscores: Dict[str, float]) -> float:
-    """Compute drift magnitude as max absolute zscore across axes."""
-    if not zscores:
-        return 0.0
-    return max(abs(z) for z in zscores.values())
+def generate_fallback_script(avatars):
+    parts = []
+    parts.append("# The Digital Pulpit — Weekly Script (Fallback)")
+    parts.append(f"*Generated: {datetime.utcnow().isoformat()}*")
+    parts.append("")
+    parts.append("*No sermon data available this week. Fallback introductions below.*")
+    parts.append("")
+    parts.append("---")
+    parts.append("")
 
+    for key, av in avatars.items():
+        name = av.get("name", f"Avatar {key}")
+        tradition = av.get("tradition", "Unknown tradition")
+        voice = av.get("voice", "Neutral")
+        fallback_intro = av.get("fallback_intro", f"*{name} awaits new sermon content.*")
 
-def compute_imbalance_magnitude(axis_scores: Dict[str, float]) -> float:
-    """Compute imbalance magnitude as max absolute axis score."""
-    if not axis_scores:
-        return 0.0
-    return max(abs(s) for s in axis_scores.values())
+        parts.append(f"## {name} ({tradition})")
+        parts.append(f"*Voice: {voice}*")
+        parts.append("")
+        parts.append(fallback_intro)
+        parts.append("")
+        parts.append("---")
+        parts.append("")
 
-
-def fetch_recent_analyzed(conn: sqlite3.Connection, days_back=None, limit=None) -> List[Dict]:
-    """
-    Fetch analyzed sermons by days or count limit.
-    """
-    q_base = """
-    SELECT
-        br.video_id,
-        br.theological_density,
-        br.grace_vs_effort,
-        br.hope_vs_fear,
-        br.doctrine_vs_experience,
-        br.scripture_vs_story,
-        br.top_categories,
-        br.raw_scores_json,
-        v.channel_id,
-        c.channel_name,
-        v.title,
-        v.published_at
-    FROM brain_results br
-    JOIN videos v ON br.video_id = v.video_id
-    JOIN channels c ON v.channel_id = c.channel_id
-    """
-
-    if days_back is not None:
-        cutoff = (datetime.utcnow() - timedelta(days=days_back)).strftime('%Y-%m-%d %H:%M:%S')
-        q = q_base + "WHERE v.published_at >= ? ORDER BY v.published_at DESC"
-        rows = conn.execute(q, (cutoff,)).fetchall()
-    else:
-        q = q_base + "ORDER BY v.published_at DESC LIMIT ?"
-        rows = conn.execute(q, (limit,)).fetchall()
-
-    items = []
-    for r in rows:
-        raw = _safe_json_load(r['raw_scores_json'], {})
-        zscores = raw.get('zscores', {}).get('axes', {})
-        axis_scores = raw.get('axis_scores', {})
-        drift_level = raw.get('drift_level', 'unknown')
-
-        drift_mag = compute_drift_magnitude(zscores)
-        imbalance_mag = compute_imbalance_magnitude(axis_scores)
-
-        items.append({
-            'video_id': r['video_id'],
-            'channel_id': r['channel_id'],
-            'channel_name': r['channel_name'],
-            'title': r['title'],
-            'published_at': r['published_at'],
-            'theological_density': float(r['theological_density'] or 0.0),
-            'axis_scores': axis_scores,
-            'zscores': zscores,
-            'drift_level': drift_level,
-            'drift_magnitude': drift_mag,
-            'imbalance_magnitude': imbalance_mag,
-            'top_categories': _safe_json_load(r['top_categories'], []),
-            'raw': raw,
-        })
-
-    return items
-
-
-def fetch_evidence(conn: sqlite3.Connection, video_id: str, limit: int = 3) -> List[Dict]:
-    """
-    Fetch evidence snippets for a video (axis and category evidence).
-    """
-    q = """
-    SELECT axis, category, keyword, excerpt, start_char
-    FROM brain_evidence
-    WHERE video_id = ?
-    ORDER BY
-        CASE WHEN axis IS NOT NULL THEN 0 ELSE 1 END,
-        start_char
-    LIMIT ?
-    """
-
-    rows = conn.execute(q, (video_id, limit)).fetchall()
-
-    evidence = []
-    for r in rows:
-        evidence.append({
-            'axis': r['axis'],
-            'category': r['category'],
-            'keyword': r['keyword'],
-            'excerpt': r['excerpt'],
-            'start_char': int(r['start_char'] or 0),
-        })
-
-    return evidence
-
-
-def generate_agenda(days_back=None, limit=120, limit_each=5) -> Dict:
-    """
-    Generate Assembly agenda from recent analyzed sermons.
-
-    Returns dict with keys:
-    - drift: sermons with significant drift (anomaly/strong/moderate)
-    - imbalance: sermons with extreme axis imbalances
-    - stable: stable exemplars with low drift
-    - metadata: summary stats
-    """
-    conn = _connect()
-    items = fetch_recent_analyzed(conn, days_back=days_back, limit=limit)
-
-    if not items:
-        return {
-            'drift': [],
-            'imbalance': [],
-            'stable': [],
-            'metadata': {
-                'days_back': days_back,
-                'limit': limit,
-                'total_sermons': 0,
-                'generated_at': datetime.utcnow().isoformat() + 'Z',
-            }
-        }
-
-    # Bucket 1: Drift (anomaly/strong/moderate)
-    drift_items = [
-        item for item in items
-        if item['drift_level'] in ['anomaly', 'strong_shift', 'moderate_shift']
-    ]
-    drift_items.sort(key=lambda x: x['drift_magnitude'], reverse=True)
-    drift_top = drift_items[:limit_each]
-
-    # Bucket 2: Imbalance (high axis score regardless of drift)
-    imbalance_items = sorted(items, key=lambda x: x['imbalance_magnitude'], reverse=True)
-    imbalance_top = imbalance_items[:limit_each]
-
-    # Bucket 3: Stable (low drift, good exemplars)
-    stable_items = [
-        item for item in items
-        if item['drift_level'] in ['stable', 'insufficient_history']
-        and item['drift_magnitude'] < 1.0
-    ]
-    stable_items.sort(key=lambda x: x['theological_density'], reverse=True)
-    stable_top = stable_items[:min(3, limit_each)]  # Fewer stable items needed
-
-    # Attach evidence to each item
-    def attach_evidence(item):
-        evidence = fetch_evidence(conn, item['video_id'], limit=3)
-        return {
-            'video_id': item['video_id'],
-            'channel_id': item['channel_id'],
-            'channel_name': item['channel_name'],
-            'title': item['title'],
-            'published_at': item['published_at'],
-            'theological_density': item['theological_density'],
-            'drift_level': item['drift_level'],
-            'drift_magnitude': item['drift_magnitude'],
-            'imbalance_magnitude': item['imbalance_magnitude'],
-            'axis_scores': item['axis_scores'],
-            'zscores': item['zscores'],
-            'top_categories': item['top_categories'],
-            'evidence': evidence,
-        }
-
-    agenda = {
-        'drift': [attach_evidence(item) for item in drift_top],
-        'imbalance': [attach_evidence(item) for item in imbalance_top],
-        'stable': [attach_evidence(item) for item in stable_top],
-        'metadata': {
-            'days_back': days_back,
-            'limit': limit,
-            'total_sermons': len(items),
-            'drift_count': len(drift_items),
-            'stable_count': len(stable_items),
-            'generated_at': datetime.utcnow().isoformat() + 'Z',
-        }
-    }
-
-    conn.close()
-    return agenda
-
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--days", type=int, default=None)
-    parser.add_argument("--limit", type=int, default=120)
-    parser.add_argument("--each", type=int, default=5)
-    args = parser.parse_args()
-
-    agenda = generate_agenda(
-        days_back=args.days,
-        limit=args.limit,
-        limit_each=args.each
-    )
-
-    print(json.dumps(agenda, indent=2))
+    return "\n".join(parts)

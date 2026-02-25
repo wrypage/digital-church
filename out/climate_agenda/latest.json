@@ -1,0 +1,597 @@
+{
+  "climate_snapshot": {
+    "period_days": 30,
+    "current": {
+      "count": 169,
+      "avg_density": 22.910592978812023,
+      "avg_axes": {
+        "grace_vs_effort": -0.12926418513276022,
+        "hope_vs_fear": 0.5061094546519819,
+        "doctrine_vs_experience": -0.5837257856718567,
+        "scripture_vs_story": 0.11952941776493142
+      },
+      "top_categories": [
+        [
+          "scripture_reference",
+          1301.575514621887
+        ],
+        [
+          "story",
+          882.580578588027
+        ],
+        [
+          "experience",
+          518.7446001566594
+        ],
+        [
+          "hope",
+          387.5379008570344
+        ],
+        [
+          "effort",
+          235.95994335408437
+        ]
+      ],
+      "top_books": [
+        [
+          "john",
+          544
+        ],
+        [
+          "isaiah",
+          274
+        ],
+        [
+          "mark",
+          271
+        ],
+        [
+          "james",
+          233
+        ],
+        [
+          "matthew",
+          186
+        ]
+      ],
+      "drift_distribution": {
+        "stable": 80,
+        "moderate_shift": 86,
+        "strong_shift": 3
+      }
+    },
+    "previous": {
+      "count": 55,
+      "avg_density": 22.073923175806886,
+      "avg_axes": {
+        "grace_vs_effort": -0.046623353540483595,
+        "hope_vs_fear": 0.6096247334946134,
+        "doctrine_vs_experience": -0.6543892396195183,
+        "scripture_vs_story": 0.12239651151956199
+      },
+      "top_categories": [
+        [
+          "scripture_reference",
+          430.9910705254025
+        ],
+        [
+          "story",
+          282.9308531173383
+        ],
+        [
+          "experience",
+          157.21750985835357
+        ],
+        [
+          "hope",
+          151.87940410900296
+        ],
+        [
+          "grace",
+          64.66968312202181
+        ]
+      ],
+      "top_books": [
+        [
+          "john",
+          188
+        ],
+        [
+          "mark",
+          170
+        ],
+        [
+          "acts",
+          77
+        ],
+        [
+          "luke",
+          75
+        ],
+        [
+          "matthew",
+          73
+        ]
+      ],
+      "drift_distribution": {
+        "anomaly": 10,
+        "stable": 22,
+        "moderate_shift": 19,
+        "strong_shift": 4
+      }
+    },
+    "deltas": {
+      "density": 0.8366698030051367,
+      "axes": {
+        "grace_vs_effort": -0.08264083159227663,
+        "hope_vs_fear": -0.10351527884263156,
+        "doctrine_vs_experience": 0.0706634539476616,
+        "scripture_vs_story": -0.0028670937546305675
+      }
+    },
+    "drift_rate": {
+      "current": 52.662721893491124,
+      "previous": 60.0,
+      "delta": -7.337278106508876
+    },
+    "generated_at": "2026-02-20T12:41:53.234558Z"
+  },
+  "theme_convergence": [
+    {
+      "theme": "scripture_reference",
+      "total_density": 878.0,
+      "sermon_count": 120,
+      "avg_density": 7.32
+    },
+    {
+      "theme": "story",
+      "total_density": 597.4,
+      "sermon_count": 120,
+      "avg_density": 4.98
+    },
+    {
+      "theme": "experience",
+      "total_density": 352.5,
+      "sermon_count": 120,
+      "avg_density": 2.94
+    }
+  ],
+  "scripture_focus": [
+    {
+      "book": "john",
+      "total_references": 341,
+      "sermon_count": 61,
+      "avg_refs_per_sermon": 5.6
+    },
+    {
+      "book": "isaiah",
+      "total_references": 211,
+      "sermon_count": 39,
+      "avg_refs_per_sermon": 5.4
+    },
+    {
+      "book": "mark",
+      "total_references": 156,
+      "sermon_count": 38,
+      "avg_refs_per_sermon": 4.1
+    },
+    {
+      "book": "revelation",
+      "total_references": 136,
+      "sermon_count": 43,
+      "avg_refs_per_sermon": 3.2
+    },
+    {
+      "book": "matthew",
+      "total_references": 132,
+      "sermon_count": 47,
+      "avg_refs_per_sermon": 2.8
+    }
+  ],
+  "observations": [
+    {
+      "speaker": "Elias",
+      "statement": "The Gospel of John was the most cited book by a wide margin.",
+      "quote_bank": [
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": null,
+          "category": "scripture_reference",
+          "keyword": "bible",
+          "excerpt": "joining us today as we listen, learn, and are challenged by God's word, the Bible. Hey, everybody, Pastor Jack here. And I want to encourage you to get a great book. Listen to this, Living\u2026",
+          "url": null
+        },
+        {
+          "video_id": "0847a2a9176c3b12",
+          "channel_id": "339gh4r",
+          "channel_name": "Connect with Skip Heitzig Podcast",
+          "title": "Speak Your Truth - Part A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": "scripture_vs_story",
+          "category": "scripture_reference",
+          "keyword": "bible",
+          "excerpt": "real encouragement every day. And if you'd like to keep growing in your walk with Jesus, sign up for Pastor Skip's free weekly devotional. You'll receive biblical insight, teaching highlights and exclusive resource offers straight\u2026",
+          "url": null
+        },
+        {
+          "video_id": "70a7541787a951a8",
+          "channel_id": "3fc730b",
+          "channel_name": "Sound Truth Radio",
+          "title": "Wednesday Broadcast",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": "scripture_vs_story",
+          "category": "scripture_reference",
+          "keyword": "verse",
+          "excerpt": "are people who just push God to the limit as it were in regard to quenching, grieving, rejecting Jesus and grieving the Holy Spirit, not listening to the Holy Spirit when He's convicted. May God,\u2026",
+          "url": null
+        }
+      ]
+    },
+    {
+      "speaker": "Elias",
+      "statement": "Many messages entered through story and lived application before moving into Scripture.",
+      "quote_bank": [
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": "scripture_vs_story",
+          "category": "story",
+          "keyword": "life",
+          "excerpt": "our microscope in further, he must return to the nation of Israel. This is Real Life. Welcome to Real Life Radio with Pastor Jack Hips. I'm David J. Thank you for joining us today as\u2026",
+          "url": null
+        },
+        {
+          "video_id": "11db919e2cdbfdc6",
+          "channel_id": "3fc730b",
+          "channel_name": "Sound Truth Radio",
+          "title": "Tuesday Broadcast",
+          "published_at": "2026-02-17 10:00:00",
+          "axis": null,
+          "category": "story",
+          "keyword": "remember",
+          "excerpt": "Now of course the prophets wore, prophets like Isaiah wore these skins, the camel skins, and with the bristle inside and usually wore a tunic underneath that. I remember when David was dancing before the\u2026",
+          "url": null
+        },
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": "doctrine_vs_experience",
+          "category": "experience",
+          "keyword": "power",
+          "excerpt": "and the spiritual world are in constant collision. You see, the encounters between David and King Saul were like two worlds colliding. God's values versus human power, fear, and revenge. Now David had the power\u2026",
+          "url": null
+        }
+      ]
+    }
+  ],
+  "resonant_sermons": [
+    {
+      "video_id": "9168391b71616d60",
+      "channel_name": "Marked by Grace",
+      "title": "What is the Bible?",
+      "published_at": "2026-02-09 10:00:00",
+      "reason": "High 'scripture_reference' density",
+      "theological_density": 71.71964140179298,
+      "category_density": 52.97473512632437,
+      "quote_bank": [
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": null,
+          "category": "scripture_reference",
+          "keyword": "bible",
+          "excerpt": "joining us today as we listen, learn, and are challenged by God's word, the Bible. Hey, everybody, Pastor Jack here. And I want to encourage you to get a great book. Listen to this, Living\u2026",
+          "url": null
+        },
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": null,
+          "category": "scripture_reference",
+          "keyword": "testament",
+          "excerpt": "On today's edition of Real Life Radio, Pastor Jack continues his series called First Samuel and a message titled, World's In Collision. Now Samuel of the Old Testament was the last judge of Israel and\u2026",
+          "url": null
+        },
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": null,
+          "category": "scripture_reference",
+          "keyword": "chapter",
+          "excerpt": "Jack Hibbs. Father, as we come before you tonight, we ask you, Lord, that as we look to this very no doubt it's stimulating chapter of Samuel, that Father, you would cause these words to\u2026",
+          "url": null
+        }
+      ]
+    },
+    {
+      "video_id": "d34e19a27ac26635",
+      "channel_name": "Independent Bible Church WV",
+      "title": "Following Jesus in Marriage and Divorce",
+      "published_at": "2026-02-15 10:00:00",
+      "reason": "High 'scripture_reference' density",
+      "theological_density": 24.390243902439025,
+      "category_density": 17.942248388001122,
+      "quote_bank": [
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": null,
+          "category": "scripture_reference",
+          "keyword": "bible",
+          "excerpt": "joining us today as we listen, learn, and are challenged by God's word, the Bible. Hey, everybody, Pastor Jack here. And I want to encourage you to get a great book. Listen to this, Living\u2026",
+          "url": null
+        },
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": null,
+          "category": "scripture_reference",
+          "keyword": "testament",
+          "excerpt": "On today's edition of Real Life Radio, Pastor Jack continues his series called First Samuel and a message titled, World's In Collision. Now Samuel of the Old Testament was the last judge of Israel and\u2026",
+          "url": null
+        },
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": null,
+          "category": "scripture_reference",
+          "keyword": "chapter",
+          "excerpt": "Jack Hibbs. Father, as we come before you tonight, we ask you, Lord, that as we look to this very no doubt it's stimulating chapter of Samuel, that Father, you would cause these words to\u2026",
+          "url": null
+        }
+      ]
+    },
+    {
+      "video_id": "3b870a7927f246d4",
+      "channel_name": "Lifepoint Church Podcast | Pastor Jeff Kapusta",
+      "title": "Obedience Brings Blessing",
+      "published_at": "2026-02-15 10:00:00",
+      "reason": "High 'story' density",
+      "theological_density": 31.446540880503147,
+      "category_density": 14.195867026055705,
+      "quote_bank": [
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": "scripture_vs_story",
+          "category": "story",
+          "keyword": "life",
+          "excerpt": "our microscope in further, he must return to the nation of Israel. This is Real Life. Welcome to Real Life Radio with Pastor Jack Hips. I'm David J. Thank you for joining us today as\u2026",
+          "url": null
+        },
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": "scripture_vs_story",
+          "category": "story",
+          "keyword": "story",
+          "excerpt": "Hey, everybody, Pastor Jack here. And I want to encourage you to get a great book. Listen to this, Living Fairless in Christ. This is Hediah Miramati's story, life story, why I left Islam to\u2026",
+          "url": null
+        },
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": "scripture_vs_story",
+          "category": "story",
+          "keyword": "testimony",
+          "excerpt": "to this, Living Fairless in Christ. This is Hediah Miramati's story, life story, why I left Islam to win battles for the kingdom. A former Muslim comes to Christ and her ministry and her testimony\u2026",
+          "url": null
+        }
+      ]
+    },
+    {
+      "video_id": "378b10f863d9d555",
+      "channel_name": "First Free Methodist - FFMC",
+      "title": "\"Holding Generations Close\" | Sermon, February 1, 2026",
+      "published_at": "2026-02-02 10:00:00",
+      "reason": "High 'story' density",
+      "theological_density": 31.894535402934295,
+      "category_density": 10.844142036997662,
+      "quote_bank": [
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": "scripture_vs_story",
+          "category": "story",
+          "keyword": "life",
+          "excerpt": "our microscope in further, he must return to the nation of Israel. This is Real Life. Welcome to Real Life Radio with Pastor Jack Hips. I'm David J. Thank you for joining us today as\u2026",
+          "url": null
+        },
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": "scripture_vs_story",
+          "category": "story",
+          "keyword": "story",
+          "excerpt": "Hey, everybody, Pastor Jack here. And I want to encourage you to get a great book. Listen to this, Living Fairless in Christ. This is Hediah Miramati's story, life story, why I left Islam to\u2026",
+          "url": null
+        },
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": "scripture_vs_story",
+          "category": "story",
+          "keyword": "testimony",
+          "excerpt": "to this, Living Fairless in Christ. This is Hediah Miramati's story, life story, why I left Islam to win battles for the kingdom. A former Muslim comes to Christ and her ministry and her testimony\u2026",
+          "url": null
+        }
+      ]
+    },
+    {
+      "video_id": "28813a80edb48873",
+      "channel_name": "Peninsula Community Chapel",
+      "title": "Take Heart",
+      "published_at": "2026-02-08 10:00:00",
+      "reason": "High 'experience' density",
+      "theological_density": 31.140768986336198,
+      "category_density": 12.233873530346361,
+      "quote_bank": [
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": "doctrine_vs_experience",
+          "category": "experience",
+          "keyword": "power",
+          "excerpt": "and the spiritual world are in constant collision. You see, the encounters between David and King Saul were like two worlds colliding. God's values versus human power, fear, and revenge. Now David had the power\u2026",
+          "url": null
+        },
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": "doctrine_vs_experience",
+          "category": "experience",
+          "keyword": "manifest",
+          "excerpt": "that weird? But yet that's the worlds that we know of according to the scripture that are in collision. And it's a rare time when those worlds manifest in real time together, where we on\u2026",
+          "url": null
+        },
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": "doctrine_vs_experience",
+          "category": "experience",
+          "keyword": "experience",
+          "excerpt": "rare time when those worlds manifest in real time together, where we on this side in our material humaneness, in our finite person, can experience the infinite. I remember when my father-in-law was dying a\u2026",
+          "url": null
+        }
+      ]
+    },
+    {
+      "video_id": "b0dbb678a79afc36",
+      "channel_name": "First Baptist Church Indian Trail",
+      "title": "When The Temperature Rises",
+      "published_at": "2026-02-15 10:00:00",
+      "reason": "High 'experience' density",
+      "theological_density": 26.229508196721312,
+      "category_density": 10.008628127696289,
+      "quote_bank": [
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": "doctrine_vs_experience",
+          "category": "experience",
+          "keyword": "power",
+          "excerpt": "and the spiritual world are in constant collision. You see, the encounters between David and King Saul were like two worlds colliding. God's values versus human power, fear, and revenge. Now David had the power\u2026",
+          "url": null
+        },
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": "doctrine_vs_experience",
+          "category": "experience",
+          "keyword": "manifest",
+          "excerpt": "that weird? But yet that's the worlds that we know of according to the scripture that are in collision. And it's a rare time when those worlds manifest in real time together, where we on\u2026",
+          "url": null
+        },
+        {
+          "video_id": "91e275a644aefd71",
+          "channel_id": "pcxmsbf",
+          "channel_name": "Real Life Radio with Jack Hibbs",
+          "title": "Worlds In Collision - A",
+          "published_at": "2026-02-18 10:00:00",
+          "axis": "doctrine_vs_experience",
+          "category": "experience",
+          "keyword": "experience",
+          "excerpt": "rare time when those worlds manifest in real time together, where we on this side in our material humaneness, in our finite person, can experience the infinite. I remember when my father-in-law was dying a\u2026",
+          "url": null
+        }
+      ]
+    }
+  ],
+  "outliers": [
+    {
+      "video_id": "27f9c96f600f2bb3",
+      "channel_name": "Elevation with Steven Furtick",
+      "title": "More Ready Than You Recognize",
+      "published_at": "2026-02-01 20:00:00",
+      "drift_level": "strong_shift",
+      "drift_magnitude": 2.57,
+      "axis_scores": {
+        "grace_vs_effort": -0.28571428552451017,
+        "hope_vs_fear": 0.7999999996280399,
+        "doctrine_vs_experience": -0.5833333332203247,
+        "scripture_vs_story": -0.2653061224238053
+      }
+    },
+    {
+      "video_id": "9d6c04ca1ab2e5a4",
+      "channel_name": "Sound Truth Radio",
+      "title": "Thursday Broadcast",
+      "published_at": "2026-02-12 10:00:00",
+      "drift_level": "strong_shift",
+      "drift_magnitude": 2.31,
+      "axis_scores": {
+        "grace_vs_effort": 0.0,
+        "hope_vs_fear": 0.03999999999360957,
+        "doctrine_vs_experience": -0.5555555553090125,
+        "scripture_vs_story": 0.9473684209530583
+      }
+    }
+  ],
+  "metadata": {
+    "days": 30,
+    "limit": 120,
+    "total_sermons": 120,
+    "generated_at": "2026-02-20T12:41:53.262780Z"
+  }
+}

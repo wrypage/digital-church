@@ -1,0 +1,537 @@
+{
+  "climate_snapshot": {
+    "period_days": 30,
+    "current": {
+      "count": 169,
+      "avg_density": 56.72152183807976,
+      "avg_axes": {
+        "grace_vs_effort": -0.1943374404116685,
+        "hope_vs_fear": 0.25241651833518974,
+        "doctrine_vs_experience": -0.21518225360126783,
+        "scripture_vs_story": -0.0559905075325326
+      },
+      "top_categories": [
+        [
+          "christ",
+          1900.0880648340692
+        ],
+        [
+          "story",
+          1408.1909605584249
+        ],
+        [
+          "scripture_reference",
+          1370.3827857199663
+        ],
+        [
+          "experience",
+          735.1947862013034
+        ],
+        [
+          "effort",
+          635.1530138780817
+        ]
+      ],
+      "top_books": [
+        [
+          "john",
+          544
+        ],
+        [
+          "isaiah",
+          274
+        ],
+        [
+          "mark",
+          271
+        ],
+        [
+          "james",
+          233
+        ],
+        [
+          "matthew",
+          186
+        ]
+      ],
+      "drift_distribution": {
+        "stable": 64,
+        "anomaly": 11,
+        "moderate_shift": 85,
+        "strong_shift": 9
+      }
+    },
+    "previous": {
+      "count": 55,
+      "avg_density": 60.37422886197641,
+      "avg_axes": {
+        "grace_vs_effort": -0.014141414138715341,
+        "hope_vs_fear": 0.25232323228343206,
+        "doctrine_vs_experience": -0.245887445848651,
+        "scripture_vs_story": -0.022642912639216445
+      },
+      "top_categories": [
+        [
+          "christ",
+          891.9373153513316
+        ],
+        [
+          "story",
+          448.6223292805746
+        ],
+        [
+          "scripture_reference",
+          402.8622740475523
+        ],
+        [
+          "hope",
+          229.9896044043943
+        ],
+        [
+          "experience",
+          223.14403160879635
+        ]
+      ],
+      "top_books": [
+        [
+          "john",
+          188
+        ],
+        [
+          "mark",
+          170
+        ],
+        [
+          "acts",
+          77
+        ],
+        [
+          "luke",
+          75
+        ],
+        [
+          "matthew",
+          73
+        ]
+      ],
+      "drift_distribution": {
+        "stable": 17,
+        "anomaly": 13,
+        "moderate_shift": 15,
+        "strong_shift": 10
+      }
+    },
+    "deltas": {
+      "density": -3.652707023896653,
+      "axes": {
+        "grace_vs_effort": -0.18019602627295317,
+        "hope_vs_fear": 9.328605175767946e-05,
+        "doctrine_vs_experience": 0.030705192247383162,
+        "scripture_vs_story": -0.03334759489331616
+      }
+    },
+    "drift_rate": {
+      "current": 62.1301775147929,
+      "previous": 69.0909090909091,
+      "delta": -6.960731576116196
+    },
+    "generated_at": "2026-02-23T01:35:13.068353Z"
+  },
+  "intent_climate_v2": {
+    "climate_v2": {
+      "time_window": {
+        "key": "2026-01-24..2026-02-23",
+        "days": 30,
+        "sermons_included": 169,
+        "channels_included": 45
+      },
+      "the_message_this_window": {
+        "headline": "Network tone: hopeful; effort-forward, hope-leaning.",
+        "summary": "Top burden: Network tone: hopeful; effort-forward, hope-leaning.",
+        "confidence": 0.65
+      },
+      "primary_messages_being_pressed": [],
+      "warnings_repeated": [],
+      "encouragements_amplified": [],
+      "calls_to_action_most_urged": [],
+      "underlying_concerns_implied_by_repetition": [],
+      "tone_and_atmosphere": {
+        "tone_tags_ranked": [
+          {
+            "tag": "hopeful",
+            "share": 0.161
+          },
+          {
+            "tag": "experiential",
+            "share": 0.159
+          },
+          {
+            "tag": "effort-forward",
+            "share": 0.157
+          },
+          {
+            "tag": "story-driven",
+            "share": 0.157
+          },
+          {
+            "tag": "text-anchored",
+            "share": 0.117
+          },
+          {
+            "tag": "grace-forward",
+            "share": 0.094
+          }
+        ],
+        "axes_avg": {
+          "hope_vs_fear": 0.252,
+          "grace_vs_effort": -0.194,
+          "scripture_vs_story": -0.056,
+          "doctrine_vs_experience": -0.215
+        }
+      },
+      "questions_for_leaders": [
+        "If these burdens are accurate, what formation practices (Word, prayer, community) need strengthening right now?",
+        "Which warnings are repeated most\u2014and do our people know how to respond without panic?",
+        "What does the dominant tone suggest about congregational emotional weather in this season?",
+        "Where are pastors calling for action\u2014personal repentance, corporate unity, mission\u2014and what support is required?",
+        "Are we hearing one shared message across channels, or distinct local burdens requiring local responses?"
+      ],
+      "method_notes": {
+        "how_inferred": "Intent inferred from Brain intent_vectors (primary burden, secondary burdens, warnings, encouragements, calls to action) grounded in explicit language, repetition, and imperative markers. Climate also filters out obvious bumpers/branding/URLs to protect signal clarity. Climate v2 also requires cross-channel repetition (minimum unique channels and mentions) before elevating a burden to the network level."
+      }
+    }
+  },
+  "theme_convergence": [
+    {
+      "theme": "christ",
+      "total_density": 1900.1,
+      "sermon_count": 169,
+      "avg_density": 11.24
+    },
+    {
+      "theme": "story",
+      "total_density": 1408.2,
+      "sermon_count": 169,
+      "avg_density": 8.33
+    },
+    {
+      "theme": "scripture_reference",
+      "total_density": 1370.4,
+      "sermon_count": 169,
+      "avg_density": 8.11
+    }
+  ],
+  "scripture_focus": [
+    {
+      "book": "john",
+      "total_references": 544,
+      "sermon_count": 93,
+      "avg_refs_per_sermon": 5.8
+    },
+    {
+      "book": "isaiah",
+      "total_references": 274,
+      "sermon_count": 51,
+      "avg_refs_per_sermon": 5.4
+    },
+    {
+      "book": "mark",
+      "total_references": 271,
+      "sermon_count": 53,
+      "avg_refs_per_sermon": 5.1
+    },
+    {
+      "book": "james",
+      "total_references": 233,
+      "sermon_count": 53,
+      "avg_refs_per_sermon": 4.4
+    },
+    {
+      "book": "matthew",
+      "total_references": 186,
+      "sermon_count": 68,
+      "avg_refs_per_sermon": 2.7
+    }
+  ],
+  "elias_preface": "",
+  "observations": [
+    "## Elias",
+    "",
+    "I sat with these sermons the way I would sit in our own church\u2014Bible open, asking what is shaping us.",
+    "",
+    "We leaned heavily into **christ** this month\u2014169 sermons carrying that weight.",
+    "",
+    "Across different pulpits, a similar burden surfaced: And it is either obedience or disobedience. First of all in confessing together our christian faith.",
+    "",
+    "> and it is either obedience or disobedience. And here's the problem. If you're a Christian and you said, Jesus is my Lord, your answer is already yes. The Bible says that whoever puts their hand to the plow and looks back is unfit for the\u2026",
+    "*Obedience Brings Blessing \u2014 Lifepoint Church Podcast | Pastor Jeff Kapusta*",
+    "",
+    "We kept returning to **John**\u2014544 references across 93 sermons.",
+    "That tells us something about where our imagination is resting.",
+    "",
+    "Across the network we are grace vs effort leaning away from center, hope vs fear leaning toward center, doctrine vs experience leaning away from center, scripture vs story leaning away from center.",
+    "",
+    "Drift sat at 62.13%. Not a collapse. Not a revival. Just movement.",
+    "",
+    "When we preach conviction without assurance, we quietly teach people to strive without rest.",
+    "",
+    "If John is shaping us, may it not just increase our references\u2014may it deepen our love for Christ Himself.",
+    ""
+  ],
+  "elias_closing_style": "",
+  "elias_closing_line": "",
+  "resonant_sermons": [
+    {
+      "video_id": "fad8e71809c31d74",
+      "channel_name": "Selah - A Podcast by Koinonia Fellowship",
+      "title": "The Benefits of God",
+      "published_at": "2026-02-01 10:00:00",
+      "reason": "High 'christ' density",
+      "theological_density": 96.7741935483871,
+      "category_density": 49.853372434017594,
+      "quote_bank": [
+        {
+          "video_id": "fad8e71809c31d74",
+          "channel_name": "Selah - A Podcast by Koinonia Fellowship",
+          "title": "The Benefits of God",
+          "published_at": "2026-02-01 10:00:00",
+          "category": "christ",
+          "excerpt": "blessed through his word today. Gospel chapter 1 beginning at verse 35. Again, the next day after John stood and two of his disciples and looking upon Jesus as he walked, he saith behold the Lamb of God. And the two disciples heard him speak\u2026",
+          "intelligence_score": 3.7
+        },
+        {
+          "video_id": "fad8e71809c31d74",
+          "channel_name": "Selah - A Podcast by Koinonia Fellowship",
+          "title": "The Benefits of God",
+          "published_at": "2026-02-01 10:00:00",
+          "category": "christ",
+          "excerpt": "the two which heard John speak and followed him was Andrew, Simon Peter's brother. He first found his own brother, Simon, and said unto him, we have found the Messiah which is being interpreted to Christ. And he brought him to Jesus. And when Jesus\u2026",
+          "intelligence_score": 2.9
+        },
+        {
+          "video_id": "fad8e71809c31d74",
+          "channel_name": "Selah - A Podcast by Koinonia Fellowship",
+          "title": "The Benefits of God",
+          "published_at": "2026-02-01 10:00:00",
+          "category": "christ",
+          "excerpt": "and two of his disciples and looking upon Jesus as he walked, he saith behold the Lamb of God. And the two disciples heard him speak and they follow Jesus. Then Jesus turned and saw them following and said unto them, what's Seeky? They said\u2026",
+          "intelligence_score": 1.8
+        }
+      ]
+    },
+    {
+      "video_id": "4903ddd30173a1bd",
+      "channel_name": "Proclamation Church - Littleton",
+      "title": "Jesus is...Savior/Sender, The Gospel of Luke - Sermon - Logan Talamas 01.25.26",
+      "published_at": "2026-01-25 10:00:00",
+      "reason": "High 'christ' density",
+      "theological_density": 102.17391304347825,
+      "category_density": 43.47826086956522,
+      "quote_bank": [
+        {
+          "video_id": "4903ddd30173a1bd",
+          "channel_name": "Proclamation Church - Littleton",
+          "title": "Jesus is...Savior/Sender, The Gospel of Luke - Sermon - Logan Talamas 01.25.26",
+          "published_at": "2026-01-25 10:00:00",
+          "category": "christ",
+          "excerpt": "you would help us in this time. Holy Spirit, would you open our eyes as we study your Word? And would you help us to see you as you are? To see you in truth. Lord, would we see Jesus for who He is and\u2026",
+          "intelligence_score": 5.3
+        },
+        {
+          "video_id": "4903ddd30173a1bd",
+          "channel_name": "Proclamation Church - Littleton",
+          "title": "Jesus is...Savior/Sender, The Gospel of Luke - Sermon - Logan Talamas 01.25.26",
+          "published_at": "2026-01-25 10:00:00",
+          "category": "christ",
+          "excerpt": "in this time. Holy Spirit, would you open our eyes as we study your Word? And would you help us to see you as you are? To see you in truth. Lord, would we see Jesus for who He is and would we see ourselves\u2026",
+          "intelligence_score": 5.3
+        },
+        {
+          "video_id": "4903ddd30173a1bd",
+          "channel_name": "Proclamation Church - Littleton",
+          "title": "Jesus is...Savior/Sender, The Gospel of Luke - Sermon - Logan Talamas 01.25.26",
+          "published_at": "2026-01-25 10:00:00",
+          "category": "christ",
+          "excerpt": "and then really a variety of different places. And Holy Spirit, we ask that you would speak to each one of us. Remind us of who Jesus is and of who we are this morning in Christ's name we pray. Amen. When I first entered\u2026",
+          "intelligence_score": 5.0
+        }
+      ]
+    },
+    {
+      "video_id": "e599c14dde7bf095",
+      "channel_name": "Marked by Grace",
+      "title": "What Is Life?",
+      "published_at": "2026-01-26 10:00:00",
+      "reason": "High 'story' density",
+      "theological_density": 121.67300380228136,
+      "category_density": 45.627376425855516,
+      "quote_bank": [
+        {
+          "video_id": "e599c14dde7bf095",
+          "channel_name": "Marked by Grace",
+          "title": "What Is Life?",
+          "published_at": "2026-01-26 10:00:00",
+          "category": "story",
+          "excerpt": "but it's not alive. Okay, so you got that. Then there is in the creation, living creatures. And in the most entry level sort of living creature, an example of that would be like a daffodil. It's alive. It has a life span. It's an\u2026",
+          "intelligence_score": 2.2
+        }
+      ]
+    },
+    {
+      "video_id": "6c6b94ab8b5ecbd5",
+      "channel_name": "Touching Lives with Dr. James Merritt Audio Podcast",
+      "title": "Life Begins Here",
+      "published_at": "2026-02-01 10:00:00",
+      "reason": "High 'story' density",
+      "theological_density": 69.14893617021275,
+      "category_density": 37.234042553191486,
+      "quote_bank": [
+        {
+          "video_id": "6c6b94ab8b5ecbd5",
+          "channel_name": "Touching Lives with Dr. James Merritt Audio Podcast",
+          "title": "Life Begins Here",
+          "published_at": "2026-02-01 10:00:00",
+          "category": "story",
+          "excerpt": "great connections. They are happy. They're content. They live in beautiful homes. They've got every luxury life you could imagine. And they don't have any desire at all to follow Jesus. You don't have to follow Jesus to live the good life. But only a\u2026",
+          "intelligence_score": 4.1
+        },
+        {
+          "video_id": "6c6b94ab8b5ecbd5",
+          "channel_name": "Touching Lives with Dr. James Merritt Audio Podcast",
+          "title": "Life Begins Here",
+          "published_at": "2026-02-01 10:00:00",
+          "category": "story",
+          "excerpt": "comfort and luxury with you problems or worries. And I guess some of you may say, yeah, you don't know about my problems. You don't know about my worries. No, I don't, but let me tell you, I can take you to countries today where\u2026",
+          "intelligence_score": 2.1
+        },
+        {
+          "video_id": "6c6b94ab8b5ecbd5",
+          "channel_name": "Touching Lives with Dr. James Merritt Audio Podcast",
+          "title": "Life Begins Here",
+          "published_at": "2026-02-01 10:00:00",
+          "category": "story",
+          "excerpt": "anywhere in the world. They said the reason why we want to come to America is very simple. We want to live the good life. We want to have the same economic opportunities that you have. We see what's going on and that's what we\u2026",
+          "intelligence_score": 1.3
+        }
+      ]
+    },
+    {
+      "video_id": "c65f329672c9737e",
+      "channel_name": "Independent Bible Church WV",
+      "title": "Fireside Chat on the Gospel of Mark",
+      "published_at": "2026-01-25 10:00:00",
+      "reason": "High 'scripture_reference' density",
+      "theological_density": 104.72972972972971,
+      "category_density": 64.18918918918918,
+      "quote_bank": [
+        {
+          "video_id": "c65f329672c9737e",
+          "channel_name": "Independent Bible Church WV",
+          "title": "Fireside Chat on the Gospel of Mark",
+          "published_at": "2026-01-25 10:00:00",
+          "category": "scripture_reference",
+          "excerpt": "John. I'm Pastor John. I'm Pastor John. I'm Pastor John. I'm Pastor John. I'm Pastor John. I'm Pastor John. I'm Pastor John. I'm Pastor John. I hope this conversation helps us understand the Gospel of Mark as a whole and the big idea of Mark\u2026",
+          "intelligence_score": 3.2
+        },
+        {
+          "video_id": "c65f329672c9737e",
+          "channel_name": "Independent Bible Church WV",
+          "title": "Fireside Chat on the Gospel of Mark",
+          "published_at": "2026-01-25 10:00:00",
+          "category": "scripture_reference",
+          "excerpt": "is right there with you. You may be snowed in this morning at home, and he is right there with you. Listen to Psalm 139. It says, O Lord, you have searched me and known me. You know when I sit down and when I\u2026",
+          "intelligence_score": 1.7
+        },
+        {
+          "video_id": "c65f329672c9737e",
+          "channel_name": "Independent Bible Church WV",
+          "title": "Fireside Chat on the Gospel of Mark",
+          "published_at": "2026-01-25 10:00:00",
+          "category": "scripture_reference",
+          "excerpt": "hem me in behind and before, and have laid your hand upon me. Such knowledge is too wonderful for me. It is high. I cannot attain it. Verse 7, where can I go from your spirit? Where can I flee from your presence? If I\u2026",
+          "intelligence_score": 1.3
+        }
+      ]
+    },
+    {
+      "video_id": "9168391b71616d60",
+      "channel_name": "Marked by Grace",
+      "title": "What is the Bible?",
+      "published_at": "2026-02-09 10:00:00",
+      "reason": "High 'scripture_reference' density",
+      "theological_density": 101.3986013986014,
+      "category_density": 45.45454545454545,
+      "quote_bank": [
+        {
+          "video_id": "9168391b71616d60",
+          "channel_name": "Marked by Grace",
+          "title": "What is the Bible?",
+          "published_at": "2026-02-09 10:00:00",
+          "category": "scripture_reference",
+          "excerpt": "call genres in the one book of the Bible. But it's 66 books of the Bible that was written actually over thousands of years. The last book of the Bible, Revelation, was written at the end of the first century. So we're coming up on\u2026",
+          "intelligence_score": 1.3
+        },
+        {
+          "video_id": "9168391b71616d60",
+          "channel_name": "Marked by Grace",
+          "title": "What is the Bible?",
+          "published_at": "2026-02-09 10:00:00",
+          "category": "scripture_reference",
+          "excerpt": "Really important, really profound question, a lot to say about it. I'm going to try to answer it by talking about just one passage of Scripture. It's in 2 Timothy chapter 3 verses 15 to 16. And this is how the Bible describes the Bible.\u2026",
+          "intelligence_score": 0.5
+        }
+      ]
+    }
+  ],
+  "outliers": [
+    {
+      "video_id": "4b2b13ead8f1c769",
+      "channel_name": "Selah - A Podcast by Koinonia Fellowship",
+      "title": "Who Are You?",
+      "published_at": "2026-01-25 10:00:00",
+      "drift_level": "anomaly",
+      "drift_magnitude": 13.0,
+      "axis_scores": {
+        "grace_vs_effort": -0.999999999801,
+        "hope_vs_fear": 0.0,
+        "doctrine_vs_experience": -0.9999999999204,
+        "scripture_vs_story": 0.5294117646934879
+      }
+    },
+    {
+      "video_id": "682f0065b6d5a07c",
+      "channel_name": "First Baptist Church Indian Trail",
+      "title": "When Challenged In Your Faith",
+      "published_at": "2026-01-30 10:00:00",
+      "drift_level": "anomaly",
+      "drift_magnitude": 8.41,
+      "axis_scores": {
+        "grace_vs_effort": -0.9999999998115,
+        "hope_vs_fear": 0.9999999998743333,
+        "doctrine_vs_experience": 0.6666666666247777,
+        "scripture_vs_story": -0.3333333333123889
+      }
+    },
+    {
+      "video_id": "8e75013c2b4470b9",
+      "channel_name": "Calvary Chapel Signal Hill",
+      "title": "Critical Information Every Man Must Know!",
+      "published_at": "2026-02-10 10:00:00",
+      "drift_level": "anomaly",
+      "drift_magnitude": 7.02,
+      "axis_scores": {
+        "grace_vs_effort": -0.9999999996769999,
+        "hope_vs_fear": 0.0,
+        "doctrine_vs_experience": 0.9999999996769999,
+        "scripture_vs_story": -0.99999999991925
+      }
+    }
+  ],
+  "metadata": {
+    "days": 30,
+    "limit": 200,
+    "total_sermons": 169,
+    "generated_at": "2026-02-23T01:35:13.125952Z",
+    "window_key": "2026-01-24..2026-02-23"
+  }
+}

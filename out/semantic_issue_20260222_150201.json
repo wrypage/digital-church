@@ -1,0 +1,964 @@
+[
+  {
+    "cluster_id": 1,
+    "label": "holy, spirit, believers, empowers, live",
+    "claim_count": 3,
+    "logical_sermon_count": 3,
+    "channel_count": 3,
+    "representative_claims": [
+      "The Holy Spirit empowers believers to live faithfully.",
+      "The Holy Spirit empowers believers for effective witness and service.",
+      "The Holy Spirit dwells in believers for guidance and empowerment."
+    ],
+    "representatives": [
+      {
+        "logical_id": "Calvary Chapel Oxnard::Sent Out::d26746a571467540",
+        "base_title": "Sent Out",
+        "channel_name": "Calvary Chapel Oxnard",
+        "published_at_min": "2026-02-01 10:00:00",
+        "published_at_max": "2026-02-01 10:00:00",
+        "episodes": [
+          {
+            "video_id": "d26746a571467540",
+            "title": "Sent Out",
+            "published_at": "2026-02-01 10:00:00"
+          }
+        ],
+        "core_thesis": "All believers are sent by God as ambassadors of Christ, participating in His mission through His power and guidance.",
+        "sample_receipts": [
+          {
+            "excerpt": "All believers have been sent by God to be ambassadors or representatives of Christ.",
+            "supports": "thesis",
+            "notes": "Emphasizes the universal missionary call for all believers."
+          },
+          {
+            "excerpt": "God calls. God calls. First one. Now there were in the church at Antioch prophets and teachers.",
+            "supports": "claim",
+            "notes": "Reiterates the idea that God's call is both specific and general."
+          }
+        ]
+      },
+      {
+        "logical_id": "Calvary Chapel of San Antonio::Revelation 3:1-6::d659228a3a129f0e",
+        "base_title": "Revelation 3:1-6",
+        "channel_name": "Calvary Chapel of San Antonio",
+        "published_at_min": "2026-02-15 10:00:00",
+        "published_at_max": "2026-02-15 10:00:00",
+        "episodes": [
+          {
+            "video_id": "d659228a3a129f0e",
+            "title": "Revelation 3:1-6",
+            "published_at": "2026-02-15 10:00:00"
+          }
+        ],
+        "core_thesis": "The church in Sardis is warned to awaken from spiritual death and renew their faith with genuine repentance and holiness.",
+        "sample_receipts": [
+          {
+            "excerpt": "You have a reputation of being alive, but you are dead.",
+            "supports": "thesis",
+            "notes": "Highlights the danger of a false perception of spiritual vitality."
+          },
+          {
+            "excerpt": "Wake up, strengthen what remains and is about to die.",
+            "supports": "claim",
+            "notes": "Emphasizes urgency in revitalizing faith and deeds."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "label": "forgetting, promises, faith, spiritual, defeat",
+    "claim_count": 2,
+    "logical_sermon_count": 2,
+    "channel_count": 1,
+    "representative_claims": [
+      "Forgetting God's promises leads to a lapse of faith and spiritual defeat.",
+      "Spiritual defeat often begins with lapses of faith and forgetting God\u2019s promises."
+    ],
+    "representatives": [
+      {
+        "logical_id": "Real Life Radio with Jack Hibbs::The Good, The Bad, And... - B::79eaac371efcb49b",
+        "base_title": "The Good, The Bad, And... - B",
+        "channel_name": "Real Life Radio with Jack Hibbs",
+        "published_at_min": "2026-02-17 10:00:00",
+        "published_at_max": "2026-02-17 10:00:00",
+        "episodes": [
+          {
+            "video_id": "79eaac371efcb49b",
+            "title": "The Good, The Bad, And... - B",
+            "published_at": "2026-02-17 10:00:00"
+          }
+        ],
+        "core_thesis": "The sermon contrasts the lives and spiritual trajectories of David and Saul, urging believers to reckon their old sinful selves as dead and to live in faith and obedience to God\u2019s promises, rather than giving in to fear, self-reliance, or secret sin. True transformation and protection against spiritual defeat come from continual repentance, surrender, and reliance on Christ\u2019s work.",
+        "sample_receipts": [
+          {
+            "excerpt": "In fact, the Bible gives me the authority to now say to me, the old me, your dead. Get back in your tomb where you belong.",
+            "supports": "thesis",
+            "notes": "Illustrates the call for believers to actively reject old sinful patterns and live out their new identity."
+          },
+          {
+            "excerpt": "It's too bad Saul. Saul could have stopped at any moment and said, you know what? I'm repenting, I'm quitting being in charge. If you just repent, he could have been preserved.",
+            "supports": "claim",
+            "notes": "Shows how repentance is always possible and underlines the loss in refusing it, contrasting Saul\u2019s rebellion and David\u2019s repentance."
+          }
+        ]
+      },
+      {
+        "logical_id": "Real Life Radio with Jack Hibbs::Worlds In Collision - A::91e275a644aefd71",
+        "base_title": "Worlds In Collision - A",
+        "channel_name": "Real Life Radio with Jack Hibbs",
+        "published_at_min": "2026-02-18 10:00:00",
+        "published_at_max": "2026-02-18 10:00:00",
+        "episodes": [
+          {
+            "video_id": "91e275a644aefd71",
+            "title": "Worlds In Collision - A",
+            "published_at": "2026-02-18 10:00:00"
+          }
+        ],
+        "core_thesis": "The material and spiritual worlds are in constant collision, and Christians must recognize the deeper, more powerful reality of the spiritual realm. God's way and promises are often at odds with human emotion, haste, and worldly ways, as illustrated by Saul and David's contrasting responses to spiritual challenges.",
+        "sample_receipts": [
+          {
+            "excerpt": "Listen, if Jesus does not physically return to this earth, he is not the Messiah. He must return to planet earth, but as we turn our microscope in further, he must return to the nation of Israel.",
+            "supports": "claim",
+            "notes": "Directly links Jesus\u2019 messianic identity to biblical prophecy and physical fulfillment."
+          },
+          {
+            "excerpt": "It is a fact, biblically, spiritually, that there's a greater world behind the material world, spiritually, whatever we see materially, behind that world is a spiritual realm that is far deeper, far greater and far more powerful.",
+            "supports": "thesis",
+            "notes": "Stresses the unseen spiritual reality as the true context for Christian life."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "label": "even, well, people, give, advice",
+    "claim_count": 2,
+    "logical_sermon_count": 1,
+    "channel_count": 1,
+    "representative_claims": [
+      "Even well-meaning people, including God's people, can give bad advice.",
+      "Even well-intentioned believers can give unbiblical or harmful advice."
+    ],
+    "representatives": [
+      {
+        "logical_id": "Connect with Skip Heitzig Podcast::Follow Your Heart::e9bc1687518c29f0",
+        "base_title": "Follow Your Heart",
+        "channel_name": "Connect with Skip Heitzig Podcast",
+        "published_at_min": "2026-02-16 10:00:00",
+        "published_at_max": "2026-02-17 10:00:00",
+        "episodes": [
+          {
+            "video_id": "e9bc1687518c29f0",
+            "title": "Follow Your Heart - Part A",
+            "published_at": "2026-02-16 10:00:00"
+          },
+          {
+            "video_id": "a5e489001a9a28d0",
+            "title": "Follow Your Heart - Part B",
+            "published_at": "2026-02-17 10:00:00"
+          }
+        ],
+        "core_thesis": "Following your own heart is unreliable and potentially dangerous because the human heart is divided, depraved, and delusional; instead, believers are called to seek and follow God's heart, relying on His wisdom, Word, Spirit, and godly counsel for guidance.",
+        "sample_receipts": [
+          {
+            "excerpt": "\"He who trusts in his own heart is a fool. But whoever walks wisely will be delivered.\"",
+            "supports": "thesis | claim",
+            "notes": "Direct biblical support for the main argument that self-trust is spiritually dangerous."
+          },
+          {
+            "excerpt": "\"Good intentions do not always produce good results. In fact, good intentions are not always God\u2019s intentions.\"",
+            "supports": "thesis | claim",
+            "notes": "Highlights the insufficiency of sincerity or positive feelings as a basis for action."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "label": "human, heart, divided, deceitful, prone",
+    "claim_count": 2,
+    "logical_sermon_count": 1,
+    "channel_count": 1,
+    "representative_claims": [
+      "The human heart is divided, deceitful, and prone to self-delusion due to sin.",
+      "The human heart is unreliable because it is divided, depraved, and delusional."
+    ],
+    "representatives": [
+      {
+        "logical_id": "Connect with Skip Heitzig Podcast::Follow Your Heart::e9bc1687518c29f0",
+        "base_title": "Follow Your Heart",
+        "channel_name": "Connect with Skip Heitzig Podcast",
+        "published_at_min": "2026-02-16 10:00:00",
+        "published_at_max": "2026-02-17 10:00:00",
+        "episodes": [
+          {
+            "video_id": "e9bc1687518c29f0",
+            "title": "Follow Your Heart - Part A",
+            "published_at": "2026-02-16 10:00:00"
+          },
+          {
+            "video_id": "a5e489001a9a28d0",
+            "title": "Follow Your Heart - Part B",
+            "published_at": "2026-02-17 10:00:00"
+          }
+        ],
+        "core_thesis": "Following your own heart is unreliable and potentially dangerous because the human heart is divided, depraved, and delusional; instead, believers are called to seek and follow God's heart, relying on His wisdom, Word, Spirit, and godly counsel for guidance.",
+        "sample_receipts": [
+          {
+            "excerpt": "\"He who trusts in his own heart is a fool. But whoever walks wisely will be delivered.\"",
+            "supports": "thesis | claim",
+            "notes": "Direct biblical support for the main argument that self-trust is spiritually dangerous."
+          },
+          {
+            "excerpt": "\"Good intentions do not always produce good results. In fact, good intentions are not always God\u2019s intentions.\"",
+            "supports": "thesis | claim",
+            "notes": "Highlights the insufficiency of sincerity or positive feelings as a basis for action."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "label": "jesus, only, father, eternal, life",
+    "claim_count": 2,
+    "logical_sermon_count": 2,
+    "channel_count": 2,
+    "representative_claims": [
+      "Jesus is the only way to the Father.",
+      "Jesus is the way to God and eternal life."
+    ],
+    "representatives": [
+      {
+        "logical_id": "CU Church Sermon Podcast::Mark 2:1-12::72739dd1f1b13a9d",
+        "base_title": "Mark 2:1-12",
+        "channel_name": "CU Church Sermon Podcast",
+        "published_at_min": "2026-02-15 10:00:00",
+        "published_at_max": "2026-02-15 10:00:00",
+        "episodes": [
+          {
+            "video_id": "72739dd1f1b13a9d",
+            "title": "Mark 2:1-12",
+            "published_at": "2026-02-15 10:00:00"
+          }
+        ],
+        "core_thesis": "The sermon emphasizes the necessity of embodying Jesus in our lives to attain true freedom and bring others to Christ.",
+        "sample_receipts": [
+          {
+            "excerpt": "God created the heavens and the earth, He desired a relationship with all of humanity, not one group of people.",
+            "supports": "claim",
+            "notes": "Emphasizes God's inclusive love for all humanity."
+          },
+          {
+            "excerpt": "What would you be willing to do to put someone you love in a place where they could find the healing they need?",
+            "supports": "theme",
+            "notes": "Highlights the sacrificial nature of love and faith."
+          }
+        ]
+      },
+      {
+        "logical_id": "Peninsula Community Chapel::The Prayer of Jesus::a83791de69c784a3",
+        "base_title": "The Prayer of Jesus",
+        "channel_name": "Peninsula Community Chapel",
+        "published_at_min": "2026-02-15 10:00:00",
+        "published_at_max": "2026-02-15 10:00:00",
+        "episodes": [
+          {
+            "video_id": "a83791de69c784a3",
+            "title": "The Prayer of Jesus",
+            "published_at": "2026-02-15 10:00:00"
+          }
+        ],
+        "core_thesis": "Jesus' prayer in John 17 invites us to follow him in prayer, focusing on glory, unity, and holiness.",
+        "sample_receipts": [
+          {
+            "excerpt": "Jesus invites us to follow him in prayer.",
+            "supports": "thesis",
+            "notes": "It emphasizes the call to discipleship through prayer."
+          },
+          {
+            "excerpt": "This is eternal life that they know you, the only true God.",
+            "supports": "claim",
+            "notes": "Defines eternal life as knowing God through Christ."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "label": "bitterness, lead, downfall, self, destruction",
+    "claim_count": 2,
+    "logical_sermon_count": 2,
+    "channel_count": 1,
+    "representative_claims": [
+      "Bitterness can lead to one's downfall.",
+      "Bitterness can lead to self-destruction and moral failure."
+    ],
+    "representatives": [
+      {
+        "logical_id": "Calvary Chapel Chattanooga::A Few Good Men::582707ecc661b13b",
+        "base_title": "A Few Good Men",
+        "channel_name": "Calvary Chapel Chattanooga",
+        "published_at_min": "2026-02-15 10:00:00",
+        "published_at_max": "2026-02-15 10:00:00",
+        "episodes": [
+          {
+            "video_id": "582707ecc661b13b",
+            "title": "A Few Good Men",
+            "published_at": "2026-02-15 10:00:00"
+          }
+        ],
+        "core_thesis": "Courage and discernment are vital for remaining faithful to God's will amidst challenges and societal pressures.",
+        "sample_receipts": [
+          {
+            "excerpt": "Beware of bitterness and beware of those who are bitter.",
+            "supports": "claim",
+            "notes": "Emphasizes the destructive power of bitterness."
+          },
+          {
+            "excerpt": "God always protects those who are His, He protects those who are right with Him.",
+            "supports": "thesis",
+            "notes": "Highlights the theme of divine protection."
+          }
+        ]
+      },
+      {
+        "logical_id": "Calvary Chapel Chattanooga::Crisis Reveals Character::4e4192157844f536",
+        "base_title": "Crisis Reveals Character",
+        "channel_name": "Calvary Chapel Chattanooga",
+        "published_at_min": "2026-02-01 10:00:00",
+        "published_at_max": "2026-02-01 10:00:00",
+        "episodes": [
+          {
+            "video_id": "4e4192157844f536",
+            "title": "Crisis Reveals Character",
+            "published_at": "2026-02-01 10:00:00"
+          }
+        ],
+        "core_thesis": "Crisis reveals true character, bringing hidden traits to the surface and challenging individuals to respond in alignment with God's design.",
+        "sample_receipts": [
+          {
+            "excerpt": "Crisis has the truth of telling the truth about us.",
+            "supports": "thesis",
+            "notes": "Emphasizes the sermon\u2019s central idea about crisis revealing inner character."
+          },
+          {
+            "excerpt": "The opportunist always try to capitalize on somebody else's crisis.",
+            "supports": "claim",
+            "notes": "Highlights the sermon's discussion on opportunism in times of trouble."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "label": "doctrinal, purity, crucial, church, health",
+    "claim_count": 2,
+    "logical_sermon_count": 2,
+    "channel_count": 2,
+    "representative_claims": [
+      "Doctrinal purity is crucial for the church's health.",
+      "Doctrinal purity is crucial in keeping true to the faith."
+    ],
+    "representatives": [
+      {
+        "logical_id": "Calvary Chapel Chester Springs - Sunday::1 Timothy 1:1-3::78db72267e74fa70",
+        "base_title": "1 Timothy 1:1-3",
+        "channel_name": "Calvary Chapel Chester Springs - Sunday",
+        "published_at_min": "2026-02-15 10:00:00",
+        "published_at_max": "2026-02-15 10:00:00",
+        "episodes": [
+          {
+            "video_id": "78db72267e74fa70",
+            "title": "1 Timothy 1:1-3",
+            "published_at": "2026-02-15 10:00:00"
+          }
+        ],
+        "core_thesis": "Paul's letters, written during imprisonment, provide foundational instructions for church conduct, emphasizing apostolic authority and doctrinal purity.",
+        "sample_receipts": [
+          {
+            "excerpt": "Paul an apostle of Jesus Christ by the commandment of God our Savior.",
+            "supports": "claim",
+            "notes": "Affirms Paul's apostolic authority mandated by divine command."
+          },
+          {
+            "excerpt": "I want you to stay there and...charge some that they teach no other doctrine.",
+            "supports": "claim",
+            "notes": "Emphasizes the importance of preserving doctrinal purity."
+          }
+        ]
+      },
+      {
+        "logical_id": "Calvary Chapel of San Antonio::Revelations 2:12-17::b030653d50f50799",
+        "base_title": "Revelations 2:12-17",
+        "channel_name": "Calvary Chapel of San Antonio",
+        "published_at_min": "2026-02-01 10:00:00",
+        "published_at_max": "2026-02-01 10:00:00",
+        "episodes": [
+          {
+            "video_id": "b030653d50f50799",
+            "title": "Revelations 2:12-17",
+            "published_at": "2026-02-01 10:00:00"
+          }
+        ],
+        "core_thesis": "The sermon emphasizes repentance from sin and faithfulness to Christ, warning against compromising with ungodly teachings and practices.",
+        "sample_receipts": [
+          {
+            "excerpt": "These are the words of him who has the sharp, double edged sword.",
+            "supports": "claim",
+            "notes": "Emphasizes Christ's authority and the power of His word."
+          },
+          {
+            "excerpt": "You have people there who hold to the teaching of Balaam.",
+            "supports": "thesis",
+            "notes": "Highlights the issue of following false teachings within the church."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "label": "relationship, religious, personal, surpasses, formality",
+    "claim_count": 2,
+    "logical_sermon_count": 2,
+    "channel_count": 2,
+    "representative_claims": [
+      "A personal relationship with God surpasses religious formality.",
+      "True relationship with God transcends mere religious observance."
+    ],
+    "representatives": [
+      {
+        "logical_id": "Calvary Chapel Chester Springs - Sunday::1 Timothy 1:1-3::78db72267e74fa70",
+        "base_title": "1 Timothy 1:1-3",
+        "channel_name": "Calvary Chapel Chester Springs - Sunday",
+        "published_at_min": "2026-02-15 10:00:00",
+        "published_at_max": "2026-02-15 10:00:00",
+        "episodes": [
+          {
+            "video_id": "78db72267e74fa70",
+            "title": "1 Timothy 1:1-3",
+            "published_at": "2026-02-15 10:00:00"
+          }
+        ],
+        "core_thesis": "Paul's letters, written during imprisonment, provide foundational instructions for church conduct, emphasizing apostolic authority and doctrinal purity.",
+        "sample_receipts": [
+          {
+            "excerpt": "Paul an apostle of Jesus Christ by the commandment of God our Savior.",
+            "supports": "claim",
+            "notes": "Affirms Paul's apostolic authority mandated by divine command."
+          },
+          {
+            "excerpt": "I want you to stay there and...charge some that they teach no other doctrine.",
+            "supports": "claim",
+            "notes": "Emphasizes the importance of preserving doctrinal purity."
+          }
+        ]
+      },
+      {
+        "logical_id": "Proclamation Church - Littleton::Jesus is...Lord of the Sabbath, The Gospel of Luke - Sermon - Logan Talamas 02.01.26::532ae8c828134c6a",
+        "base_title": "Jesus is...Lord of the Sabbath, The Gospel of Luke - Sermon - Logan Talamas 02.01.26",
+        "channel_name": "Proclamation Church - Littleton",
+        "published_at_min": "2026-02-01 10:00:00",
+        "published_at_max": "2026-02-01 10:00:00",
+        "episodes": [
+          {
+            "video_id": "532ae8c828134c6a",
+            "title": "Jesus is...Lord of the Sabbath, The Gospel of Luke - Sermon - Logan Talamas 02.01.26",
+            "published_at": "2026-02-01 10:00:00"
+          }
+        ],
+        "core_thesis": "Jesus' authority, particularly His authority to forgive sins, invites us into a relationship with God that transcends religious formalism and external validation.",
+        "sample_receipts": [
+          {
+            "excerpt": "Who is Jesus? Is he one who actually has the authority that he's claiming to have?",
+            "supports": "thesis",
+            "notes": "This frames the central question of Jesus' authority."
+          },
+          {
+            "excerpt": "Jesus looks at him and he makes this rapid declaration and says, I will be clean.",
+            "supports": "claim",
+            "notes": "Demonstrates Jesus' authority to cleanse and forgive."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "label": "believers, remain, vigilant, avoid, spiritual",
+    "claim_count": 2,
+    "logical_sermon_count": 2,
+    "channel_count": 2,
+    "representative_claims": [
+      "Believers must remain vigilant to avoid spiritual complacency.",
+      "True believers must remain vigilant for Christ's return."
+    ],
+    "representatives": [
+      {
+        "logical_id": "Calvary Chapel Signal Hill::Isaiah 21::d734ef547cddd134",
+        "base_title": "Isaiah 21",
+        "channel_name": "Calvary Chapel Signal Hill",
+        "published_at_min": "2026-02-15 10:00:00",
+        "published_at_max": "2026-02-15 10:00:00",
+        "episodes": [
+          {
+            "video_id": "d734ef547cddd134",
+            "title": "Isaiah 21",
+            "published_at": "2026-02-15 10:00:00"
+          }
+        ],
+        "core_thesis": "Isaiah 21 illustrates God's sovereignty through prophecy, emphasizing the certainty of future judgment and the importance of spiritual vigilance.",
+        "sample_receipts": [
+          {
+            "excerpt": "God's word is true, and that it's real, and that there's no escaping from it.",
+            "supports": "thesis",
+            "notes": "Affirms the consistency and reliability of divine prophecy."
+          },
+          {
+            "excerpt": "The Lord knows, doesn't he? He knows exactly what he's saying and what he's doing.",
+            "supports": "claim",
+            "notes": "Highlights God's omniscience and the assuredness of future fulfillment."
+          }
+        ]
+      },
+      {
+        "logical_id": "Calvary Chapel of San Antonio::Revelation 3:1-6::d659228a3a129f0e",
+        "base_title": "Revelation 3:1-6",
+        "channel_name": "Calvary Chapel of San Antonio",
+        "published_at_min": "2026-02-15 10:00:00",
+        "published_at_max": "2026-02-15 10:00:00",
+        "episodes": [
+          {
+            "video_id": "d659228a3a129f0e",
+            "title": "Revelation 3:1-6",
+            "published_at": "2026-02-15 10:00:00"
+          }
+        ],
+        "core_thesis": "The church in Sardis is warned to awaken from spiritual death and renew their faith with genuine repentance and holiness.",
+        "sample_receipts": [
+          {
+            "excerpt": "You have a reputation of being alive, but you are dead.",
+            "supports": "thesis",
+            "notes": "Highlights the danger of a false perception of spiritual vitality."
+          },
+          {
+            "excerpt": "Wake up, strengthen what remains and is about to die.",
+            "supports": "claim",
+            "notes": "Emphasizes urgency in revitalizing faith and deeds."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "label": "salvation, through, jesus, grace, faith",
+    "claim_count": 2,
+    "logical_sermon_count": 2,
+    "channel_count": 2,
+    "representative_claims": [
+      "Salvation is by grace through faith in Jesus alone.",
+      "Salvation comes exclusively through the gospel of Jesus Christ."
+    ],
+    "representatives": [
+      {
+        "logical_id": "Calvary Chapel Oxnard::Sent Out::d26746a571467540",
+        "base_title": "Sent Out",
+        "channel_name": "Calvary Chapel Oxnard",
+        "published_at_min": "2026-02-01 10:00:00",
+        "published_at_max": "2026-02-01 10:00:00",
+        "episodes": [
+          {
+            "video_id": "d26746a571467540",
+            "title": "Sent Out",
+            "published_at": "2026-02-01 10:00:00"
+          }
+        ],
+        "core_thesis": "All believers are sent by God as ambassadors of Christ, participating in His mission through His power and guidance.",
+        "sample_receipts": [
+          {
+            "excerpt": "All believers have been sent by God to be ambassadors or representatives of Christ.",
+            "supports": "thesis",
+            "notes": "Emphasizes the universal missionary call for all believers."
+          },
+          {
+            "excerpt": "God calls. God calls. First one. Now there were in the church at Antioch prophets and teachers.",
+            "supports": "claim",
+            "notes": "Reiterates the idea that God's call is both specific and general."
+          }
+        ]
+      },
+      {
+        "logical_id": "Cottonwood Church::Worthless Worship & A Woman With Great Faith | Bayless Conley::50012cfb826873f0",
+        "base_title": "Worthless Worship & A Woman With Great Faith | Bayless Conley",
+        "channel_name": "Cottonwood Church",
+        "published_at_min": "2026-02-15 10:00:00",
+        "published_at_max": "2026-02-15 10:00:00",
+        "episodes": [
+          {
+            "video_id": "50012cfb826873f0",
+            "title": "Worthless Worship & A Woman With Great Faith | Bayless Conley",
+            "published_at": "2026-02-15 10:00:00"
+          }
+        ],
+        "core_thesis": "The sermon emphasizes the dangers of elevating traditions above scripture, illustrating true faith through the story of a woman with great faith.",
+        "sample_receipts": [
+          {
+            "excerpt": "This people honors me with their lips but their heart is far from me.",
+            "supports": "thesis",
+            "notes": "Highlights the emptiness of worship when it's not aligned with genuine heart devotion."
+          },
+          {
+            "excerpt": "He healed all that came to him that were in need of healing.",
+            "supports": "claim",
+            "notes": "Emphasizes the necessity of action and coming to Christ in faith for healing."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "label": "marriage, love, reflects, loyal, sacrificial",
+    "claim_count": 2,
+    "logical_sermon_count": 2,
+    "channel_count": 2,
+    "representative_claims": [
+      "Marriage reflects God's loyal and sacrificial love.",
+      "Marriage serves as a witness to God's love."
+    ],
+    "representatives": [
+      {
+        "logical_id": "First Free Methodist - FFMC::\"Holding Marriage Close\" | Sermon, January 25, 2026::5eed4ca0559a32d2",
+        "base_title": "\"Holding Marriage Close\" | Sermon, January 25, 2026",
+        "channel_name": "First Free Methodist - FFMC",
+        "published_at_min": "2026-01-26 10:00:00",
+        "published_at_max": "2026-01-26 10:00:00",
+        "episodes": [
+          {
+            "video_id": "5eed4ca0559a32d2",
+            "title": "\"Holding Marriage Close\" | Sermon, January 25, 2026",
+            "published_at": "2026-01-26 10:00:00"
+          }
+        ],
+        "core_thesis": "Marriage is a covenant that mirrors the love between Christ and the church, embodying mutual submission and sacrificial love.",
+        "sample_receipts": [
+          {
+            "excerpt": "Ephesians 5, 21. The writer says subject yourselves to one another in the fear of Christ.",
+            "supports": "thesis",
+            "notes": "Highlights the mutual submission intended in marriage."
+          },
+          {
+            "excerpt": "Marriage is a witness to the love of God in Jesus Christ.",
+            "supports": "key_claim",
+            "notes": "Connects the concept of earthly marriage to divine principles."
+          }
+        ]
+      },
+      {
+        "logical_id": "Independent Bible Church WV::Following Jesus in Marriage and Divorce::d34e19a27ac26635",
+        "base_title": "Following Jesus in Marriage and Divorce",
+        "channel_name": "Independent Bible Church WV",
+        "published_at_min": "2026-02-15 10:00:00",
+        "published_at_max": "2026-02-15 10:00:00",
+        "episodes": [
+          {
+            "video_id": "d34e19a27ac26635",
+            "title": "Following Jesus in Marriage and Divorce",
+            "published_at": "2026-02-15 10:00:00"
+          }
+        ],
+        "core_thesis": "Following Jesus in marriage and divorce involves understanding God's design for marriage and His allowance for divorce under specific biblical conditions.",
+        "sample_receipts": [
+          {
+            "excerpt": "Marriage can be one of the most wonderful things in the world yet also one of the most difficult things on earth.",
+            "supports": "claim",
+            "notes": "Highlights the challenges and beauty of marriage, grounding the need for biblical guidance."
+          },
+          {
+            "excerpt": "What God has joined together, let not man separate.",
+            "supports": "thesis",
+            "notes": "Emphasizes the sanctity and indissolubility of marriage as ordained by God."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "label": "manifest, promises, requires, participation, require",
+    "claim_count": 2,
+    "logical_sermon_count": 2,
+    "channel_count": 2,
+    "representative_claims": [
+      "God requires our participation to manifest His promises.",
+      "God's promises require faith to manifest."
+    ],
+    "representatives": [
+      {
+        "logical_id": "Lifepoint Church Podcast | Pastor Jeff Kapusta::Obedience Brings Blessing::3b870a7927f246d4",
+        "base_title": "Obedience Brings Blessing",
+        "channel_name": "Lifepoint Church Podcast | Pastor Jeff Kapusta",
+        "published_at_min": "2026-02-15 10:00:00",
+        "published_at_max": "2026-02-15 10:00:00",
+        "episodes": [
+          {
+            "video_id": "3b870a7927f246d4",
+            "title": "Obedience Brings Blessing",
+            "published_at": "2026-02-15 10:00:00"
+          }
+        ],
+        "core_thesis": "Obedience to Jesus and bringing what we have allows us to experience abundant life as He intended.",
+        "sample_receipts": [
+          {
+            "excerpt": "He offers an abundant life and a life to the full.",
+            "supports": "thesis",
+            "notes": "This encapsulates the promise Jesus makes to His followers."
+          },
+          {
+            "excerpt": "Full faith is the ability to move forward despite those things.",
+            "supports": "claim",
+            "notes": "Encourages progression in faith even alongside doubts and fears."
+          }
+        ]
+      },
+      {
+        "logical_id": "Nexus Church::Gods Forecast::e842fc60854ba028",
+        "base_title": "Gods Forecast",
+        "channel_name": "Nexus Church",
+        "published_at_min": "2026-02-08 10:00:00",
+        "published_at_max": "2026-02-08 10:00:00",
+        "episodes": [
+          {
+            "video_id": "e842fc60854ba028",
+            "title": "Gods Forecast",
+            "published_at": "2026-02-08 10:00:00"
+          }
+        ],
+        "core_thesis": "God has a specific plan for each person's life that can be accessed by faith, prayer, and a willingness to make internal changes.",
+        "sample_receipts": [
+          {
+            "excerpt": "A forecast means this is to come...it's going to come to pass.",
+            "supports": "thesis",
+            "notes": "Highlights the certainty of God's promises when embraced with faith."
+          },
+          {
+            "excerpt": "Sometimes before you get into increase, you got to repair what you broke down.",
+            "supports": "key_claims",
+            "notes": "Emphasizes the need to address past mistakes to receive God's blessings."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "label": "communion, sacrifice, reminder, jesus, unending",
+    "claim_count": 2,
+    "logical_sermon_count": 2,
+    "channel_count": 2,
+    "representative_claims": [
+      "Communion is a reminder of Jesus' sacrifice and God's unending work.",
+      "Communion symbolizes Christ's sacrifice and presence."
+    ],
+    "representatives": [
+      {
+        "logical_id": "New Beginnings Assembly of God - St. Louis::God Doesn't Waste Ingredients - Romans 8:28-30::fdc7b1a4f1b12464",
+        "base_title": "God Doesn't Waste Ingredients - Romans 8:28-30",
+        "channel_name": "New Beginnings Assembly of God - St. Louis",
+        "published_at_min": "2026-02-09 20:14:28",
+        "published_at_max": "2026-02-09 20:14:28",
+        "episodes": [
+          {
+            "video_id": "fdc7b1a4f1b12464",
+            "title": "God Doesn't Waste Ingredients - Romans 8:28-30",
+            "published_at": "2026-02-09 20:14:28"
+          }
+        ],
+        "core_thesis": "God uses all circumstances in our lives, good or bad, as necessary elements to work out His divine purpose.",
+        "sample_receipts": [
+          {
+            "excerpt": "But some ingredients may not taste good by themselves; they are necessary to create the final result.",
+            "supports": "thesis",
+            "notes": "Emphasizes the necessity of all life experiences for God's purpose."
+          },
+          {
+            "excerpt": "God doesn't waste ingredients. He's working even when it doesn't taste good.",
+            "supports": "claim",
+            "notes": "Reinforces the idea that God is at work amidst undesirable circumstances."
+          }
+        ]
+      },
+      {
+        "logical_id": "Outreach Center Church::I Will Build My Church::00fc5680dbba414e",
+        "base_title": "I Will Build My Church",
+        "channel_name": "Outreach Center Church",
+        "published_at_min": "2026-02-01 10:00:00",
+        "published_at_max": "2026-02-01 10:00:00",
+        "episodes": [
+          {
+            "video_id": "00fc5680dbba414e",
+            "title": "I Will Build My Church",
+            "published_at": "2026-02-01 10:00:00"
+          }
+        ],
+        "core_thesis": "Jesus Christ is building His church through divine revelation, transforming believers and uniting them in purpose and identity.",
+        "sample_receipts": [
+          {
+            "excerpt": "And I also say to you that you are Peter, and on this rock I will build my church.",
+            "supports": "thesis | claim",
+            "notes": "Foundational scripture asserting Christ's commitment to build the church."
+          },
+          {
+            "excerpt": "But that is not how you came to know Christ, assuming you heard about him and were taught by him as the truth is in Jesus.",
+            "supports": "claim",
+            "notes": "Emphasizes the importance of divine revelation in knowing Christ."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "label": "church, witness, divisions, destroy, world",
+    "claim_count": 2,
+    "logical_sermon_count": 2,
+    "channel_count": 2,
+    "representative_claims": [
+      "Divisions destroy the church's witness to the world.",
+      "Division within the church undermines its witness."
+    ],
+    "representatives": [
+      {
+        "logical_id": "Life.Church with Craig Groeschel::Choosing Unity in a Divided World | A Church That Pleases God:::e1bb447e5417bd5b",
+        "base_title": "Choosing Unity in a Divided World | A Church That Pleases God:",
+        "channel_name": "Life.Church with Craig Groeschel",
+        "published_at_min": "2026-01-25 13:30:00",
+        "published_at_max": "2026-01-25 13:30:00",
+        "episodes": [
+          {
+            "video_id": "e1bb447e5417bd5b",
+            "title": "Choosing Unity in a Divided World | A Church That Pleases God: Part 4",
+            "published_at": "2026-01-25 13:30:00"
+          }
+        ],
+        "core_thesis": "The unity of the church leads to a credible witness of the power and love of Jesus to the world.",
+        "sample_receipts": [
+          {
+            "excerpt": "If the enemy can just keep us offended...at our own, the devil doesn't have to destroy the church.",
+            "supports": "claim",
+            "notes": "Highlights how internal conflict weakens the church."
+          },
+          {
+            "excerpt": "Unity is not surrendering our convictions...but deciding that we belong together anyway.",
+            "supports": "thesis",
+            "notes": "Demonstrates that unity doesn't require uniformity, just shared purpose."
+          }
+        ]
+      },
+      {
+        "logical_id": "New Beginnings Assembly of God - St. Louis::My Best Witness - 1 Corinthians 1:10-17::eae10cb3a8ac37f5",
+        "base_title": "My Best Witness - 1 Corinthians 1:10-17",
+        "channel_name": "New Beginnings Assembly of God - St. Louis",
+        "published_at_min": "2026-02-04 13:00:00",
+        "published_at_max": "2026-02-04 13:00:00",
+        "episodes": [
+          {
+            "video_id": "eae10cb3a8ac37f5",
+            "title": "My Best Witness - 1 Corinthians 1:10-17",
+            "published_at": "2026-02-04 13:00:00"
+          }
+        ],
+        "core_thesis": "The unity of the church is the clearest witness to the world of our faith in Christ.",
+        "sample_receipts": [
+          {
+            "excerpt": "Our greatest witness to a world that is divided is us being in unity.",
+            "supports": "thesis",
+            "notes": "Emphasizes the power of church unity as a testimony to the world."
+          },
+          {
+            "excerpt": "Our unity is built around the Lord Jesus Christ.",
+            "supports": "claim",
+            "notes": "Highlights Christ as the central foundation for church unity."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "cluster_id": 15,
+    "label": "repentance, essential, receiving, christ, grace",
+    "claim_count": 2,
+    "logical_sermon_count": 2,
+    "channel_count": 2,
+    "representative_claims": [
+      "Repentance is essential for receiving Christ's grace and forgiveness.",
+      "Repentance and recognition of sin are essential for salvation."
+    ],
+    "representatives": [
+      {
+        "logical_id": "Calvary Chapel of San Antonio::Revelations 2:12-17::b030653d50f50799",
+        "base_title": "Revelations 2:12-17",
+        "channel_name": "Calvary Chapel of San Antonio",
+        "published_at_min": "2026-02-01 10:00:00",
+        "published_at_max": "2026-02-01 10:00:00",
+        "episodes": [
+          {
+            "video_id": "b030653d50f50799",
+            "title": "Revelations 2:12-17",
+            "published_at": "2026-02-01 10:00:00"
+          }
+        ],
+        "core_thesis": "The sermon emphasizes repentance from sin and faithfulness to Christ, warning against compromising with ungodly teachings and practices.",
+        "sample_receipts": [
+          {
+            "excerpt": "These are the words of him who has the sharp, double edged sword.",
+            "supports": "claim",
+            "notes": "Emphasizes Christ's authority and the power of His word."
+          },
+          {
+            "excerpt": "You have people there who hold to the teaching of Balaam.",
+            "supports": "thesis",
+            "notes": "Highlights the issue of following false teachings within the church."
+          }
+        ]
+      },
+      {
+        "logical_id": "Proclamation Church - Littleton::Jesus is...Savior/Sender, The Gospel of Luke - Sermon - Logan Talamas 01.25.26::4903ddd30173a1bd",
+        "base_title": "Jesus is...Savior/Sender, The Gospel of Luke - Sermon - Logan Talamas 01.25.26",
+        "channel_name": "Proclamation Church - Littleton",
+        "published_at_min": "2026-01-25 10:00:00",
+        "published_at_max": "2026-01-25 10:00:00",
+        "episodes": [
+          {
+            "video_id": "4903ddd30173a1bd",
+            "title": "Jesus is...Savior/Sender, The Gospel of Luke - Sermon - Logan Talamas 01.25.26",
+            "published_at": "2026-01-25 10:00:00"
+          }
+        ],
+        "core_thesis": "Jesus is both the Savior who redeems the lost and the Sender who commissions believers to share the Gospel.",
+        "sample_receipts": [
+          {
+            "excerpt": "Jesus is the one who saves the lost.",
+            "supports": "claim",
+            "notes": "Emphasizes Jesus as Savior and central to salvation."
+          },
+          {
+            "excerpt": "All of us are in need of God's grace.",
+            "supports": "thesis",
+            "notes": "Highlights universal need for Jesus' redemptive work."
+          }
+        ]
+      }
+    ]
+  }
+]
