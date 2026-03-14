@@ -1,0 +1,38 @@
+name: Vacuum
+
+on:
+  schedule:
+    # 3:01 AM Eastern (EDT = UTC-4). Update to cron: '1 8 * * *' in November for EST.
+    - cron: '1 7 * * *'
+  workflow_dispatch:         # allow manual trigger from GitHub UI
+
+jobs:
+  vacuum:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r <(python -c "import tomllib; d=tomllib.load(open('pyproject.toml','rb')); print('\n'.join(d['project']['dependencies']))")
+
+      - name: Restore database cache
+        uses: actions/cache@v4
+        with:
+          path: db/digital_pulpit.db
+          key: digital-pulpit-db-${{ github.run_id }}
+          restore-keys: |
+            digital-pulpit-db-
+
+      - name: Create db directory
+        run: mkdir -p db
+
+      - name: Run vacuum
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python3 run.py vacuum
