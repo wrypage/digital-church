@@ -213,10 +213,95 @@ if not check_password():
     st.stop()
 
 # -------------------------
+# Sidebar — always visible
+# -------------------------
+with st.sidebar:
+    st.markdown("### Download Project")
+    st.caption("Includes all source files + database.")
+    if st.button("Build Download Package", key="sidebar_dl_build"):
+        import zipfile, io
+        buf = io.BytesIO()
+        include_dirs = ["engine", "data", "db"]
+        include_root = [
+            "main.py", "streamlit_app.py", "schema.sql", "replit.md",
+            "cookies.txt", "pyproject.toml", ".replit",
+        ]
+        with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zf:
+            for fname in include_root:
+                if os.path.exists(fname):
+                    info = zipfile.ZipInfo(fname)
+                    info.date_time = (1980, 1, 1, 0, 0, 0)
+                    info.compress_type = zipfile.ZIP_DEFLATED
+                    with open(fname, "rb") as f:
+                        zf.writestr(info, f.read())
+            for d in include_dirs:
+                if not os.path.isdir(d):
+                    continue
+                for root, dirs, files in os.walk(d):
+                    dirs[:] = [x for x in dirs if x != "__pycache__"]
+                    for file in files:
+                        fp = os.path.join(root, file)
+                        arc = fp.lstrip("./")
+                        info = zipfile.ZipInfo(arc)
+                        info.date_time = (1980, 1, 1, 0, 0, 0)
+                        info.compress_type = zipfile.ZIP_DEFLATED
+                        with open(fp, "rb") as f:
+                            zf.writestr(info, f.read())
+        buf.seek(0)
+        st.session_state["dl_buf"] = buf.getvalue()
+
+    if "dl_buf" in st.session_state:
+        st.download_button(
+            label="⬇ Download ZIP",
+            data=st.session_state["dl_buf"],
+            file_name="digital-pulpit-FULL.zip",
+            mime="application/zip",
+            key="sidebar_dl_go",
+        )
+
+# -------------------------
 # UI
 # -------------------------
 st.title("Digital Pulpit Intelligence Engine")
 st.caption("v5.2 — Theological Intelligence from Global Sermon Data")
+
+# --- Download bar (always visible) ---
+with st.expander("⬇ Download Full Project (source + database)", expanded=True):
+    if st.button("Build Download Package", key="top_dl_build"):
+        import zipfile, io
+        buf = io.BytesIO()
+        include_dirs = ["engine", "data", "db"]
+        include_root = ["main.py", "streamlit_app.py", "schema.sql", "replit.md",
+                        "cookies.txt", "pyproject.toml", ".replit"]
+        with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zf:
+            for fname in include_root:
+                if os.path.exists(fname):
+                    info = zipfile.ZipInfo(fname)
+                    info.date_time = (1980, 1, 1, 0, 0, 0)
+                    info.compress_type = zipfile.ZIP_DEFLATED
+                    with open(fname, "rb") as f:
+                        zf.writestr(info, f.read())
+            for d in include_dirs:
+                if not os.path.isdir(d):
+                    continue
+                for root, dirs, files in os.walk(d):
+                    dirs[:] = [x for x in dirs if x != "__pycache__"]
+                    for file in files:
+                        fp = os.path.join(root, file)
+                        arc = fp.lstrip("./")
+                        info = zipfile.ZipInfo(arc)
+                        info.date_time = (1980, 1, 1, 0, 0, 0)
+                        info.compress_type = zipfile.ZIP_DEFLATED
+                        with open(fp, "rb") as f:
+                            zf.writestr(info, f.read())
+        buf.seek(0)
+        st.session_state["dl_buf"] = buf.getvalue()
+    if "dl_buf" in st.session_state:
+        st.download_button("⬇ Click here to download digital-pulpit-FULL.zip",
+                           data=st.session_state["dl_buf"],
+                           file_name="digital-pulpit-FULL.zip",
+                           mime="application/zip",
+                           key="top_dl_go")
 
 tab_status, tab_videos, tab_transcripts, tab_brain, tab_scripts, tab_controls = st.tabs(
     [
@@ -510,6 +595,47 @@ with tab_controls:
             else:
                 st.error(f"Full pipeline encountered an error: {result}")
             st.rerun()
+
+    st.markdown("---")
+    st.subheader("Download Backup")
+    st.caption("Download a full zip of all project source files and the database.")
+    if st.button("Build Download Package", use_container_width=True):
+        import zipfile, io, time as _time
+        buf = io.BytesIO()
+        include_dirs = ["engine", "data", "db"]
+        include_root = [
+            "main.py", "streamlit_app.py", "schema.sql", "replit.md",
+            "cookies.txt", "pyproject.toml", ".replit",
+        ]
+        with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zf:
+            for fname in include_root:
+                if os.path.exists(fname):
+                    info = zipfile.ZipInfo(fname)
+                    info.date_time = (1980, 1, 1, 0, 0, 0)
+                    info.compress_type = zipfile.ZIP_DEFLATED
+                    with open(fname, "rb") as f:
+                        zf.writestr(info, f.read())
+            for d in include_dirs:
+                if not os.path.isdir(d):
+                    continue
+                for root, dirs, files in os.walk(d):
+                    dirs[:] = [x for x in dirs if x != "__pycache__"]
+                    for file in files:
+                        fp = os.path.join(root, file)
+                        arc = fp.lstrip("./")
+                        info = zipfile.ZipInfo(arc)
+                        info.date_time = (1980, 1, 1, 0, 0, 0)
+                        info.compress_type = zipfile.ZIP_DEFLATED
+                        with open(fp, "rb") as f:
+                            zf.writestr(info, f.read())
+        buf.seek(0)
+        st.download_button(
+            label="Click here to download digital-pulpit-FULL.zip",
+            data=buf,
+            file_name="digital-pulpit-FULL.zip",
+            mime="application/zip",
+            use_container_width=True,
+        )
 
     st.markdown("---")
     st.subheader("Environment")

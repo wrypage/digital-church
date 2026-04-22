@@ -44,3 +44,13 @@ __pycache__/
 *.pyc
 *.pyo
 pulpit.db
+cookies.txt
+digital_pulpit.db
+tmp_audio/
+cookies.txt
+db/
+tmp_audio/
+*.db
+__pycache__/
+*.pyc
+.env
