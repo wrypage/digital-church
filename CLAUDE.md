@@ -6,8 +6,8 @@ Three-stage pipeline: Vacuum (ingest) → Brain (analysis) → Assembly (scripti
 139 channels tracked. 6 avatars: Sully, Elena, Tio, Noni, Dr. Thorne, Elias.
 
 ## Orientation URLs — paste into Claude.ai at session start
-https://raw.githubusercontent.com/wrypage/digital-church/main/digital-pulpit-state-of-the-project.md
-https://raw.githubusercontent.com/wrypage/digital-church/main/digital-pulpit-decisions.md
+https://raw.githubusercontent.com/wrypage/digital-church/main/docs/digital-pulpit-state-of-the-project.md
+https://raw.githubusercontent.com/wrypage/digital-church/main/docs/digital-pulpit-decisions.md
 
 ## Key files
 - channels.csv — 139 channels with orientation and location

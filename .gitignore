@@ -43,3 +43,4 @@ __pycache__/
 .whisper_cache/
 *.pyc
 *.pyo
+pulpit.db
