@@ -1,9 +1,139 @@
-channel_name,channel_url,channel_id
-Steven Furtick - Elevation Church,https://www.youtube.com/@elevationchurch,
-TD Jakes - The Potter's House,https://www.youtube.com/@TDJakesOfficial,
-Andy Stanley - North Point,https://www.youtube.com/@AndyStanley,
-Matt Chandler - Village Church,https://www.youtube.com/@TheVillageChurch,
-Robert Morris - Gateway Church,https://www.youtube.com/@RobertMorris,
-Craig Groeschel - Life.Church,https://www.youtube.com/@LifeChurch,
-Voddie Baucham,https://www.youtube.com/@VoddieBauchamMinistries,
-Tony Evans,https://www.youtube.com/@TonyEvansOfficial,
+Channel Name,Lead Speaker,YouTube Handle,Location,Primary Orientation
+Life.Church,Craig Groeschel,@life.church,"Edmond, OK",Modern Evangelical
+Church of the Highlands,Chris Hodges,@churchofthehighlandsAL,"Birmingham, AL",Modern Evangelical
+CCV (Christ's Church),Ashley Wooldridge,@ccvonline,"Peoria, AZ",Modern Evangelical
+Lakewood Church,Joel Osteen,@joelosteen,"Houston, TX",Modern Evangelical
+North Point Ministries,Andy Stanley,@NorthPointAtlanta,"Alpharetta, GA",Modern Evangelical
+Crossroads Church,Brian Tome,@crsrdschurch,"Cincinnati, OH",Modern Evangelical
+Christ Fellowship,Todd Mullins,@christfellowship,"Palm Beach Gardens, FL",Modern Evangelical
+Saddleback Church,Andy Wood,@saddlebackchurch,"Lake Forest, CA",Modern Evangelical
+Southeast Christian,Kyle Idleman,@SoutheastChristianChurch,"Louisville, KY",Modern Evangelical
+Eagle Brook Church,Jason Strand,@eaglebrookchurch,"Centerville, MN",Modern Evangelical
+Fellowship Church,Ed Young,@EdYoung,"Grapevine, TX",Modern Evangelical
+LCBC Church,Jason Mitchell,@LCBCChurch,"Manheim, PA",Modern Evangelical
+Dream City Church,Luke Barnett,@DreamCity-Church,"Phoenix, AZ",Modern Evangelical
+The Church of Eleven22,Joby Martin,@TheChurchofEleven22,"Jacksonville, FL",Modern Evangelical
+Lakepointe Church,Josh Howerton,@LakepointeChurch,"Rockwall, TX",Modern Evangelical
+Central Church,Jud Wilhite,@central.church,"Henderson, NV",Modern Evangelical
+Mariners Church,Eric Geiger,@marinerschurch,"Irvine, CA",Modern Evangelical
+Community Bible Church,Ed Newton,@cbcsocial,"San Antonio, TX",Modern Evangelical
+Bayside Church,Ray Johnston,@BaysideChurch,"Roseville, CA",Modern Evangelical
+Elevation Church,Steven Furtick,@elevationchurch,"Matthews, NC",Charismatic / Revivalist
+The Potter's House,T.D. Jakes,@TDJakesOfficial,"Dallas, TX",Charismatic / Revivalist
+Transformation Church,Michael Todd,@wearetransformation,"Tulsa, OK",Charismatic / Revivalist
+Fresh Life Church,Levi Lusko,@freshlifechurch,"Kalispell, MT",Modern Evangelical
+Calvary Tucson,Robert Furrow,@CalvaryTucson,"Tucson, AZ",Calvary Chapel
+Calvary Chapel Chino,Jack Hibbs,@RealLifeJackHibbs,"Chino Hills, CA",Calvary Chapel
+Harvest Christian,Greg Laurie,@harvestchurchyt,"Riverside, CA",Calvary Chapel
+Gateway Church,Robert Morris,@gatewaychurchtv,"Southlake, TX",Charismatic / Revivalist
+Calvary Albuquerque,Skip Heitzig,@CalvaryABQ,"Albuquerque, NM",Calvary Chapel
+Mount Zion Baptist,Joseph W. Walker III,@mtzionnashville,"Nashville, TN",Historic African American
+The Rock Church,Miles McPherson,@therocksandiego,"San Diego, CA",Modern Evangelical
+12Stone Church,Jason Berry,@12stonechurch,"Lawrenceville, GA",Modern Evangelical
+Christ the King,Grant Fishbook,@CTKBellingham,"Bellingham, WA",Modern Evangelical
+King Jesus Int.,Guillermo Maldonado,@apostlegm,"Miami, FL",Charismatic / Revivalist
+World Changers,Creflo Dollar,@CrefloDollar1,"College Park, GA",Charismatic / Revivalist
+World Outreach,Allen Jackson,@worldoutreachchurch,"Murfreesboro, TN",Modern Evangelical
+World Overcomers,Andy Thompson,@worldovercomers,"Durham, NC",Modern Evangelical
+Triumph Church,Solomon Kinloch,@TriumphDetroit,"Detroit, MI",Historic African American
+Family Christian Center,Steve Munsey,@fcc4me,"Munster, IN",Charismatic / Revivalist
+Free Chapel,Jentezen Franklin,@freechapel,"Gainesville, GA",Charismatic / Revivalist
+Christian Cultural,A.R. Bernard,@cccinfo,"Brooklyn, NY",Modern Evangelical
+West Angeles COGIC,Charles Blake,@westangelescogic,"Los Angeles, CA",Pentecostal
+Southland Christian,Jon Weece,@southland.church,"Nicholasville, KY",Modern Evangelical
+Abundant Church,Charles Nieman,@abundantchurchep,"El Paso, TX",Charismatic / Revivalist
+Legacy Church,Steve Smothermon,@LegacyChurchNM,"Albuquerque, NM",Modern Evangelical
+Calvary Golden Springs,Raul Ries,@raulries,"Diamond Bar, CA",Calvary Chapel
+Calvary Philadelphia,Joe Focht,@ccphilly,"Philadelphia, PA",Calvary Chapel
+First Baptist Glenarden,John K. Jenkins Sr.,@Inside_FBCG,"Landover, MD",Historic African American
+New Life Church,Brady Boyd,@newlifechurch,"Colorado Springs, CO",Modern Evangelical
+Potential Church,Troy Gramling,@PotentialChurch,"Cooper City, FL",Modern Evangelical
+Flatirons Community,Jim Burgen,@flatirons,"Lafayette, CO",Modern Evangelical
+First Baptist Orlando,David Uth,@fborlando,"Orlando, FL",Southern Baptist
+First Baptist Hammond,John Wilkerson,@fbchammond,"Hammond, IN",Independent Baptist
+Cross Church,Nick Floyd,@CrossChurch,"Springdale, AR",Southern Baptist
+Crossings Community,Marty Grubbs,@mycrossings,"Oklahoma City, OK",Modern Evangelical
+Celebration Church,Tim Timberlake,@celebrationjax,"Jacksonville, FL",Charismatic / Revivalist
+Calvary Community,J. Mark Martin,@calvaryphx,"Phoenix, AZ",Modern Evangelical
+Calvary Chapel Melb.,Dave Folkerts,@calvarymelbourne,"Melbourne, FL",Calvary Chapel
+Bayside Community,Randy Bezet,@baysidecommunity,"Bradenton, FL",Modern Evangelical
+Ada Bible Church,Aaron Buer,@adabible,"Ada, MI",Modern Evangelical
+Athey Creek Church,Brett Meador,@atheycreek,"West Linn, OR",Calvary Chapel
+Church on the Move,Whit George,@churchonthemove,"Tulsa, OK",Modern Evangelical
+Church Unlimited,Bil Cornelius,@churchunlimited,"Corpus Christi, TX",Modern Evangelical
+City of Refuge,Noel Jones,@cityofrefuge,"Gardena, CA",Pentecostal
+Deliverance Evangel.,Glen Spaulding,@deliverancepa,"Philadelphia, PA",Pentecostal
+Ebenezer AME Church,Grainger Browning,@ebenezerame,"Fort Washington, MD",Historic African American
+Empowerment Temple,GJ Barnes,@empowermenttemple,"Baltimore, MD",Historic African American
+Enon Tabernacle,Alyn E. Waller,@enontabernacle,"Philadelphia, PA",Historic African American
+EPIC Church Int.,John J. Wagner,@epicchurchintl,"Sayreville, NJ",Modern Evangelical
+121 Community Church,Ross Sawyers,@121community,"Grapevine, TX",Modern Evangelical
+"2,42 Community",Tony Johnson,@242community,"[Multiple, MI]",Modern Evangelical
+3Circle Church,Chris Bell,@3circlechurch,"Fairhope, AL",Modern Evangelical
+5 Point Church,Dean Herman,@5pointchurch,"Easley, SC",Modern Evangelical
+901 Church,Stevie Flockhart,@901church,"Millington, TN",Modern Evangelical
+Action Church,Justin Dailey,@actionchurch,"Orlando, FL",Modern Evangelical
+ACTS Church Lakeway,Pete Mueller,@actschurchlakeway,"Lakeway, TX",Modern Evangelical
+Alive Church,Ken Claytor,@alivechurchorlando,"Orlando, FL",Modern Evangelical
+All Peoples Church,Robert Herber,@allpeopleschurch,"San Diego, CA",Modern Evangelical
+Allison Park Church,Jeff Leake,@allisonparkchurch,"Allison Park, PA",Modern Evangelical
+Ambassador Church,Ray Chang,@ambassadorchurch,"Anaheim, CA",Modern Evangelical
+Anchor Church ABQ,Jared Bridge,@anchorchurchabq,"Albuquerque, NM",Modern Evangelical
+Anchor Church Tacoma,Bryan Halferty,@anchortacoma,"Tacoma, WA",Modern Evangelical
+Anchor Church Kaneohe,Robert McWilliams,@anchorkaneohe,"Kaneohe, HI",Modern Evangelical
+Abundant Life,Phil Hopper,@livingproofonline,"Lees Summit, MO",Modern Evangelical
+ACF Church,Brian Cook,@acfchurch,"Eagle River, AK",Modern Evangelical
+Willow Creek,Dave Dummitt,@willowcreek,"S. Barrington, IL",Modern Evangelical
+Community Christian,Dave Ferguson,@communitychristian,"Naperville, IL",Modern Evangelical
+The Crossing,Dave Richards,@thecrossing,"Quincy, IL",Modern Evangelical
+Parkview Christian,Tim Harlow,@parkviewchristian,"Orland Park, IL",Modern Evangelical
+First Church,Josh Deeter,@firstchurchohio,"Lancaster, OH",Modern Evangelical
+Mount Pleasant,Chris Philbeck,@mpccministry,"Greenwood, IN",Modern Evangelical
+Real Life Community,Aaron Miller,@reallifecommunity,"Richmond, KY",Modern Evangelical
+Canyon Ridge,Allen Slaughter,@canyonridge,"Las Vegas, NV",Modern Evangelical
+Real Life Church,Rusty George,@reallifechurch,"Valencia, CA",Modern Evangelical
+Journey Church,J.J. Vasquez,@journeychurch,"Fern Park, FL",Modern Evangelical
+Nona Church,Collin Outerbridge,@nonachurch,"Orlando, FL",Modern Evangelical
+Upstate Church,Wayne Bray,@upstatechurch,"Simpsonville, SC",Modern Evangelical
+Pantano Christian,Trevor DeVage,@pantanocc,"Tucson, AZ",Modern Evangelical
+Koinonia Fellowship,Ray Viola,@koinoniarochester,"Rochester, NY",Reformed / Traditional
+Grace to You,John MacArthur,@gracetoyou,"Sun Valley, CA",Reformed / Traditional
+Desiring God,John Piper,@desiringgod,"Minneapolis, MN",Reformed / Traditional
+Parkside Church,Alistair Begg,@ParksideChurch,"Chagrin Falls, OH",Reformed / Traditional
+Bethel Redding,Bill Johnson,@Bethel_Online,"Redding, CA",Charismatic / Revivalist
+HungryGen,Vlad Savchuk,@vladhungrygen,"Pasco, WA",Charismatic / Revivalist
+The Father's House,Brian Warth,@TFHNY,"Rochester, NY",Modern Evangelical
+Summit Church,J.D. Greear,@j.d.greear,"Durham, NC",Southern Baptist
+Browncroft Community,Rob Jackson,@browncroft,"Rochester, NY",Modern Evangelical
+Turning Point,David Jeremiah,@drdavidjeremiah,"San Diego, CA",Baptist / Traditional
+Ligonier Ministries,R.C. Sproul,@ligonier,"Sanford, FL",Reformed / Traditional
+HeartCry Missionary,Paul Washer,@heartcrymissionary,"Radford, VA",Reformed / Traditional
+The Village Church,Matt Chandler,@thevillagechurch,"Flower Mound, TX",Reformed / Traditional
+Radical,David Platt,@FollowRadical,Washington D.C.,Reformed / Traditional
+The Gospel Coalition,Multiple,@thegospelcoalition,Parachurch,Reformed / Traditional
+BibleProject,Tim Mackie,@bibleproject,"Portland, OR",Academic / Neo-Reformed
+Mike Winger,Mike Winger,@MikeWinger,Apologist,Modern Evangelical
+Allen Parr (The BEAT),Allen Parr,@thebeatagp,Apologist,Modern Evangelical
+Truth Unites,Gavin Ortlund,@TruthUnites,Apologist,Reformed / Traditional
+Founders Ministries,Tom Ascol,@FoundersMinistries,"Cape Coral, FL",Reformed / Traditional
+G3 Ministries,Josh Buice,@G3Ministries,"Douglasville, GA",Reformed / Traditional
+Apologia Studios,Jeff Durbin,@apologiastudios,"Tempe, AZ",Reformed / Traditional
+Canon Press,Doug Wilson,@CanonPress,"Moscow, ID",Reformed / Traditional
+Wretched Network,Todd Friel,@WretchedNetwork,Parachurch,Reformed / Traditional
+Living Waters,Ray Comfort,@LivingWaters,Parachurch,Reformed / Traditional
+Capitol Hill Baptist,Mark Dever,@9marks,Washington D.C.,Reformed / Traditional
+Passion City Church,Louie Giglio,@PassionCityChurch,"Atlanta, GA",Modern Evangelical
+VOUS Church,Rich Wilkerson Jr.,@VOUSChurch,"Miami, FL",Charismatic / Revivalist
+Upper Room Dallas,Michael Miller,@upperroom,"Dallas, TX",Charismatic / Revivalist
+Jesus Image,Michael Koulianos,@jesusimage,"Orlando, FL",Charismatic / Revivalist
+Koinonia Global,Joshua Selman,@KoinoniaGlobal,Nigeria,Charismatic / Revivalist
+Global Vision Bible,Greg Locke,@lockemediaPH,"Mt. Juliet, TN",Charismatic / Revivalist
+Isaiah Saldivar,Isaiah Saldivar,@IsaiahSaldivar,Revivalist,Charismatic / Revivalist
+Calvary Chapel Lees.,Gary Hamrick,@cornerstonechpl,"Leesburg, VA",Calvary Chapel
+Tenth Presbyterian,Multiple,@TenthPresbyterianChurch,"Philadelphia, PA",Reformed / Traditional
+Coral Ridge,Rob Pacienza,@CoralRidge,"Ft. Lauderdale, FL",Reformed / Traditional
+Redeemer Presbyterian,Multiple,@gospelinlife,"New York, NY",Reformed / Traditional
+Southern Seminary,Multiple,@SouthernSeminary,"Louisville, KY",Reformed / Traditional
+Dallas Seminary,Multiple,@DallasTheologicalSeminary,"Dallas, TX",Academic / Traditional
+Westminster Seminary,Multiple,@WestminsterTheologicalSeminary,"Glenside, PA",Reformed / Traditional
+Reformed Sem. (RTS),Multiple,@ReformedTheologicalSeminary,Parachurch,Reformed / Traditional

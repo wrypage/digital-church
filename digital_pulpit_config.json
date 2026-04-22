@@ -1,0 +1,72 @@
+{
+  "version": "5.1.1",
+  "patch_notes": [
+    "Unified detector output naming to *_Match to align with weighting multipliers",
+    "Added high-ROI tag overrides (Justification, Atonement, Trinity)",
+    "Expanded affect vocabulary (Peace, Shame)",
+    "Clarified high_yield_metrics sources (tags vs detectors)",
+    "Added authority disambiguation guidance"
+  ],
+
+  "detectors": {
+    "Verse_Citation_Match": "Boolean per segment/quote unit. True if chapter/verse patterns detected (e.g., Romans 8:1, John 3, 'Romans chapter 8').",
+    "Personal_Anecdote_Match": "Boolean per segment/quote unit. True if first-person narrative markers detected (e.g., 'when I was', 'I remember', 'my friend').",
+    "Imperative_Language_Match": "Boolean per segment/quote unit. True if command/imperative language detected (e.g., 'you must', 'repent', 'forgive', 'go').",
+    "Global_Divergence_Match": "Boolean per segment/quote unit. True if non-Western/global context markers detected (geography/mission context/languages/cultural frames)."
+  },
+
+  "weighting_logic": {
+    "tag_overrides": {
+      "Repentance": 3.5,
+      "Resurrection": 3.5,
+      "Cross": 3.5,
+      "Sin": 3.2,
+
+      "Justification": 3.3,
+      "Atonement": 3.3,
+      "Trinity": 3.1
+    },
+
+    "multipliers": {
+      "Verse_Citation_Match": 1.3,
+      "Imperative_Language_Match": 1.2,
+      "Gospel_Anchor_Proximity": 1.25
+    },
+
+    "disambiguation_rules": {
+      "authority_term_handling": "Never count plain 'authority' into multiple layers. If nearby tokens indicate church governance (pastor/elders/church/submit/leadership) map to 'Governance Authority'. If nearby tokens indicate truth/Scripture/Word/doctrine map to 'Epistemic Authority'. If ambiguous, map to none unless explicitly qualified."
+    }
+  },
+
+  "affect_tone_vocabulary": {
+    "Affect_Positive": ["Hope", "Victory", "Joy", "Expectation", "Encouragement", "Comfort", "Peace"],
+    "Affect_Tension": ["Urgency", "Warning", "Lament", "Fear (Tone)", "Crisis", "Doubt", "Shame"]
+  },
+
+  "high_yield_metrics": {
+    "Grace_vs_Effort": {
+      "source": "tags",
+      "tags": ["Grace", "Rest", "Law", "Works"]
+    },
+    "Hope_vs_Fear": {
+      "source": "tags",
+      "tags": ["Hope", "Victory", "Fear (Tone)", "Crisis"]
+    },
+    "Doctrine_vs_Experience": {
+      "source": "tags",
+      "tags": ["Doctrine", "Exposition", "Breakthrough", "Manifestation"]
+    },
+    "Scripture_vs_Story": {
+      "source": "detectors",
+      "detectors": ["Verse_Citation_Match", "Personal_Anecdote_Match"]
+    }
+  },
+
+  "character_affinities": {
+    "Sully": ["L1_Soteriology", "L5_Reformed_Posture", "L8_Epistemology"],
+    "Elena": ["L4_Pneumatology", "L9_Anthropology", "Affect_Tension"],
+    "Tio": ["L7_Kingdom_Narrative", "Global_Divergence_Match"],
+    "Elias": ["high_yield_metrics", "drift_analytics", "Imperative_Language_Match"],
+    "Noni": ["L9_Anthropology", "L11_Cultural_Social", "Affect_Positive"]
+  }
+}
