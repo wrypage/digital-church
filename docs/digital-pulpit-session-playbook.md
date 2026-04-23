@@ -1,109 +1,112 @@
 # Digital Pulpit — Session Playbook
-Version 1.0 — [Month Year]
-Last updated: [YYYY-MM-DD]
+Version 1.0 — April 2026
+Last updated: 2026-04-22
 
-This file defines how a working session should run.
-Its purpose is to prevent drift, repeated mistakes, and lost context.
+---
 
-Read this at the start of every session.
+## Orienting Claude at the start of a session
+
+Paste these two URLs into Claude.ai at the start of any session:
+
+https://raw.githubusercontent.com/wrypage/digital-church/main/docs/digital-pulpit-state-of-the-project.md
+https://raw.githubusercontent.com/wrypage/digital-church/main/docs/digital-pulpit-decisions.md
+
+Claude will fetch both and be fully oriented without uploading anything.
 
 ---
 
 ## The rule
 
-**One session, one goal.**
-
-Before starting, name the goal in one sentence.
-If you cannot name it, clarify it before touching anything.
+One session, one goal. Name it before touching anything.
 
 ---
 
-## Start of session
+## Start of session (Claude.ai)
 
-1. **Read `state-of-the-project.md`** — where things stand right now
-2. **Read the last 5 entries in `decisions.md`** — what was just tried or decided
-3. **State the session goal** — one sentence, written out loud
-4. **Identify the current phase** — are we still in the right phase?
-5. **Check for open issues** — anything in decisions.md "Active unresolved issues" that
-   blocks the session goal?
+1. Paste the orientation URLs above
+2. State the session goal — one sentence
+3. Check decisions.md Active Unresolved Issues — anything blocking?
+4. Write the Claude Code brief
 
-If the session is with Claude Code or a new AI session, paste:
-- The session goal
-- The relevant section of `state-of-the-project.md`
-- The last 5 decisions.md entries
-- Any relevant architecture.md section
+**Claude Code brief format:**
+```
+Session goal: [one sentence]
+Read digital-pulpit-decisions.md before touching anything.
+Do NOT touch: [list what's off-limits]
+Success condition: [how will you know it's done?]
+Context: [1-2 sentences of relevant state]
+```
 
-**Never start a Claude Code session without reading decisions.md first.**
+---
+
+## Start of session (Claude Code)
+
+```bash
+cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/digital-church
+git pull
+claude
+```
+
+Settings already configured — no flags needed.
 
 ---
 
 ## During session
 
-- **Make one change at a time.** Evaluate before moving on.
-- **Test before declaring something done.** "Seems to work" is not done.
-- **Log immediately.** If something fails or succeeds in an instructive way,
-  add a decisions.md entry before moving on. Memory of why things were done
-  decays within the same session.
-- **Use review.md** when evaluating output quality — not intuition alone.
-- **Name the failure mode** if something breaks. Not just "it didn't work" —
-  what specifically failed and why?
-- **Stop and clarify** if the session goal shifts. Don't silently pivot.
+- Make one change at a time — evaluate before moving on
+- Never modify channels.csv without checking Primary Orientation column logic
+- Never change digital_pulpit_config.json version without updating patch_notes
+- Log anything that fails or surprises immediately
+- The central question: does this still feel like climate listening, not drift policing?
 
 ---
 
 ## Signs the session is drifting
 
-- You are fixing something that wasn't the session goal
-- You are rebuilding something that was already working
-- You have lost track of what the original goal was
-- The AI is generating confidently but you are not sure it's right
-- You are adding complexity to avoid a hard decision
-
-When you notice drift: stop, re-read the session goal, decide whether to
-continue or declare the session done and start a new one with a clearer goal.
+- Fixing something that wasn't the session goal
+- Rebuilding something already working
+- Adding complexity to avoid a hard decision
+- The system is producing topical clustering instead of emphasis detection
 
 ---
 
 ## End of session
 
-1. **Update `state-of-the-project.md`** — what changed, what was learned
-2. **Add decisions.md entries** — for everything tried, accepted, or rejected
-3. **Note any new open issues** — in decisions.md "Active unresolved issues"
-4. **Define the next session goal** — write it at the bottom of
-   state-of-the-project.md so the next session starts with a clear target
-5. **Commit / save** — push to repo if applicable
+1. Come back to Claude.ai — tell Claude what happened
+2. Claude helps write decisions.md entries
+3. Update state-of-the-project.md — what changed, what was learned
+4. Define the next session goal
+5. Write session record to Supabase — ask Claude to insert via MCP:
+   projects: ['digital-pulpit'], summary, decisions, next_steps
+6. Commit and push:
+```bash
+git add -A && git commit -m "session: [goal]" && git push
+```
 
 ---
 
 ## Session types
 
-Not all sessions are the same. Name the type before starting.
+**Vacuum session** — running ingest pipeline
+- Done when: new videos in DB with status=transcribed, verified in sqlite3
 
-**Build session** — adding new functionality or pipeline stages
-- Goal: one working, tested component
-- Done when: it runs cleanly and the output is verified
+**Brain session** — running theological analysis
+- Done when: brain_results rows exist, drift metrics computed
 
-**Debug session** — fixing something broken
-- Goal: identify root cause, not just suppress symptoms
-- Done when: the failure mode is understood and documented in decisions.md
+**Assembly session** — generating avatar scripts
+- Done when: assembly_scripts row exists with real content, not fallback
 
-**Evaluation session** — reviewing output quality
-- Goal: honest assessment against review.md criteria
-- Done when: review.md is filled out and next tuning actions are named
+**Tuning session** — adjusting scoring config
+- Done when: digital_pulpit_config.json version bumped, patch_notes updated
 
 **Documentation session** — updating project docs
-- Goal: close the gap between what the system does and what the docs say
-- Done when: docs reflect current reality, not aspirational state
-
-**Enrichment / ingest session** — running data pipelines
-- Goal: data lands correctly in the right place
-- Done when: verified in database, not just "no errors in terminal"
+- Done when: docs reflect current reality
 
 ---
 
 ## The question that ends every session
 
-> Does the project know more now than it did at the start of this session?
+> Does the system know more about the evangelical preaching climate now than it did at the start?
 
-If yes: the session succeeded, even if nothing shipped.
+If yes: succeeded, even if nothing shipped.
 If no: figure out why before closing.
